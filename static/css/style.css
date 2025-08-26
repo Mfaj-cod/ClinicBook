@@ -1,9 +1,56 @@
-body{background:#c2e1ff;font-family:Arial,Helvetica,sans-serif}
+html, body {
+  /* App-wide color scheme */
+  background: #c2e1ff !important; /* Light sky blue */
+  color: #1a2a3a; /* Default text */
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+
+  /* Set link and heading colors for contrast */
+  a, .nav-link {
+    color: #0d6efd; /* Primary blue */
+  }
+  a:hover, .nav-link:hover, .nav-link.active {
+    color: #084298; /* Darker blue */
+  }
+  h1, h2, h3, h4, h5, h6 {
+    color: #0d3a6f; /* Heading deep blue */
+  }
+
+  /* Card and modal backgrounds for harmony */
+  .card, .modal-content {
+    background: #f7fbff; /* Off-white blue */
+    color: #1a2a3a;
+  }
+
+  /* Form controls and buttons for consistency */
+  .form-control, .form-select {
+    background: #f7fbff;
+    color: #1a2a3a;
+    border-color: #afd7ff; /* Soft accent blue */
+  }
+  .form-control:focus, .form-select:focus {
+    border-color: #0d6efd;
+    background: #e7f1ff;
+    color: #1a2a3a;
+  }
+
+  /* Button primary color */
+  .btn-primary, .btn-primary:focus, .btn-primary:active {
+    background: #0d6efd;
+    border-color: #0d6efd;
+    color: #fff;
+  }
+
+  /* Muted text for subtlety */
+  .text-muted, .small, .form-text {
+    color: #5a6a7a !important;
+  }
+}
+
 .navbar-brand {
   font-weight: bold;
   letter-spacing: 1px;
   font-size: 1.5rem;
-  color: #0d6efd !important;
   display: flex;
   align-items: center;
 }
@@ -11,9 +58,8 @@ body{background:#c2e1ff;font-family:Arial,Helvetica,sans-serif}
 .nav-link.active,
 .nav-link:focus,
 .nav-link:hover {
-  color: #0d6efd !important;
   font-weight: 500;
-  background: #afd7ff;
+  background: #afd7ff; /* Light accent blue */
   border-radius: 0.4rem;
   transition: background 0.2s;
 }
@@ -29,14 +75,13 @@ body{background:#c2e1ff;font-family:Arial,Helvetica,sans-serif}
 }
 
 .btn-primary, .btn-primary:focus, .btn-primary:active {
-  background: #0d6efd;
   border-color: #0d6efd;
   box-shadow: 0 2px 8px rgba(13,110,253,0.08);
 }
 
 .btn-outline-primary:hover, .btn-outline-primary:focus {
   background: #e7f1ff;
-  color: #0d6efd;
+  color: #084298; /* Darker hover color */
   border-color: #0d6efd;
 }
 
@@ -60,12 +105,30 @@ input[type="number"] {
   font-size: 1rem;
 }
 
+/* Feedback colors */
+.alert-success {
+  background-color: #28a745;
+  color: #fff;
+}
+.alert-danger {
+  background-color: #dc3545;
+  color: #fff;
+}
+.alert-warning {
+  background-color: #ffc107;
+  color: #1a2a3a;
+}
+.alert-info {
+  background-color: #20c997;
+  color: #fff;
+}
+
 footer {
   background: #afd7ff;
-  border-top: 1px solid #eaeaea;
+  border-top: 1px solid #eaeaea; /* Neutral gray divider */
   padding: 1rem 0;
   text-align: center;
-  color: #888;
+  color: #888888;
   font-size: 0.95rem;
   flex-shrink: 0;
 }
@@ -76,5 +139,25 @@ footer {
   }
   .card {
     border-radius: 0.7rem;
+  }
+
+  /* Hide navbar text, show only icons on mobile */
+  .navbar-nav .nav-link .nav-text,
+  .navbar-brand .brand-text {
+    display: none !important;
+  }
+  .navbar-nav .nav-link .bi,
+  .navbar-brand .bi {
+    display: inline-block !important;
+    font-size: 1.3rem;
+    vertical-align: middle;
+  }
+  .navbar-nav .nav-link {
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+    text-align: center;
+  }
+  .navbar {
+    min-height: 56px;
   }
 }
