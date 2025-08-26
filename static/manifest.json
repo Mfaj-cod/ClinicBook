@@ -18,8 +18,44 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
-    } 
+    }
   ],
+  "screenshots": [
+    {
+      "src": "/static/screenshots/home.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/static/screenshots/mobile.png",
+      "sizes": "400x800",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Book Appointment",
+      "short_name": "Book",
+      "description": "Quickly book a doctor appointment",
+      "url": "/book"
+    },
+    {
+      "name": "My Dashboard",
+      "short_name": "Dashboard",
+      "description": "Go to patient dashboard",
+      "url": "/dashboard_patient"
+    }
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "web+clinic",
+      "url": "/book?query=%s"
+    }
+  ],
+
+  "display_override": ["window-controls-overlay"],
   "scope": "/",
   "orientation": "portrait-primary",
   "lang": "en",

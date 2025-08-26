@@ -1,49 +1,75 @@
+:root {
+  /* Primary Theme */
+  --background: #c2e1ff;
+  --card-bg: #f7fbff;
+  --primary: #0d6efd;
+  --primary-hover: #084298;
+  --heading: #0d3a6f;
+  --accent-light: #afd7ff;
+
+  /* Text */
+  --text-default: #1a2a3a;
+  --text-muted: #5a6a7a;
+  --text-footer: #888888;
+
+  /* Feedback */
+  --success: #28a745;
+  --danger: #dc3545;
+  --warning: #ffc107;
+  --info: #20c997;
+
+  /* Neutrals */
+  --white: #ffffff;
+  --gray-light: #eaeaea;
+  --gray-dark: #343a40;
+}
+
 html, body {
   /* App-wide color scheme */
-  background: #c2e1ff !important; /* Light sky blue */
-  color: #1a2a3a; /* Default text */
+  background: var(--background) !important;
+  color: var(--text-default);
   font-family: Arial, Helvetica, sans-serif;
   min-height: 100vh;
 
   /* Set link and heading colors for contrast */
   a, .nav-link {
-    color: #0d6efd; /* Primary blue */
+    color: var(--primary);
   }
   a:hover, .nav-link:hover, .nav-link.active {
-    color: #084298; /* Darker blue */
+    color: var(--primary-hover);
   }
   h1, h2, h3, h4, h5, h6 {
-    color: #0d3a6f; /* Heading deep blue */
+    color: var(--heading);
   }
 
   /* Card and modal backgrounds for harmony */
   .card, .modal-content {
-    background: #f7fbff; /* Off-white blue */
-    color: #1a2a3a;
+    background: var(--card-bg);
+    color: var(--text-default);
   }
 
   /* Form controls and buttons for consistency */
   .form-control, .form-select {
-    background: #f7fbff;
-    color: #1a2a3a;
-    border-color: #afd7ff; /* Soft accent blue */
+    background: var(--card-bg);
+    color: var(--text-default);
+    border-color: var(--accent-light);
   }
   .form-control:focus, .form-select:focus {
-    border-color: #0d6efd;
+    border-color: var(--primary);
     background: #e7f1ff;
-    color: #1a2a3a;
+    color: var(--text-default);
   }
 
   /* Button primary color */
   .btn-primary, .btn-primary:focus, .btn-primary:active {
-    background: #0d6efd;
-    border-color: #0d6efd;
-    color: #fff;
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
   }
 
   /* Muted text for subtlety */
   .text-muted, .small, .form-text {
-    color: #5a6a7a !important;
+    color: var(--text-muted) !important;
   }
 }
 
@@ -59,7 +85,7 @@ html, body {
 .nav-link:focus,
 .nav-link:hover {
   font-weight: 500;
-  background: #afd7ff; /* Light accent blue */
+  background: var(--accent-light);
   border-radius: 0.4rem;
   transition: background 0.2s;
 }
@@ -75,18 +101,18 @@ html, body {
 }
 
 .btn-primary, .btn-primary:focus, .btn-primary:active {
-  border-color: #0d6efd;
+  border-color: var(--primary);
   box-shadow: 0 2px 8px rgba(13,110,253,0.08);
 }
 
 .btn-outline-primary:hover, .btn-outline-primary:focus {
   background: #e7f1ff;
-  color: #084298; /* Darker hover color */
-  border-color: #0d6efd;
+  color: var(--primary-hover);
+  border-color: var(--primary);
 }
 
 .form-control:focus {
-  border-color: #0d6efd;
+  border-color: var(--primary);
   box-shadow: 0 0 0 0.15rem rgba(13,110,253,0.08);
 }
 
@@ -107,28 +133,28 @@ input[type="number"] {
 
 /* Feedback colors */
 .alert-success {
-  background-color: #28a745;
-  color: #fff;
+  background-color: var(--success);
+  color: var(--white);
 }
 .alert-danger {
-  background-color: #dc3545;
-  color: #fff;
+  background-color: var(--danger);
+  color: var(--white);
 }
 .alert-warning {
-  background-color: #ffc107;
-  color: #1a2a3a;
+  background-color: var(--warning);
+  color: var(--text-default);
 }
 .alert-info {
-  background-color: #20c997;
-  color: #fff;
+  background-color: var(--info);
+  color: var(--white);
 }
 
 footer {
-  background: #afd7ff;
-  border-top: 1px solid #eaeaea; /* Neutral gray divider */
+  background: var(--accent-light);
+  border-top: 1px solid var(--gray-light);
   padding: 1rem 0;
   text-align: center;
-  color: #888888;
+  color: var(--text-footer);
   font-size: 0.95rem;
   flex-shrink: 0;
 }
