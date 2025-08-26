@@ -75,6 +75,7 @@ def create_app():
         rows = db.execute(base + ' ORDER BY d.name', params).fetchall()
         return render_template('doctors.html', doctors=rows, q=q, city=city)
 
+
     # Doctor detail and available slots
     @app.route('/doctor/<int:doc_id>')
     def doctor_detail(doc_id):
@@ -94,6 +95,8 @@ def create_app():
             (doc_id, today)
         ).fetchall()
         return render_template('book.html', doc=doc, slots=slots)
+
+
 
     # Book appointment
     @app.route('/book/<int:slot_id>', methods=['GET', 'POST'])
@@ -131,6 +134,8 @@ def create_app():
             return redirect(url_for('dashboard'))
         return render_template('book.html', slot=slot)
 
+
+
     # Dashboard for patient or doctor
     @app.route('/dashboard')
     def dashboard():
@@ -159,6 +164,8 @@ def create_app():
         ).fetchall()
         return render_template('dashboard_patient.html', appts=appts)
 
+
+
     # Patient registration
     @app.route('/register', methods=['GET', 'POST'])
     def register():
@@ -180,6 +187,8 @@ def create_app():
             flash('Account created, login')
             return redirect(url_for('login'))
         return render_template('register.html')
+
+
 
     # Doctor registration
     @app.route('/register_doctor', methods=['GET', 'POST'])
@@ -213,6 +222,7 @@ def create_app():
             return redirect(url_for('doctors'))
         return render_template('register_doctor.html')
 
+
     # Login for patient or doctor
     @app.route('/login', methods=['GET', 'POST'])
     def login():
@@ -237,6 +247,7 @@ def create_app():
                 return redirect(url_for('dashboard'))
             flash('Invalid credentials', 'danger')
         return render_template('login.html')
+
 
     # Logout
     @app.route('/logout')
