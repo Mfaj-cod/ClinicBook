@@ -249,6 +249,37 @@ def create_app():
         return render_template('login.html')
 
 
+    @app.route('/cancel_appointment/<int:appointment_id>', methods=['POST', 'GET'])
+    def cancel_appointment(appointment_id):
+        db = get_db()
+        # Only allow if user is logged in
+        if 'user_id' not in session and 'doctor_id' not in session:
+            flash('You must be logged in to cancel appointments.', 'warning')
+            return redirect(url_for('login'))
+        # Fetch appointment
+        appt = db.execute('SELECT * FROM appointments WHERE id=?', (appointment_id,)).fetchone()
+        if not appt:
+            flash('Appointment not found.', 'danger')
+            return redirect(url_for('dashboard'))
+        # Check if the user is allowed to cancel (patient or doctor)
+        allowed = False
+        if 'user_id' in session and appt['user_id'] == session['user_id']:
+            allowed = True
+        if 'doctor_id' in session and appt['doctor_id'] == session['doctor_id']:
+            allowed = True
+        if not allowed:
+            flash('You are not authorized to cancel this appointment.', 'danger')
+            return redirect(url_for('dashboard'))
+        # Cancel the appointment (delete or mark as cancelled)
+        db.execute('DELETE FROM appointments WHERE id=?', (appointment_id,))
+        db.commit()
+        flash('Appointment cancelled.', 'success')
+        return redirect(url_for('dashboard'))
+
+
+
+
+
     # Logout
     @app.route('/logout')
     def logout():
