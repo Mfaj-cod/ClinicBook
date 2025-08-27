@@ -61,7 +61,7 @@
 🚀 Installation & Setup
 
     1. Clone the repository
-    git clone https://github.com/Mfaj-cod
+    git clone https://github.com/Mfaj-cod/ClinicBook
     cd ClinicBook
 
     2. Create virtual environment
