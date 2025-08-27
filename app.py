@@ -157,7 +157,7 @@ def create_app():
 
             db.commit()
             flash('Appointment booked successfully!', 'success')
-            return redirect(url_for('patients_dashboard'))
+            return redirect(url_for('dashboard'))
 
         return render_template('book.html', slot=slot)
 
