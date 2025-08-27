@@ -9,12 +9,13 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link href="/static/css/style.css" rel="stylesheet">
   <style>
-      /* Bottom navbar only visible on small screens */
+    /* Bottom navbar only visible on small screens */
     @media (min-width: 992px) {
       .mobile-bottom-nav {
         display: none !important;
       }
     }
+
     .mobile-bottom-nav {
       position: fixed;
       bottom: 0;
@@ -23,21 +24,78 @@
       background: #fff;
       border-top: 1px solid #ddd;
       z-index: 1030;
+      display: flex;
+      justify-content: space-around;
+      padding: 0.3rem 0;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
     }
-    .mobile-bottom-nav .nav-link {
+
+    .mobile-bottom-nav .nav-item {
       text-align: center;
-      font-size: 0.85rem;
-      padding: 0.5rem 0;
-      color: #333;
-      background: transparent !important; /* remove blue hover background */
-      border: none !important;
+      flex: 1;
+      position: relative;
+      overflow: hidden;
     }
-    .mobile-bottom-nav .nav-link:hover,
-    .mobile-bottom-nav .nav-link:focus,
+
+    .mobile-bottom-nav .nav-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.8rem;
+      color: #555;
+      padding: 0.3rem 0;
+      background: transparent !important;
+      border: none !important;
+      transition: color 0.2s, transform 0.2s;
+      position: relative;
+    }
+
+    .mobile-bottom-nav .nav-link .nav-label {
+      font-size: 0.7rem;
+      margin-top: 2px;
+      display: block; /* always visible */
+      transition: color 0.2s;
+    }
+
+    /* Active tab color */
     .mobile-bottom-nav .nav-link.active {
-      color: #0d3a6f; /* optional: custom color for active */
+      color: #0d3a6f;
+    }
+
+    /* Tap animation */
+    .mobile-bottom-nav .nav-link:active {
+      transform: scale(1.2);
+    }
+
+    /* Hover/focus color change */
+    .mobile-bottom-nav .nav-link:hover,
+    .mobile-bottom-nav .nav-link:focus {
+      color: #0d3a6f;
       background: transparent !important;
       box-shadow: none !important;
+    }
+
+    /* Ripple effect */
+    .mobile-bottom-nav .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: rgba(0,0,0,0.1);
+      display: block;
+      top: 50%;
+      left: 50%;
+      pointer-events: none;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0;
+      transition: transform 0.5s, opacity 1s;
+    }
+
+    .mobile-bottom-nav .nav-link:active::after {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+      transition: 0s;
     }
   </style>
 </head>
@@ -127,33 +185,52 @@
 
   <!-- Mobile Bottom Navbar -->
   <nav class="mobile-bottom-nav d-lg-none">
-    <div class="d-flex justify-content-around">
+    <div class="nav-item">
       <a href="/" class="nav-link{% if request.path == '/' %} active{% endif %}">
-        <i class="bi bi-house-door"></i><br>Home
+        <i class="bi bi-house-door"></i>
+        <span class="nav-label">Home</span>
       </a>
-      <a href="/doctors" class="nav-link{% if request.path.startswith('/doctors') %} active{% endif %}">
-        <i class="bi bi-person-badge"></i><br>Doctors
-      </a>
-      {% if session.patient_id %}
-        <a href="{{ url_for('dashboard') }}" class="nav-link{% if request.path.startswith('/dashboard') %} active{% endif %}">
-          <i class="bi bi-speedometer2"></i><br>Dashboard
-        </a>
-        <a href="{{ url_for('logout') }}" class="nav-link">
-          <i class="bi bi-box-arrow-right"></i><br>Logout
-        </a>
-      {% elif session.doctor_id %}
-        <a href="{{ url_for('doctors_dashboard') }}" class="nav-link{% if request.path.startswith('/doctors_dashboard') %} active{% endif %}">
-          <i class="bi bi-speedometer2"></i><br>Dashboard
-        </a>
-        <a href="{{ url_for('logout') }}" class="nav-link">
-          <i class="bi bi-box-arrow-right"></i><br>Logout
-        </a>
-      {% else %}
-        <a href="{{ url_for('login') }}" class="nav-link{% if request.path.startswith('/login') %} active{% endif %}">
-          <i class="bi bi-box-arrow-in-right"></i><br>Login
-        </a>
-      {% endif %}
     </div>
+    <div class="nav-item">
+      <a href="/doctors" class="nav-link{% if request.path.startswith('/doctors') %} active{% endif %}">
+        <i class="bi bi-person-badge"></i>
+        <span class="nav-label">Doctors</span>
+      </a>
+    </div>
+    {% if session.patient_id %}
+      <div class="nav-item">
+        <a href="{{ url_for('dashboard') }}" class="nav-link{% if request.path.startswith('/dashboard') %} active{% endif %}">
+          <i class="bi bi-speedometer2"></i>
+          <span class="nav-label">Dashboard</span>
+        </a>
+      </div>
+      <div class="nav-item">
+        <a href="{{ url_for('logout') }}" class="nav-link">
+          <i class="bi bi-box-arrow-right"></i>
+          <span class="nav-label">Logout</span>
+        </a>
+      </div>
+    {% elif session.doctor_id %}
+      <div class="nav-item">
+        <a href="{{ url_for('doctors_dashboard') }}" class="nav-link{% if request.path.startswith('/doctors_dashboard') %} active{% endif %}">
+          <i class="bi bi-speedometer2"></i>
+          <span class="nav-label">Dashboard</span>
+        </a>
+      </div>
+      <div class="nav-item">
+        <a href="{{ url_for('logout') }}" class="nav-link">
+          <i class="bi bi-box-arrow-right"></i>
+          <span class="nav-label">Logout</span>
+        </a>
+      </div>
+    {% else %}
+      <div class="nav-item">
+        <a href="{{ url_for('login') }}" class="nav-link{% if request.path.startswith('/login') %} active{% endif %}">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span class="nav-label">Login</span>
+        </a>
+      </div>
+    {% endif %}
   </nav>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
