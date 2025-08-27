@@ -32,8 +32,9 @@ html, body {
   min-height: 100vh;
 
   /* Set link and heading colors for contrast */
+
   a, .nav-link {
-    color: var(--primary);
+    color: var(--heading);
   }
   a:hover, .nav-link:hover, .nav-link.active {
     color: var(--primary-hover);

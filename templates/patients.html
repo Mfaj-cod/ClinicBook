@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-4">
+  <h2 class="mb-4">Your Patients</h2>
+  {% if patients %}
+    <ul class="list-group">
+      {% for p in patients %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <span>{{ p.name }} ({{ p.email }})</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <div class="alert alert-info">No patients yet.</div>
+  {% endif %}
+</div>
+{% endblock %}

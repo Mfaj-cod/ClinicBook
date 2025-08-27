@@ -1,13 +1,14 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash, g, send_from_directory, abort
 import os, sqlite3, functools, datetime
 from werkzeug.security import generate_password_hash, check_password_hash
+from sqlite3 import IntegrityError
 
 BASE = os.path.dirname(__file__)
 DB = os.path.join(BASE, 'instance', 'app_v2.db')
 
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev_change_me')
+    app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
     app.config['DATABASE'] = DB
 
     # Serve manifest.json for PWA
@@ -38,13 +39,15 @@ def create_app():
     @app.context_processor
     def inject_user():
         user = None
-        if 'user_id' in session and session.get('user_id') != 0:
+        if 'patient_id' in session and session.get('patient_id') != 0:
             db = get_db()
             user = db.execute(
-                'SELECT id, name, email, role FROM users WHERE id=?',
-                (session['user_id'],)
+                'SELECT id, name, email, phone, age, gender FROM patients WHERE id=?',
+                (session['patient_id'],)
             ).fetchone()
         return dict(current_user=user)
+
+
 
     # Home page: show clinics
     @app.route('/')
@@ -112,95 +115,207 @@ def create_app():
 
 
 
-    # Book appointment
+    # Book appointment.
     @app.route('/book/<int:slot_id>', methods=['GET', 'POST'])
     def book(slot_id):
-        if 'user_id' not in session:
-            flash('Please login to book', 'warning')
-            return redirect(url_for('login', next=request.path))
+        if 'patient_id' not in session:
+            flash('Please login as a patient to book', 'warning')
+            return redirect(url_for('patient_login', next=request.path))
+
         db = get_db()
         slot = db.execute(
             '''SELECT s.*, d.name as doctor_name, d.fees, c.name as clinic_name
-               FROM slots s
-               JOIN doctors d ON s.doctor_id = d.id
-               JOIN clinics c ON d.clinic_id = c.id
-               WHERE s.id = ?''',
+            FROM slots s
+            JOIN doctors d ON s.doctor_id = d.id
+            JOIN clinics c ON d.clinic_id = c.id
+            WHERE s.id = ?''',
             (slot_id,)
         ).fetchone()
+
         if not slot:
             abort(404)
+
         if request.method == 'POST':
-            patient_name = request.form.get('patient_name', '').strip()
-            patient_phone = request.form.get('patient_phone', '').strip()
-            symptoms = request.form.get('symptoms', '').strip()
-            if slot['booked_count'] >= slot['capacity']:
-                flash('Slot full', 'danger')
-                return redirect(url_for('doctor_detail', doc_id=slot['doctor_id']))
+            # Only check capacity if the column exists
+            if 'capacity' in slot.keys() and 'booked_count' in slot.keys():
+                if slot['booked_count'] >= slot['capacity']:
+                    flash('Slot full', 'danger')
+                    return redirect(url_for('doctor_detail', doc_id=slot['doctor_id']))
+
+                # Update booked_count if present
+                db.execute(
+                    'UPDATE slots SET booked_count = booked_count + 1 WHERE id = ?',
+                    (slot_id,)
+                )
+
+            # Insert into appointments
             db.execute(
-                '''INSERT INTO appointments
-                   (user_id, doctor_id, slot_id, patient_name, patient_phone, symptoms)
-                   VALUES (?, ?, ?, ?, ?, ?)''',
-                (session['user_id'], slot['doctor_id'], slot_id, patient_name, patient_phone, symptoms)
+                '''INSERT INTO appointments (doctor_id, patient_id, slot_id, date, status)
+                VALUES (?, ?, ?, ?, ?)''',
+                (slot['doctor_id'], session['patient_id'], slot_id, slot['date'], 'booked')
             )
-            db.execute('UPDATE slots SET booked_count = booked_count + 1 WHERE id = ?', (slot_id,))
+
             db.commit()
-            flash('Appointment booked', 'success')
-            return redirect(url_for('dashboard'))
+            flash('Appointment booked successfully!', 'success')
+            return redirect(url_for('patients_dashboard'))
+
         return render_template('book.html', slot=slot)
 
 
 
-    # Dashboard for patient or doctor
+
+    # Patient Dashboard
     @app.route('/dashboard')
     def dashboard():
-        if 'user_id' not in session:
-            return redirect(url_for('login'))
+        if 'patient_id' not in session:
+            flash("Please login as a patient first.", "danger")
+            return redirect(url_for('patient_login'))
+
         db = get_db()
-        if session.get('role') == 'doctor':
-            appts = db.execute(
-                '''SELECT a.*, u.name as patient_name, s.date, s.time, d.name as doctor_name
-                   FROM appointments a
-                   JOIN slots s ON a.slot_id = s.id
-                   JOIN users u ON a.user_id = u.id
-                   JOIN doctors d ON a.doctor_id = d.id
-                   WHERE d.id = ?''',
-                (session.get('doctor_id'),)
-            ).fetchall()
-            return render_template('dashboard_doctor.html', appts=appts)
         appts = db.execute(
-            '''SELECT a.*, d.name as doctor_name, s.date, s.time, d.specialization
-               FROM appointments a
-               JOIN doctors d ON a.doctor_id = d.id
-               JOIN slots s ON a.slot_id = s.id
-               WHERE a.user_id = ?
-               ORDER BY s.date DESC''',
-            (session['user_id'],)
+            '''SELECT a.*, d.name as doctor_name, d.specialization, s.date, s.time
+            FROM appointments a
+            JOIN doctors d ON a.doctor_id = d.id
+            JOIN slots s ON a.slot_id = s.id
+            WHERE a.patient_id = ?
+            ORDER BY s.date DESC''',
+            (session['patient_id'],)
         ).fetchall()
+
         return render_template('dashboard_patient.html', appts=appts)
 
 
 
-    # Patient registration
-    @app.route('/register', methods=['GET', 'POST'])
-    def register():
+    @app.route('/doctors_dashboard')
+    def doctors_dashboard():
+        if 'doctor_id' not in session:
+            flash("Please login as a doctor first.", "danger")
+            return redirect(url_for('doctor_login'))
+
+        db = get_db()
+
+        # fetch doctor details
+        doctor = db.execute(
+            'SELECT * FROM doctors WHERE id=?',
+            (session['doctor_id'],)
+        ).fetchone()
+
+        # fetch appointments linked to patients
+        appointments = db.execute(
+            '''SELECT a.id, a.date, a.status,
+                    p.name as patient_name, p.phone as patient_phone
+            FROM appointments a
+            JOIN patients p ON a.patient_id = p.id
+            WHERE a.doctor_id=?
+            ORDER BY a.date DESC''',
+            (session['doctor_id'],)
+        ).fetchall()
+
+        return render_template(
+            'dashboard_doctor.html',
+            doctor=doctor,
+            appointments=appointments
+        )
+
+
+
+
+
+
+
+    # Doctor login
+    @app.route('/doctor_login', methods=['GET', 'POST'])
+    def doctor_login():
         if request.method == 'POST':
-            name = request.form.get('name', '').strip()
             email = request.form.get('email', '').strip().lower()
             phone = request.form.get('phone', '').strip()
-            password = request.form.get('password', '')
+
             db = get_db()
-            if db.execute('SELECT id FROM users WHERE email=?', (email,)).fetchone():
-                flash('Email exists', 'warning')
-                return redirect(url_for('login'))
-            db.execute(
-                '''INSERT INTO users (name, email, phone, password_hash, role)
-                   VALUES (?, ?, ?, ?, ?)''',
-                (name, email, phone, generate_password_hash(password), 'patient')
-            )
-            db.commit()
-            flash('Account created, login')
+            doctor = db.execute(
+                'SELECT * FROM doctors WHERE email=? AND phone=?',
+                (email, phone)
+            ).fetchone()
+
+            if doctor:
+                session.clear()
+                session['doctor_id'] = doctor['id']
+                flash("Welcome {}!".format(doctor['name']), "success")
+                return redirect(url_for('doctors_dashboard'))
+            else:
+                flash("Invalid credentials.", "danger")
+
+        return render_template('doctor_login.html')
+
+
+
+
+
+    @app.route("/patients")
+    def patients():
+        if 'patient_id' not in session:
             return redirect(url_for('login'))
-        return render_template('register.html')
+        db = get_db()
+        if 'doctor_id' in session:
+            # fetch patients who booked appointments with this doctor
+            patients = db.execute(
+                """SELECT DISTINCT p.id, p.name, p.email
+                FROM appointments a
+                JOIN patients p ON a.patient_id = p.id
+                WHERE a.doctor_id = ?""",
+                (session.get("doctor_id"),)
+            ).fetchall()
+            return render_template("patients.html", patients=patients)
+        # if patient role, just redirect them to their own dashboard
+        return redirect(url_for("dashboard"))
+
+
+    @app.route("/all_doctors")
+    def all_doctors():
+        db = get_db()
+        doctors = db.execute("SELECT * FROM doctors").fetchall()
+        return render_template("doctors.html", doctors=doctors)
+
+
+    @app.route("/profile")
+    def profile():
+        if 'patient_id' not in session:
+            return redirect(url_for('login'))
+        db = get_db()
+        if 'doctor_id' in session:
+            doctor = db.execute("SELECT * FROM doctors WHERE id = ?", (session.get("doctor_id"),)).fetchone()
+            return render_template("profile.html", doctor=doctor)
+        else:
+            patient = db.execute("SELECT * FROM patients WHERE id = ?", (session["patient_id"],)).fetchone()
+            return render_template("profile.html", patient=patient)
+
+
+
+    # Patient registration
+    @app.route("/register", methods=["GET", "POST"])
+    def register():
+        if request.method == "POST":
+            name = request.form["name"]
+            email = request.form["email"]
+            age = request.form["age"]
+            gender = request.form["gender"]
+            phone = request.form["phone"]
+            password = generate_password_hash(request.form["password"])
+
+            db = get_db()
+            try:
+                db.execute(
+                    "INSERT INTO patients (name, email, age, gender, phone, password) VALUES (?, ?, ?, ?, ?, ?)",
+                    (name, email, age, gender, phone, password),
+                )
+                db.commit()
+                flash("Registration successful. Please login.", "success")
+                return redirect(url_for("login"))
+            except sqlite3.IntegrityError:
+                flash("Email already registered.", "danger")
+
+        return render_template("register.html")
+
+
 
 
 
@@ -215,8 +330,15 @@ def create_app():
             city = request.form.get('city', '').strip()
             fees = int(request.form.get('fees') or 0)
             specialization = request.form.get('specialization', '').strip()
+
             db = get_db()
-            cur = db.execute('SELECT id FROM clinics WHERE name=? AND city=?', (clinic, city)).fetchone()
+
+            # Check if clinic exists or create new
+            cur = db.execute(
+                'SELECT id FROM clinics WHERE name=? AND city=?', 
+                (clinic, city)
+            ).fetchone()
+
             if cur:
                 clinic_id = cur['id']
             else:
@@ -225,49 +347,59 @@ def create_app():
                     (clinic, city, '', phone)
                 )
                 clinic_id = r.lastrowid
-            db.execute(
-                '''INSERT INTO doctors
-                   (clinic_id, name, specialization, fees, email, phone, about)
-                   VALUES (?, ?, ?, ?, ?, ?, ?)''',
-                (clinic_id, name, specialization, fees, email, phone, '')
-            )
-            db.commit()
-            flash('Doctor registered.', 'success')
-            return redirect(url_for('doctors'))
+
+            try:
+                db.execute(
+                    '''INSERT INTO doctors
+                    (clinic_id, name, specialization, fees, email, phone, about)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)''',
+                    (clinic_id, name, specialization, fees, email, phone, '')
+                )
+                db.commit()
+                flash('Doctor registered successfully ✅ Please login.', 'success')
+                return redirect(url_for('doctor_login'))
+
+
+            except IntegrityError:
+                flash('❌ This email is already registered. Please use a different email.', 'danger')
+                return redirect(url_for('register_doctor'))
+
         return render_template('register_doctor.html')
 
 
+
     # Login for patient or doctor
-    @app.route('/login', methods=['GET', 'POST'])
+    @app.route("/login", methods=["GET", "POST"])
     def login():
-        if request.method == 'POST':
-            email = request.form.get('email', '').strip().lower()
-            password = request.form.get('password', '')
+        if request.method == "POST":
+            email = request.form["email"]
+            password = request.form["password"]
+
             db = get_db()
-            user = db.execute('SELECT * FROM users WHERE email=?', (email,)).fetchone()
-            if user and check_password_hash(user['password_hash'], password):
-                session['user_id'] = user['id']
-                session['role'] = user['role']
-                session['user_name'] = user['name']
-                flash('Welcome!', 'success')
-                return redirect(url_for('index'))
-            doc = db.execute('SELECT * FROM doctors WHERE email=?', (email,)).fetchone()
-            if doc:
-                session['user_id'] = 0
-                session['role'] = 'doctor'
-                session['doctor_id'] = doc['id']
-                session['user_name'] = doc['name']
-                flash('Logged in as doctor (seed login).', 'success')
-                return redirect(url_for('dashboard'))
-            flash('Invalid credentials', 'danger')
-        return render_template('login.html')
+            # check doctor
+            doctor = db.execute("SELECT * FROM doctors WHERE email = ?", (email,)).fetchone()
+            if doctor and check_password_hash(doctor["password"], password):
+                session["doctor_id"] = doctor["id"]
+                flash("Welcome Doctor!", "success")
+                return redirect(url_for("doctors_dashboard"))
+
+            # check patient
+            patient = db.execute("SELECT * FROM patients WHERE email = ?", (email,)).fetchone()
+            if patient and check_password_hash(patient["password"], password):
+                session["patient_id"] = patient["id"]
+                flash("Welcome Patient!", "success")
+                return redirect(url_for("patients_dashboard"))
+
+            flash("Invalid email or password", "danger")
+
+        return render_template("login.html")
 
 
     @app.route('/cancel_appointment/<int:appointment_id>', methods=['POST', 'GET'])
     def cancel_appointment(appointment_id):
         db = get_db()
         # Only allow if user is logged in
-        if 'user_id' not in session and 'doctor_id' not in session:
+        if 'patient_id' not in session and 'doctor_id' not in session:
             flash('You must be logged in to cancel appointments.', 'warning')
             return redirect(url_for('login'))
         # Fetch appointment
@@ -277,7 +409,7 @@ def create_app():
             return redirect(url_for('dashboard'))
         # Check if the user is allowed to cancel (patient or doctor)
         allowed = False
-        if 'user_id' in session and appt['user_id'] == session['user_id']:
+        if 'patient_id' in session and appt['patient_id'] == session['patient_id']:
             allowed = True
         if 'doctor_id' in session and appt['doctor_id'] == session['doctor_id']:
             allowed = True

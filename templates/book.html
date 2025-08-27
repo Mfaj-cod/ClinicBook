@@ -1,68 +1,75 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% block content %}
-<div class="container py-4">
-  <div class="row justify-content-center">
-    <div class="col-md-8 col-lg-6">
-      <div class="card shadow-sm border-0">
-        <div class="card-body">
-          <h2 class="card-title mb-4 text-center text-primary">
-            <i class="bi bi-calendar-check me-2"></i>Book an Appointment
-          </h2>
-          <form method="post" class="needs-validation" novalidate>
-            <div class="mb-3">
-              <label for="patientName" class="form-label">Your Name</label>
-              <input type="text" class="form-control" id="patientName" name="name" required>
-              <div class="invalid-feedback">Please enter your name.</div>
-            </div>
-            <div class="mb-3">
-              <label for="patientEmail" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="patientEmail" name="email" required>
-              <div class="invalid-feedback">Please enter a valid email address.</div>
-            </div>
-            <div class="mb-3">
-              <label for="patientPhone" class="form-label">Phone Number</label>
-              <input type="tel" class="form-control" id="patientPhone" name="phone" required>
-              <div class="invalid-feedback">Please enter your phone number.</div>
-            </div>
-            <div class="mb-3">
-              <label for="appointmentDate" class="form-label">Preferred Date</label>
-              <input type="date" class="form-control" id="appointmentDate" name="date" required>
-              <div class="invalid-feedback">Please select a date.</div>
-            </div>
-            <div class="mb-3">
-              <label for="appointmentTime" class="form-label">Preferred Time</label>
-              <input type="time" class="form-control" id="appointmentTime" name="time" required>
-              <div class="invalid-feedback">Please select a time.</div>
-            </div>
-            <div class="mb-3">
-              <label for="notes" class="form-label">Additional Notes (optional)</label>
-              <textarea class="form-control" id="notes" name="notes" rows="2"></textarea>
-            </div>
-            <div class="d-grid">
-              <button type="submit" class="btn btn-primary btn-lg">
-                <i class="bi bi-check-circle me-1"></i>Book Appointment
-              </button>
-            </div>
-          </form>
+<div class="container mt-4">
+
+  {# -------- Case 1: Doctor Detail with available slots -------- #}
+  {% if doc %}
+  <div class="card shadow-sm">
+    <div class="card-body text-center">
+      <h3 class="card-title text-primary">
+        <i class="bi bi-person-badge"></i> {{ doc.name }}
+      </h3>
+      <p class="text-muted"><i class="bi bi-hospital"></i> {{ doc.clinic_name }}</p>
+      <p><i class="bi bi-geo-alt"></i> {{ doc.address }}, {{ doc.clinic_city }}</p>
+      <p><strong>Fees:</strong> ₹{{ doc.fees }}</p>
+
+      <h4 class="mt-4">Available Slots</h4>
+      {% if slots and slots|length > 0 %}
+        <ul class="list-group">
+          {% for s in slots %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span><i class="bi bi-clock"></i> {{ s.date }} {{ s.time }}</span>
+            <span>
+              {% if s.booked_count < s.capacity %}
+                <a href="{{ url_for('book', slot_id=s.id) }}" class="btn btn-sm btn-success">
+                  Book
+                </a>
+              {% else %}
+                <span class="badge bg-danger">Full</span>
+              {% endif %}
+            </span>
+          </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <div class="alert alert-secondary mt-3">
+          <i class="bi bi-calendar-x"></i> No slots available.
         </div>
-      </div>
-      <script>
-        // Bootstrap validation
-        (() => {
-          'use strict'
-          const forms = document.querySelectorAll('.needs-validation')
-          Array.from(forms).forEach(form => {
-            form.addEventListener('submit', event => {
-              if (!form.checkValidity()) {
-                event.preventDefault()
-                event.stopPropagation()
-              }
-              form.classList.add('was-validated')
-            }, false)
-          })
-        })()
-      </script>
+      {% endif %}
     </div>
   </div>
+  {% endif %}
+
+
+  {# -------- Case 2: Booking a specific slot -------- #}
+  {% if slot %}
+  <div class="card shadow-sm mt-4">
+    <div class="card-body">
+      <h3 class="card-title text-primary">
+        Book Appointment - {{ slot.doctor_name }}
+      </h3>
+      <p><i class="bi bi-hospital"></i> {{ slot.clinic_name }}</p>
+      <p><strong>Fees:</strong> ₹{{ slot.fees }}</p>
+      <p><strong>Slot:</strong> {{ slot.date }} {{ slot.time }}</p>
+
+      <form method="POST">
+        <div class="mb-3">
+          <label class="form-label">Patient Name</label>
+          <input type="text" class="form-control" name="patient_name" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Patient Phone</label>
+          <input type="text" class="form-control" name="patient_phone" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Symptoms</label>
+          <textarea class="form-control" name="symptoms"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Confirm Booking</button>
+      </form>
+    </div>
+  </div>
+  {% endif %}
+
 </div>
 {% endblock %}

@@ -162,7 +162,7 @@
           <div class="col">
             <div class="card h-100 border-0 shadow-sm">
               <div class="card-body text-start">
-                <h5 class="card-title mb-1"><i class="bi bi-hospital text-primary me-1"></i> {{ clinic.name }}</h5>
+                <h5 class="card-title mb-1">{{ clinic.name }}</h5>
                 <div class="text-muted small mb-1"><i class="bi bi-geo-alt"></i> {{ clinic.city }}</div>
                 {% if clinic.address %}
                   <div class="mb-1"><i class="bi bi-geo"></i> {{ clinic.address }}</div>
@@ -179,7 +179,7 @@
         <div class="mt-5">
           <div class="alert alert-info text-center">
             <i class="bi bi-info-circle"></i>
-            New to ClinicBook? <a href="{{ url_for('register') }}" class="alert-link">Register your clinic or as a doctor</a> today!
+            New to ClinicBook? <a href="{{ url_for('register_doctor') }}" class="alert-link">Register your clinic or as a doctor</a> today!
           </div>
         </div>
         {% endif %}
