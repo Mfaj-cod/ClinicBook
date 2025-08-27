@@ -46,33 +46,21 @@
       padding: 0.3rem 0;
       background: transparent !important;
       border: none !important;
-      transition: color 0.2s, transform 0.2s;
       position: relative;
+      transition: color 0.2s, transform 0.2s;
     }
 
     .mobile-bottom-nav .nav-link .nav-label {
       font-size: 0.7rem;
       margin-top: 2px;
-      display: block; /* always visible */
-      transition: color 0.2s;
+      display: block;
+      transition: transform 0.2s, color 0.2s;
     }
 
-    /* Active tab color */
+    /* Active tab: grow icon + label */
     .mobile-bottom-nav .nav-link.active {
       color: #0d3a6f;
-    }
-
-    /* Tap animation */
-    .mobile-bottom-nav .nav-link:active {
       transform: scale(1.2);
-    }
-
-    /* Hover/focus color change */
-    .mobile-bottom-nav .nav-link:hover,
-    .mobile-bottom-nav .nav-link:focus {
-      color: #0d3a6f;
-      background: transparent !important;
-      box-shadow: none !important;
     }
 
     /* Ripple effect */
@@ -97,10 +85,17 @@
       opacity: 1;
       transition: 0s;
     }
+
+    .mobile-bottom-nav .nav-link:hover,
+    .mobile-bottom-nav .nav-link:focus {
+      color: #0d3a6f;
+      background: transparent !important;
+      box-shadow: none !important;
+    }
   </style>
 </head>
 <body>
-  <!-- Top Navbar -->
+  <!-- Top Navbar (unchanged) -->
   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-2">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="/" style="color: #0d3a6f;">
@@ -177,7 +172,7 @@
   <!-- Footer -->
   <footer class="py-3 bg-light mt-auto">
     <div class="container text-center">
-      <span>&copy; {{ 2025 }} ClinicBook &middot; 
+      <span>&copy; {{ 2025 }} ClinicBook &middot; All rights reserved &middot;
         <a href="https://github.com/Mfaj-cod" target="_blank" class="text-decoration-none text-primary">GitHub</a>
       </span>
     </div>

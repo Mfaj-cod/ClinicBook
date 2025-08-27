@@ -36,9 +36,9 @@ html, body {
   a, .nav-link {
     color: var(--heading);
   }
-  a:hover, .nav-link:hover, .nav-link.active {
+  /* a:hover, .nav-link:hover, .nav-link.active {
     color: var(--primary-hover);
-  }
+  } */
   h1, h2, h3, h4, h5, h6 {
     color: var(--heading);
   }
@@ -74,7 +74,21 @@ html, body {
   }
 }
 
-*/ Make navbar sticky on scroll */
+/* Make navbar float on top on scroll */
+.navbar {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1050;
+  width: 100%;
+  background: var(--card-bg);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: box-shadow 0.2s;
+}
+body {
+  padding-top: 70px; /* Adjust this value to match navbar height */
+}
 .navbar {
   position: sticky;
   top: 0;
