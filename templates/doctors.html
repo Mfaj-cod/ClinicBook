@@ -5,33 +5,40 @@
     <i class="bi bi-person-badge" style="font-size:2rem; color:#0d6efd;"></i>
     <h2 class="ms-2 mb-0">Find a Doctor</h2>
   </div>
+
   <div class="card shadow-sm mb-4">
     <div class="card-body">
+      <!-- Search Form -->
       <form class="row g-3 mb-3" method="get" action="{{ url_for('doctors') }}">
         <div class="col-md-4">
-          <input type="text" class="form-control" name="q" placeholder="Search by name, specialization, or clinic" value="{{ q }}">
+          <input type="text" class="form-control" name="q"
+                 placeholder="Search by name, specialization, or clinic"
+                 value="{{ q }}">
         </div>
         <div class="col-md-3">
-          <input type="text" class="form-control" name="city" placeholder="City" value="{{ city }}">
+          <input type="text" class="form-control" name="city"
+                 placeholder="City" value="{{ city }}">
         </div>
         <div class="col-md-3">
-          <select class="form-select" name="specialization" value="{{ specialization }}">
+          <select class="form-select" name="specialization">
             <option value="">All Specializations</option>
-            <option value="Cardiologist">Cardiologist</option>
-            <option value="Dermatologist">Dermatologist</option>
-            <option value="Neurologist">Neurologist</option>
-            <option value="Psychiatrist">Psychiatrist</option>
-            <option value="General Physician">General Physician</option>
-            <option value="Endocrinologist">Endocrinologist</option>
-            <!-- Add more as needed -->
+            <option value="Cardiologist" {% if specialization=='Cardiologist' %}selected{% endif %}>Cardiologist</option>
+            <option value="Dermatologist" {% if specialization=='Dermatologist' %}selected{% endif %}>Dermatologist</option>
+            <option value="Neurologist" {% if specialization=='Neurologist' %}selected{% endif %}>Neurologist</option>
+            <option value="Psychiatrist" {% if specialization=='Psychiatrist' %}selected{% endif %}>Psychiatrist</option>
+            <option value="General Physician" {% if specialization=='General Physician' %}selected{% endif %}>General Physician</option>
+            <option value="Endocrinologist" {% if specialization=='Endocrinologist' %}selected{% endif %}>Endocrinologist</option>
           </select>
         </div>
         <div class="col-md-2 d-grid">
-          <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i> Search</button>
+          <button type="submit" class="btn btn-primary">
+            <i class="bi bi-search"></i> Search
+          </button>
         </div>
       </form>
       <hr>
-      <!-- Example doctor list, replace with dynamic content -->
+
+      <!-- Doctors List -->
       <div class="row row-cols-1 row-cols-md-2 g-4">
         {% for doctor in doctors %}
         <div class="col">
@@ -47,43 +54,25 @@
                 <div class="mb-1"><i class="bi bi-geo-alt"></i> {{ doctor.address }}</div>
                 <div class="mb-1"><i class="bi bi-currency-rupee"></i> {{ doctor.fees }}</div>
                 <div class="mb-2 text-muted small">{{ doctor.about }}</div>
-                <a href="{{ url_for('doctor_detail', doc_id=doctor.id) }}" class="btn btn-outline-primary btn-sm"><i class="bi bi-calendar-plus"></i> Book Appointment</a>
+                <a href="{{ url_for('doctor_detail', doc_id=doctor.id) }}"
+                   class="btn btn-outline-primary btn-sm">
+                   <i class="bi bi-calendar-plus"></i> Book Appointment
+                </a>
               </div>
             </div>
           </div>
         </div>
         {% endfor %}
       </div>
+
+      <!-- No Results -->
+      {% if doctors|length == 0 %}
+      <div class="alert alert-warning text-center mt-4">
+        <i class="bi bi-emoji-frown"></i> No doctors found matching your criteria.
+      </div>
+      {% endif %}
+
     </div>
   </div>
 </div>
-
-{% if doctors|length == 0 %}
-<div class="alert alert-warning text-center mt-4">
-  <i class="bi bi-emoji-frown"></i> No doctors found matching your criteria.
-</div>
-<!-- {% endif %}
-        {% for doctor in doctors %}
-        <div class="col">
-          <div class="card h-100 border-0 shadow-sm">
-            <div class="card-body d-flex">
-              <div class="me-3 d-flex align-items-center">
-                <i class="bi bi-person-circle" style="font-size:2.5rem; color:#0d6efd;"></i>
-              </div>
-              <div>
-                <h5 class="card-title mb-1">{{ doctor.name }}</h5>
-                <div class="text-muted small mb-1">{{ doctor.specialization }}</div>
-                <div class="mb-1"><i class="bi bi-hospital"></i> {{ doctor.clinic_name }}, {{ doctor.clinic_city }}</div>
-                <div class="mb-1"><i class="bi bi-geo-alt"></i> {{ doctor.address }}</div>
-                <div class="mb-1"><i class="bi bi-currency-rupee"></i> {{ doctor.fees }}</div>
-                <div class="mb-2 text-muted small">{{ doctor.about }}</div>
-                <a href="{{ url_for('doctor_detail', doc_id=doctor.id) }}" class="btn btn-outline-primary btn-sm"><i class="bi bi-calendar-plus"></i> Book Appointment</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        {% endfor %} -->
-      <!-- </div>
-    </div>
-  </div> -->
 {% endblock %}

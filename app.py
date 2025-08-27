@@ -53,27 +53,41 @@ def create_app():
         clinics = db.execute('SELECT * FROM clinics ORDER BY name LIMIT 6').fetchall()
         return render_template('home.html', clinics=clinics)
 
-    # Doctors search/listing
+
     @app.route('/doctors', methods=['GET'])
     def doctors():
         q = request.args.get('q', '').strip()
         city = request.args.get('city', '').strip()
+        specialization = request.args.get('specialization', '').strip()
+
         db = get_db()
         base = '''
-            SELECT d.*, c.name as clinic_name, c.city as clinic_city
+            SELECT d.*, c.name as clinic_name, c.city as clinic_city, c.address as address
             FROM doctors d
             LEFT JOIN clinics c ON d.clinic_id = c.id
             WHERE 1=1
         '''
         params = []
+
         if q:
             base += ' AND (d.name LIKE ? OR d.specialization LIKE ? OR c.name LIKE ?)'
             params += [f'%{q}%'] * 3
         if city:
             base += ' AND c.city LIKE ?'
             params.append(f'%{city}%')
+        if specialization:
+            base += ' AND d.specialization LIKE ?'
+            params.append(f'%{specialization}%')
+
         rows = db.execute(base + ' ORDER BY d.name', params).fetchall()
-        return render_template('doctors.html', doctors=rows, q=q, city=city)
+        return render_template(
+            'doctors.html',
+            doctors=rows,
+            q=q,
+            city=city,
+            specialization=specialization
+        )
+
 
 
     # Doctor detail and available slots
