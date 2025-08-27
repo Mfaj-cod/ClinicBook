@@ -45,7 +45,7 @@
       "name": "My Dashboard",
       "short_name": "Dashboard",
       "description": "Go to patient dashboard",
-      "url": "/dashboard_patient"
+      "url": "/dashboard"
     }
   ],
   "protocol_handlers": [
