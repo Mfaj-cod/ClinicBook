@@ -388,7 +388,7 @@ def create_app():
             if patient and check_password_hash(patient["password"], password):
                 session["patient_id"] = patient["id"]
                 flash("Welcome Patient!", "success")
-                return redirect(url_for("patients_dashboard"))
+                return redirect(url_for("dashboard"))
 
             flash("Invalid email or password", "danger")
 
