@@ -84,11 +84,17 @@
             </div>
             {% endfor %}
           {% else %}
-            <div class="text-muted">You haven’t written any reviews yet.</div>
+            <div class="text-muted">You haven't written any reviews yet.</div>
           {% endif %}
         </div>
       </div>
     {% endif %}
+    <div class="d-grid mt-3">
+      <a href="{{ url_for('logout') }}" class="btn btn-outline-danger">
+        <i class="bi bi-box-arrow-right me-1"></i>
+        Logout
+      </a>
+    </div>
   </div>
 </div>
 {% endblock %}

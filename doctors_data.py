@@ -219,5 +219,16 @@ doctors_data = [
         "email": "amitabh.roy@example.com",
         "phone": "+91-9001122334",
         "about": "Cosmetic and reconstructive surgery expert."
+    },
+    {
+        "name": "Dr. M. Fajal",
+        "specialization": "Orthologist",
+        "clinic": "QuantumX Clinic",
+        "city": "Purnia",
+        "address": "07, Madhubani, maulvi tola",
+        "fees": 500,
+        "email": "sheikhhoneysingh@example.com",
+        "phone": "+91-9102970839",
+        "about": "Specialist in arthritis and joint disorders."
     }
 ]
