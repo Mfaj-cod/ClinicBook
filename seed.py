@@ -2,7 +2,6 @@ import sqlite3, os
 from data import doctors_data
 import datetime
 
-
 BASE = os.path.dirname(__file__)
 DB = os.path.join(BASE, 'instance', 'app_v2.db')
 
@@ -17,7 +16,8 @@ def ensure_schema(conn):
         name TEXT NOT NULL,
         city TEXT,
         address TEXT,
-        phone TEXT
+        phone TEXT,
+        average_rating REAL DEFAULT 0.0
     );
                       
     CREATE TABLE IF NOT EXISTS doctors (
@@ -27,8 +27,10 @@ def ensure_schema(conn):
         specialization TEXT,
         fees INTEGER,
         email TEXT UNIQUE NOT NULL,
+        password_hash TEXT,
         phone TEXT,
         about TEXT,
+        average_rating REAL DEFAULT 0.0,
         FOREIGN KEY (clinic_id) REFERENCES clinics(id) ON DELETE SET NULL
     );
                       
@@ -64,6 +66,22 @@ def ensure_schema(conn):
         FOREIGN KEY (slot_id) REFERENCES slots(id) ON DELETE CASCADE
     );
 
+    CREATE TABLE IF NOT EXISTS reviews (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        patient_id INTEGER NOT NULL,
+        doctor_id INTEGER,
+        clinic_id INTEGER,
+        rating INTEGER CHECK(rating >= 1 AND rating <= 5),
+        comment TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE,
+        FOREIGN KEY (doctor_id) REFERENCES doctors(id) ON DELETE CASCADE,
+        FOREIGN KEY (clinic_id) REFERENCES clinics(id) ON DELETE CASCADE,
+        CHECK (
+            (doctor_id IS NOT NULL AND clinic_id IS NULL) OR
+            (doctor_id IS NULL AND clinic_id IS NOT NULL)
+        )
+    );
     ''')
     conn.commit()
 
@@ -74,7 +92,7 @@ def generate_slots(doctor_id, days=7):
     today = datetime.date.today()
     for i in range(days):
         date = today + datetime.timedelta(days=i)
-        for time in ["10:00", "17:00"]:  # 2 slots per day
+        for time in ["10:00", "16:00"]:  # 2 slots per day
             slots.append((doctor_id, date.isoformat(), time, 5, 0))
     return slots
 

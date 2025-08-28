@@ -65,6 +65,15 @@
           <div class="mb-1 small text-muted">
             <i class="bi bi-currency-rupee"></i> {{ doctor.fees }}
           </div>
+          <!-- ⭐ Average Rating -->
+          <div class="mb-1 small text-muted">
+            <i class="bi bi-star-fill" style="color: #ffc107;"></i>
+            {% if doctor.average_rating and doctor.average_rating > 0 %}
+              {{ "%.1f"|format(doctor.average_rating) }} / 5
+            {% else %}
+              No ratings yet
+            {% endif %}
+          </div>
           {% if doctor.about %}
           <div class="mb-2 small text-secondary" style="min-height:2.2em;">{{ doctor.about }}</div>
           {% else %}
