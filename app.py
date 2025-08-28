@@ -493,22 +493,89 @@ def create_app():
         if 'patient_id' not in session and 'doctor_id' not in session:
             flash('You must be logged in to cancel appointments.', 'warning')
             return redirect(url_for('login'))
-        appt = db.execute('SELECT * FROM appointments WHERE id=?', (appointment_id,)).fetchone()
+
+        appt = db.execute(
+            'SELECT * FROM appointments WHERE id=?',
+            (appointment_id,)
+        ).fetchone()
+
         if not appt:
             flash('Appointment not found.', 'danger')
             return redirect(url_for('dashboard'))
+
+        # Authorization check
         allowed = False
         if 'patient_id' in session and appt['patient_id'] == session['patient_id']:
             allowed = True
         if 'doctor_id' in session and appt['doctor_id'] == session['doctor_id']:
             allowed = True
+
         if not allowed:
             flash('You are not authorized to cancel this appointment.', 'danger')
             return redirect(url_for('dashboard'))
-        db.execute('DELETE FROM appointments WHERE id=?', (appointment_id,))
+
+        if appt['status'] == 'cancelled':
+            flash('This appointment is already cancelled.', 'info')
+            return redirect(url_for('dashboard'))
+
+        # Cancel (don’t delete!)
+        db.execute("UPDATE appointments SET status='cancelled' WHERE id=?", (appointment_id,))
+        db.execute("UPDATE slots SET booked_count = booked_count - 1 WHERE id=?", (appt['slot_id'],))
         db.commit()
-        flash('Appointment cancelled.', 'success')
+
+        flash('Appointment cancelled successfully.', 'success')
         return redirect(url_for('dashboard'))
+
+
+
+
+    # Doctor view & manage slots
+    @app.route("/doctor/slots")
+    def doctor_slots():
+        if "doctor_id" not in session:
+            flash("Please login as a doctor first.", "danger")
+            return redirect(url_for("doctor_login"))
+
+        db = get_db()
+        slots = db.execute(
+            "SELECT * FROM slots WHERE doctor_id=? ORDER BY date, time",
+            (session["doctor_id"],)
+        ).fetchall()
+
+        return render_template("doctor_slots.html", slots=slots)
+
+
+    # Add new slot
+    @app.route("/doctor/slots/add", methods=["POST"])
+    def add_slot():
+        if "doctor_id" not in session:
+            return redirect(url_for("doctor_login"))
+
+        date = request.form["date"]
+        time = request.form["time"]
+        capacity = request.form.get("capacity", 5)
+
+        db = get_db()
+        db.execute(
+            "INSERT INTO slots (doctor_id, date, time, capacity, booked_count) VALUES (?, ?, ?, ?, 0)",
+            (session["doctor_id"], date, time, capacity)
+        )
+        db.commit()
+        flash("New slot added!", "success")
+        return redirect(url_for("doctor_slots"))
+
+
+    # Delete slot
+    @app.route("/doctor/slots/delete/<int:slot_id>")
+    def delete_slot(slot_id):
+        if "doctor_id" not in session:
+            return redirect(url_for("doctor_login"))
+
+        db = get_db()
+        db.execute("DELETE FROM slots WHERE id=? AND doctor_id=?", (slot_id, session["doctor_id"]))
+        db.commit()
+        flash("Slot deleted.", "info")
+        return redirect(url_for("doctor_slots"))
 
 
 

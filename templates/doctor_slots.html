@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-4">
+  <h3 class="fw-bold mb-3" style="color:#0d3a6f;">
+    <i class="bi bi-calendar-check"></i> Manage Your Slots
+  </h3>
+
+  <!-- Add Slot Form -->
+  <div class="card shadow-sm border-0 mb-4">
+    <div class="card-body">
+      <form method="post" action="{{ url_for('add_slot') }}" class="row g-3 align-items-end">
+        <div class="col-md-4">
+          <label class="form-label">Date</label>
+          <input type="date" name="date" class="form-control" required>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Time</label>
+          <input type="time" name="time" class="form-control" required>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Capacity</label>
+          <input type="number" name="capacity" class="form-control" min="1" value="5">
+        </div>
+        <div class="col-md-2">
+          <button type="submit" class="btn btn-primary w-100">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- List of Slots -->
+  <div class="card shadow-sm border-0">
+    <div class="card-header bg-light fw-semibold">Your Slots</div>
+    <ul class="list-group list-group-flush">
+      {% if slots %}
+        {% for s in slots %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <div>
+            <i class="bi bi-clock"></i> {{ s.date }} - {{ s.time }}
+            <span class="badge bg-secondary ms-2">Capacity: {{ s.capacity }}</span>
+            <span class="badge bg-success ms-2">Booked: {{ s.booked_count }}</span>
+          </div>
+          <a href="{{ url_for('delete_slot', slot_id=s.id) }}" 
+             class="btn btn-sm btn-outline-danger"
+             onclick="return confirm('Delete this slot?');">
+             <i class="bi bi-trash"></i>
+          </a>
+        </li>
+        {% endfor %}
+      {% else %}
+        <li class="list-group-item text-muted text-center">
+          <i class="bi bi-emoji-frown"></i> No slots yet.
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

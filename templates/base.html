@@ -111,11 +111,13 @@
               <i class="bi bi-house-door me-1"></i>Home
             </a>
           </li>
+          {% if session.patient_id %}
           <li class="nav-item">
             <a class="nav-link{% if request.path.startswith('/doctors') %} active{% endif %}" href="/doctors">
               <i class="bi bi-person-badge me-1"></i>Doctors
             </a>
           </li>
+          {% endif %}
           {% if session.patient_id %}
             <li class="nav-item" style="margin-right: 10px; margin-left: 10px;">
               <a class="nav-link{% if request.path.startswith('/dashboard') %} active{% endif %}" href="{{ url_for('dashboard') }}">
@@ -131,6 +133,11 @@
             <li class="nav-item" style="margin-right: 10px;">
               <a class="nav-link{% if request.path.startswith('/doctors_dashboard') %} active{% endif %}" href="{{ url_for('doctors_dashboard') }}">
                  <i class="bi bi-speedometer2 me-1"></i>Doctor Dashboard
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('doctor_slots') }}">
+                <i class="bi bi-calendar-plus"></i> Manage Slots
               </a>
             </li>
             <li class="nav-item">
@@ -208,6 +215,12 @@
         <a href="{{ url_for('doctors_dashboard') }}" class="nav-link{% if request.path.startswith('/doctors_dashboard') %} active{% endif %}">
           <i class="bi bi-speedometer2"></i>
           <span class="nav-label">Dashboard</span>
+        </a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" href="{{ url_for('doctor_slots') }}">
+          <i class="bi bi-calendar-plus"></i>
+          <span class="nav-label">Slots</span>
         </a>
       </div>
       <div class="nav-item">

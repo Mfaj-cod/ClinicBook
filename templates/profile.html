@@ -23,7 +23,11 @@
           </div>
           <div class="mb-1 small text-muted">
             <i class="bi bi-currency-rupee"></i>
-            <strong>Fee:</strong> {{ doctor.fee }}
+            <strong>Fee:</strong> {{ doctor.fees }}
+          </div>
+          <div class="mb-1 small text-muted">
+            <i class="bi bi-telephone"></i>
+            <strong>Phone: +91</strong> {{ doctor.phone }}
           </div>
         </div>
       </div>
@@ -69,10 +73,18 @@
             <div class="mb-3 pb-2 border-bottom">
               <div class="mb-1">
                 {% if r.doctor_name %}
-                  <strong>Doctor: {{ r.doctor_name }}</strong>
-                {% elif r.clinic_name %}
+                  <strong>
+                    {% if r.doctor_name %}
+                      Doctor: {{ r.doctor_name }}
+                    {% elif r.doctor_id %}
+                      Doctor: {{ r.doctor_id }}
+                    {% else %}
+                      Doctor: Unknown
+                    {% endif %}
+                  </strong>
+              {% elif r.clinic_name %}
                   <strong>Clinic: {{ r.clinic_name }}</strong>
-                {% endif %}
+              {% endif %}
                 <span class="ms-2 small text-muted">{{ r.created_at }}</span>
               </div>
               <div class="small mb-1">
