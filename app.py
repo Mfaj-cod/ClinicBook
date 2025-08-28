@@ -120,7 +120,7 @@ def create_app():
     def book(slot_id):
         if 'patient_id' not in session:
             flash('Please login as a patient to book', 'warning')
-            return redirect(url_for('patient_login', next=request.path))
+            return redirect(url_for('login', next=request.path))
 
         db = get_db()
         slot = db.execute(

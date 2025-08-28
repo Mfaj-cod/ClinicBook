@@ -1,37 +1,83 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container mt-4">
-  <div class="card shadow-sm border-0 mb-4">
-    <div class="card-body">
-      <h2 class="mb-3">Welcome, {{ doctor.name }}</h2>
-      <p><strong>Specialization:</strong> {{ doctor.specialization }}</p>
-      <p><strong>Consultation Fee:</strong> ₹{{ doctor.fees }}</p>
+<div class="container my-4">
+  <div class="text-center mb-4">
+    <span class="d-inline-block rounded-circle bg-primary bg-opacity-10 p-3">
+      <i class="bi bi-person-badge" style="font-size:2.2rem; color:#0d6efd;"></i>
+    </span>
+    <h2 class="fw-bold mt-2" style="color:#0d3a6f;">Welcome, {{ doctor.name }}</h2>
+    <div class="text-muted mb-2" style="font-size:1.1rem;">
+      Manage your appointments and view your schedule
     </div>
   </div>
 
-  <h3>Your Appointments</h3>
-  <ul class="list-group">
-    {% for a in appointments %}
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        <div>
-          <strong>Patient:</strong> {{ a.patient_name }}<br>
-          <small>📞 {{ a.patient_phone }}</small>
+  <div class="mx-auto" style="max-width: 700px;">
+    <div class="card shadow-sm border-0 mb-4">
+      <div class="card-body">
+        <div class="row g-3 align-items-center">
+          <div class="col-12 col-md-4 text-center">
+            <span class="rounded-circle bg-primary bg-opacity-10 d-flex align-items-center justify-content-center mb-2" style="width:60px; height:60px; margin:auto;">
+              <i class="bi bi-person-circle" style="font-size:2.5rem; color:#0d6efd;"></i>
+            </span>
+          </div>
+          <div class="col-12 col-md-8">
+            <div class="mb-1">
+              <span class="fw-semibold" style="color:#0d3a6f;">Specialization:</span>
+              <span class="text-muted">{{ doctor.specialization }}</span>
+            </div>
+            <div class="mb-1">
+              <span class="fw-semibold" style="color:#0d3a6f;">Consultation Fee:</span>
+              <span class="text-muted"><i class="bi bi-currency-rupee"></i> {{ doctor.fees }}</span>
+            </div>
+          </div>
         </div>
-        <div>
-          <span class="badge bg-info text-dark">{{ a.date }}</span>
-          <span class="badge 
-            {% if a.status == 'booked' %} bg-success 
-            {% elif a.status == 'cancelled' %} bg-danger 
-            {% else %} bg-secondary {% endif %}">
-            {{ a.status }}
-          </span>
-        </div>
-      </li>
-    {% else %}
-      <li class="list-group-item text-center text-muted">
-        No appointments yet.
-      </li>
-    {% endfor %}
-  </ul>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h5 class="mb-0 fw-semibold" style="color:#0d3a6f;">Your Appointments</h5>
+    </div>
+    <div class="card shadow-sm mb-4">
+      <ul class="list-group list-group-flush">
+        {% if appointments %}
+          {% for a in appointments %}
+          <li class="list-group-item d-flex align-items-center">
+            <div class="flex-grow-1">
+              <div class="fw-bold" style="color:#0d3a6f;">
+                Patient: {{ a.patient_name }}
+                <span class="badge 
+                  {% if a.status == 'booked' %} bg-success 
+                  {% elif a.status == 'cancelled' %} bg-danger
+                  {% else %} bg-secondary {% endif %} ms-2">
+                  {{ a.status|capitalize }}
+                </span>
+              </div>
+              <div class="text-muted small">
+                <i class="bi bi-telephone"></i> {{ a.patient_phone }}
+              </div>
+              <div class="text-muted small">
+                <i class="bi bi-calendar-event"></i> {{ a.date }}
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+        {% else %}
+          <li class="list-group-item text-center text-muted">
+            <i class="bi bi-emoji-frown"></i> No appointments yet.
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+
+  <div class="mx-auto" style="max-width: 700px;">
+    <div class="alert alert-info text-center shadow-sm" role="alert">
+      <strong>Welcome to your Doctor Dashboard!</strong><br>
+      <span class="d-block mt-2">
+        <i class="bi bi-info-circle text-primary"></i>
+        Here you can view all your upcoming appointments and manage your schedule.
+      </span>
+    </div>
+  </div>
 </div>
 {% endblock %}

@@ -1,188 +1,254 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container py-5">
-  <!-- Hero Section -->
-  <div class="row justify-content-center mb-5">
-    <div class="col-lg-10">
-      <div class="card border-0 shadow-sm p-4 p-md-5 text-center bg-light">
-        <div class="d-flex flex-column flex-md-row align-items-center justify-content-center gap-4 mb-3">
-          <div>
-            <h1 class="fw-bold mb-2 mt-3 mt-md-0"><i class="bi bi-hospital" style="font-size:3rem; color:#0d3a6f;"></i><br>Welcome to ClinicBook</h1>
-            <p class="lead text-muted mb-2">
-              Book appointments with top doctors and clinics across India.<br>
-              <span class="d-inline-block mt-1">Fast, easy, and secure.</span>
-            </p>
-            <div class="d-flex flex-wrap justify-content-center gap-2 mt-3">
-              <a href="{{ url_for('doctors') }}" class="btn btn-primary btn-lg">
-                <i class="bi bi-search"></i> Find Doctors
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="row g-3 justify-content-center mt-4">
-          <div class="col-6 col-md-3">
-            <div class="card border-0 shadow-sm text-center py-3 h-100">
-              <i class="bi bi-calendar-check text-primary" style="font-size:2rem;"></i>
-              <div class="fw-bold mt-2">Instant Booking</div>
-              <div class="text-muted small">Book in seconds, get instant confirmation.</div>
-            </div>
-          </div>
-          <div class="col-6 col-md-3">
-            <div class="card border-0 shadow-sm text-center py-3 h-100">
-              <i class="bi bi-geo-alt text-danger" style="font-size:2rem;"></i>
-              <div class="fw-bold mt-2">Nearby Clinics</div>
-              <div class="text-muted small">Find trusted clinics<br>in your city.</div>
-            </div>
-          </div>
-          <div class="col-6 col-md-3">
-            <div class="card border-0 shadow-sm text-center py-3 h-100">
-              <i class="bi bi-people text-success" style="font-size:2rem;"></i>
-              <div class="fw-bold mt-2">Patient Friendly</div>
-              <div class="text-muted small">Easy for all ages, no tech skills needed.</div>
-            </div>
-          </div>
-          <div class="col-6 col-md-3">
-            <div class="card border-0 shadow-sm text-center py-3 h-100">
-              <i class="bi bi-shield-lock text-info" style="font-size:2rem;"></i>
-              <div class="fw-bold mt-2">100% Secure</div>
-              <div class="text-muted small">Your data is always safe and private.</div>
-            </div>
-          </div>
-        </div>
-        <div class="row g-3 justify-content-center mt-4">
-          <div class="col-12 col-md-8">
-            <div class="alert alert-info shadow-sm mb-0">
-              <i class="bi bi-info-circle me-2"></i>
-              <strong>New!</strong> Doctors can now <a href="{{ url_for('register_doctor') }}" class="alert-link">register their clinic</a> and manage appointments online.
-            </div>
-          </div>
-        </div>
-        <div class="mt-4">
-          {% if 'user_id' not in session and 'doctor_id' not in session %}
-            <a href="{{ url_for('login') }}" class="btn btn-outline-secondary btn-lg">
-              <i class="bi bi-person"></i> Login / Register
-            </a>
-          {% endif %}
-          <!-- {% if 'doctor_id' not in session %}
-                <a href="{{ url_for('register_doctor') }}" class="btn btn-outline-success btn-lg">
-                  <i class="bi bi-briefcase-medical"></i> For Doctors
-                </a>
-          {% endif %} -->
-        </div>
+
+<!-- Hero Section -->
+<section>
+<div class="position-relative">
+  <div class="hero-section text-center text-white d-flex align-items-center justify-content-center" 
+       style="min-height: 45vh; background: linear-gradient(135deg, #0d6efd, #2d8cff); border-radius: 1rem 1rem 1rem 0rem; padding: 3rem 1rem;">
+    <div>
+      <i class="bi bi-hospital mb-3" style="font-size:2.5rem;"></i>
+      <h1 class="fw-bold mb-3">Welcome to ClinicBook</h1>
+      <p class="lead mb-4">Book appointments with top doctors and clinics across India.<br>Fast, easy, and secure.</p>
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+        <a href="{{ url_for('doctors') }}" class="btn btn-light btn-lg shadow-sm">
+          <i class="bi bi-search"></i> Find Doctors
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wave attached directly -->
+  <div class="custom-shape-divider-bottom-hero">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M321.39,56.44C161.39,65.44,0,120,0,120H1200V0C1037.39,65.44,881.39,47.44,721.39,56.44,561.39,65.44,481.39,47.44,321.39,56.44Z" fill="#fff"></path>
+    </svg>
+  </div>
+</div>
+
+<!-- Add CSS -->
+<style>
+.custom-shape-divider-bottom-hero {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+.custom-shape-divider-bottom-hero svg {
+  display: block;
+  width: 100%;
+  height: 70px;
+}
+</style>
+</section>
+
+<style>
+.hero-section {
+  background: linear-gradient(135deg, #0d6efd, #2a9df4);
+}
+</style>
+
+{% if not session.patient_id and not session.doctor_id %}
+    <div class="mt-2 text-center justify-content-center align-items-center" style="background: linear-gradient(90deg, #0d6efd 0%, #2a9df4 100%); border-radius: 0 0 1rem 1rem;">
+      
+      <a href="{{ url_for('login') }}" class="btn btn-outline-light btn-lg mt-2 mb-2">
+        <i class="bi bi-person"></i> Login / Register
+      </a>
+      
+    </div>
+{% endif %}
+
+<div class="container mt-4 mb-4">
+
+  <!-- Features Section -->
+  <div class="row g-3 justify-content-center mt-4">
+    <div class="col-6 col-md-3">
+      <div class="card border-0 shadow-sm text-center py-3 h-100">
+        <i class="bi bi-calendar-check text-primary" style="font-size:2rem;"></i>
+        <div class="fw-bold mt-2">Instant Booking</div>
+        <div class="text-muted small">Book in seconds, get instant confirmation.</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card border-0 shadow-sm text-center py-3 h-100">
+        <i class="bi bi-geo-alt text-danger" style="font-size:2rem;"></i>
+        <div class="fw-bold mt-2">Nearby Clinics</div>
+        <div class="text-muted small">Find trusted clinics<br>in your city.</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card border-0 shadow-sm text-center py-3 h-100">
+        <i class="bi bi-people text-success" style="font-size:2rem;"></i>
+        <div class="fw-bold mt-2">Patient Friendly</div>
+        <div class="text-muted small">Easy for all ages, no tech skills needed.</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card border-0 shadow-sm text-center py-3 h-100">
+        <i class="bi bi-shield-lock text-info" style="font-size:2rem;"></i>
+        <div class="fw-bold mt-2">100% Secure</div>
+        <div class="text-muted small">Your data is always safe and private.</div>
       </div>
     </div>
   </div>
 
   <!-- Why Choose ClinicBook Section -->
-  <div class="container my-5">
-    <div class="row justify-content-center">
-      <div class="col-lg-10">
-        <div class="card border-0 shadow-sm p-4 p-md-5">
-          <h3 class="fw-bold mb-4 text-center">Why Choose ClinicBook?</h3>
-          <div class="row g-4 justify-content-center">
-            <div class="col-12 col-md-4">
-              <div class="card h-100 border-0 shadow-sm text-center py-4 px-2">
-                <i class="bi bi-lightning-charge text-primary" style="font-size:2.5rem;"></i>
-                <h5 class="mt-3 mb-2">Fast & Easy Booking</h5>
-                <p class="text-muted mb-0">Book appointments with top doctors in just a few clicks. No waiting, no hassle.</p>
-              </div>
-            </div>
-            <div class="col-12 col-md-4">
-              <div class="card h-100 border-0 shadow-sm text-center py-4 px-2">
-                <i class="bi bi-shield-check text-success" style="font-size:2.5rem;"></i>
-                <h5 class="mt-3 mb-2">Verified Doctors & Clinics</h5>
-                <p class="text-muted mb-0">All our doctors and clinics are verified for your safety and peace of mind.</p>
-              </div>
-            </div>
-            <div class="col-12 col-md-4">
-              <div class="card h-100 border-0 shadow-sm text-center py-4 px-2">
-                <i class="bi bi-lock text-info" style="font-size:2.5rem;"></i>
-                <h5 class="mt-3 mb-2">Secure & Private</h5>
-                <p class="text-muted mb-0">Your health data is protected with industry-standard security and privacy.</p>
-              </div>
+  <section class="why-choose-hero position-relative my-5">
+    <div class="why-choose-bg d-flex align-items-center justify-content-center text-white text-center" style="min-height: 45vh; background: linear-gradient(135deg, #0d6efd, #2d8cff); border-radius: 1rem 1rem 1rem 0; padding: 3rem 1rem;">
+      <div class="container">
+        <h2 class="fw-bold mb-4">Why Choose ClinicBook?</h2>
+        <div class="row g-4 justify-content-center">
+          <div class="col-12 col-md-4">
+            <div class="card h-100 border-0 shadow-sm text-center py-4 px-2 bg-transparent text-white">
+              <i class="bi bi-lightning-charge" style="font-size:2.5rem; color: #ffd600;"></i>
+              <h5 class="mt-3 mb-2">Fast & Easy Booking</h5>
+              <p class="mb-0">Book appointments with top doctors in just a few clicks. No waiting, no hassle.</p>
             </div>
           </div>
-          <div class="mt-4 text-center">
-            <button type="button" class="btn btn-outline-primary btn-lg" data-bs-toggle="modal" data-bs-target="#whyChooseModal">
-              <i class="bi bi-info-circle me-1"></i> Learn More
-            </button>
+          <div class="col-12 col-md-4">
+            <div class="card h-100 border-0 shadow-sm text-center py-4 px-2 bg-transparent text-white">
+              <i class="bi bi-shield-check" style="font-size:2.5rem; color: #00e676;"></i>
+              <h5 class="mt-3 mb-2">Verified Doctors & Clinics</h5>
+              <p class="mb-0">All our doctors and clinics are verified for your safety and peace of mind.</p>
+            </div>
           </div>
+          <div class="col-12 col-md-4">
+            <div class="card h-100 border-0 shadow-sm text-center py-4 px-2 bg-transparent text-white">
+              <i class="bi bi-lock" style="font-size:2.5rem; color: #40c4ff;"></i>
+              <h5 class="mt-3 mb-2">Secure & Private</h5>
+              <p class="mb-0">Your health data is protected with industry-standard security and privacy.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4">
+          <button type="button" class="btn btn-outline-light btn-lg" data-bs-toggle="modal"
+            data-bs-target="#whyChooseModal">
+            <i class="bi bi-info-circle me-1"></i> Learn More
+          </button>
         </div>
       </div>
     </div>
-  </div>
+    <!-- Optional: Decorative wave at the bottom -->
+    <div class="custom-shape-divider-bottom-why-choose">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44C161.39,65.44,0,120,0,120H1200V0C1037.39,65.44,881.39,47.44,721.39,56.44,561.39,65.44,481.39,47.44,321.39,56.44Z" fill="#fff"></path>
+      </svg>
+    </div>
+    <style>
+      .why-choose-hero {
+        position: relative;
+        z-index: 1;
+      }
+      .why-choose-bg {
+        border-radius: 1rem;
+        position: relative;
+        z-index: 2;
+      }
+      .custom-shape-divider-bottom-why-choose {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        line-height: 0;
+        z-index: 3;
+      }
+      .custom-shape-divider-bottom-why-choose svg {
+        display: block;
+        width: 100%;
+        height: 70px;
+      }
+      @media (max-width: 767.98px) {
+        .why-choose-bg {
+          padding: 2rem 0.5rem;
+        }
+      }
+    </style>
+  </section>
 
-  <!-- Why Choose Modal -->
-  <div class="modal fade" id="whyChooseModal" tabindex="-1" aria-labelledby="whyChooseModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="whyChooseModalLabel"><i class="bi bi-stars text-primary me-2"></i>Why ClinicBook?</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="row g-4">
-            <div class="col-12 col-md-6">
-              <h6 class="fw-bold"><i class="bi bi-lightning-charge text-primary me-1"></i> Fast & Easy Booking</h6>
-              <p class="text-muted">ClinicBook streamlines the appointment process. Search, compare, and book with your preferred doctor or clinic in seconds, from any device.</p>
-            </div>
-            <div class="col-12 col-md-6">
-              <h6 class="fw-bold"><i class="bi bi-shield-check text-success me-1"></i> Verified Professionals</h6>
-              <p class="text-muted">We carefully verify all doctors and clinics on our platform, ensuring you get quality care from trusted professionals.</p>
-            </div>
-            <div class="col-12 col-md-6">
-              <h6 class="fw-bold"><i class="bi bi-lock text-info me-1"></i> Secure & Private</h6>
-              <p class="text-muted">Your personal and health information is encrypted and never shared without your consent. We value your privacy.</p>
-            </div>
-            <div class="col-12 col-md-6">
-              <h6 class="fw-bold"><i class="bi bi-people text-warning me-1"></i> Patient-Centric Support</h6>
-              <p class="text-muted">Our support team is here to help you at every step, from booking to follow-up. Your health journey matters to us.</p>
-            </div>
-          </div>
-          <div class="mt-3 text-center">
-            <a href="{{ url_for('doctors') }}" class="btn btn-primary btn-lg">
-              <i class="bi bi-search me-1"></i> Start Booking Now
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- Popular Clinics Section -->
-  <div class="container my-5">
-    <div class="row justify-content-center">
-      <div class="col-lg-10">
-        <hr class="my-4">
-        <h3 class="mb-4 text-center">Popular Clinics</h3>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-          {% for clinic in clinics %}
-          <div class="col">
-            <div class="card h-100 border-0 shadow-sm">
-              <div class="card-body text-start">
-                <h5 class="card-title mb-1">{{ clinic.name }}</h5>
-                <div class="text-muted small mb-1"><i class="bi bi-geo-alt"></i> {{ clinic.city }}</div>
-                {% if clinic.address %}
-                  <div class="mb-1"><i class="bi bi-geo"></i> {{ clinic.address }}</div>
-                {% endif %}
-                {% if clinic.phone %}
-                  <div class="mb-1"><i class="bi bi-telephone"></i> {{ clinic.phone }}</div>
-                {% endif %}
+
+  <!-- Popular Clinics Hero Section -->
+  <section class="popular-clinics-hero position-relative py-5" style="background: linear-gradient(90deg, #0d6efd, #2d8cff);">
+    <div class="container">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-lg-10">
+          <div class="why-choose-bg p-4 p-md-5 shadow-sm mb-4" style="background: #2d8cff;">
+            <div class="text-center mb-4">
+              <i class="bi bi-hospital" style="font-size:2.5rem; color:#0d6efd;"></i>
+              <h2 class="mt-2 mb-1" style="color: #0d3a6f;"><b>Popular Clinics</b></h2>
+              <p class="text-muted mb-0">Discover top-rated clinics trusted by patients in your city.</p>
+            </div>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+              {% for clinic in clinics %}
+              <div class="col">
+                <div class="card h-100 border-0 shadow-sm">
+                  <div class="card-body text-center">
+                    <h5 class="card-title mb-1 text-primary">
+                      <i class="bi bi-building me-1"></i>{{ clinic.name }}
+                    </h5>
+                    <div class="text-muted small mb-1"><i class="bi bi-geo-alt"></i> {{ clinic.city }}</div>
+                    {% if clinic.address %}
+                    <div class="mb-1"><i class="bi bi-geo"></i> {{ clinic.address }}</div>
+                    {% endif %}
+                    {% if clinic.phone %}
+                    <div class="mb-1"><i class="bi bi-telephone"></i> {{ clinic.phone }}</div>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+            {% if 'user_id' not in session %}
+            <div class="mt-5">
+              <div class="alert alert-info text-center shadow-sm">
+                <i class="bi bi-info-circle"></i>
+                New to ClinicBook? <a href="{{ url_for('register_doctor') }}" class="alert-link">Register your clinic or as a doctor</a> today!
               </div>
             </div>
-          </div>
-          {% endfor %}
-        </div>
-        {% if 'user_id' not in session %}
-        <div class="mt-5">
-          <div class="alert alert-info text-center">
-            <i class="bi bi-info-circle"></i>
-            New to ClinicBook? <a href="{{ url_for('register_doctor') }}" class="alert-link">Register your clinic or as a doctor</a> today!
+            {% endif %}
           </div>
         </div>
-        {% endif %}
       </div>
     </div>
-  </div>
+    <!-- Decorative wave at the bottom -->
+    <div class="custom-shape-divider-bottom-popular-clinics">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44C161.39,65.44,0,120,0,120H1200V0C1037.39,65.44,881.39,47.44,721.39,56.44,561.39,65.44,481.39,47.44,321.39,56.44Z" fill="#fff"></path>
+      </svg>
+    </div>
+    <style>
+      .popular-clinics-hero {
+        position: relative;
+        z-index: 1;
+      }
+      .why-choose-bg {
+        border-radius: 1rem;
+        position: relative;
+        z-index: 2;
+      }
+      .custom-shape-divider-bottom-popular-clinics {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        line-height: 0;
+        z-index: 3;
+      }
+      .custom-shape-divider-bottom-popular-clinics svg {
+        display: block;
+        width: 100%;
+        height: 70px;
+      }
+      @media (max-width: 767.98px) {
+        .why-choose-bg {
+          padding: 2rem 0.5rem;
+        }
+      }
+    </style>
+  </section>
 </div>
 {% endblock %}

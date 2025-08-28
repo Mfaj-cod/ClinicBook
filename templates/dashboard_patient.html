@@ -1,69 +1,66 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container py-4">
-  <div class="row justify-content-center">
-    <div class="col-lg-8">
-      <!-- Header -->
-      <div class="d-flex align-items-center mb-4">
-        <i class="bi bi-calendar-check" style="font-size:2rem; color:#0d6efd;"></i>
-        <h2 class="ms-2 mb-0">My Appointments</h2>
-      </div>
+<div class="container my-4">
+  <div class="text-center mb-4">
+    <span class="d-inline-block rounded-circle bg-primary bg-opacity-10 p-3">
+      <i class="bi bi-calendar-check" style="font-size:2.2rem; color:#0d6efd;"></i>
+    </span>
+    <h2 class="fw-bold mt-2" style="color:#0d3a6f;">My Appointments</h2>
+    <div class="text-muted mb-2" style="font-size:1.1rem;">View and manage your upcoming appointments</div>
+  </div>
 
-      <!-- Appointments card -->
-      <div class="card shadow-sm mb-4">
-        <div class="card-body">
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <h5 class="mb-0">Upcoming Appointments</h5>
-            <a href="{{ url_for('doctors') }}" class="btn btn-primary btn-sm">
-              <i class="bi bi-calendar-plus me-1"></i>Book New
+  <div class="mx-auto" style="max-width: 700px;">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h5 class="mb-0 fw-semibold" style="color:#0d3a6f;">Upcoming Appointments</h5>
+      <a href="{{ url_for('doctors') }}" class="btn btn-primary btn-sm">
+        <i class="bi bi-calendar-plus me-1"></i>Book New
+      </a>
+    </div>
+    <div class="card shadow-sm mb-4">
+      <ul class="list-group list-group-flush">
+        {% if appts %}
+          {% for appointment in appts %}
+          <li class="list-group-item d-flex align-items-center">
+            <div class="flex-grow-1">
+              <div class="fw-bold" style="color:#0d3a6f;">
+                {{ appointment.doctor_name }}
+                <span class="badge 
+                  {% if appointment.status == 'booked' %} bg-success 
+                  {% elif appointment.status == 'cancelled' %} bg-danger
+                  {% else %} bg-secondary {% endif %} ms-2">
+                  {{ appointment.status|capitalize }}
+                </span>
+              </div>
+              <div class="text-muted small">{{ appointment.specialization }}</div>
+              <div class="text-muted small">
+                <i class="bi bi-calendar-event"></i> {{ appointment.date }} 
+                &nbsp; 
+                <i class="bi bi-clock"></i> {{ appointment.time }}
+              </div>
+            </div>
+            <a href="{{ url_for('cancel_appointment', appointment_id=appointment.id) }}" 
+               class="btn btn-outline-danger btn-sm ms-3">
+              <i class="bi bi-x-circle"></i> Cancel
             </a>
-          </div>
+          </li>
+          {% endfor %}
+        {% else %}
+          <li class="list-group-item text-center text-muted">
+            <i class="bi bi-emoji-frown"></i> No appointments found.
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
 
-          <ul class="list-group list-group-flush">
-            {% if appts %}
-              {% for appointment in appts %}
-              <li class="list-group-item d-flex align-items-center">
-                <div class="flex-grow-1">
-                  <div class="fw-bold">
-                    {{ appointment.doctor_name }}
-                    <span class="badge 
-                      {% if appointment.status == 'booked' %} bg-success 
-                      {% elif appointment.status == 'cancelled' %} bg-danger
-                      {% else %} bg-secondary {% endif %} ms-2">
-                      {{ appointment.status|capitalize }}
-                    </span>
-                  </div>
-                  <div class="text-muted small">{{ appointment.specialization }}</div>
-                  <div class="text-muted small">
-                    <i class="bi bi-calendar-event"></i> {{ appointment.date }} 
-                    &nbsp; 
-                    <i class="bi bi-clock"></i> {{ appointment.time }}
-                  </div>
-                </div>
-                <a href="{{ url_for('cancel_appointment', appointment_id=appointment.id) }}" 
-                   class="btn btn-outline-danger btn-sm ms-3">
-                  <i class="bi bi-x-circle"></i> Cancel
-                </a>
-              </li>
-              {% endfor %}
-            {% else %}
-              <li class="list-group-item text-center text-muted">
-                <i class="bi bi-emoji-frown"></i> No appointments found.
-              </li>
-            {% endif %}
-          </ul>
-        </div>
-      </div>
-
-      <!-- Info box -->
-      <div class="alert alert-info text-center" role="alert">
-        <strong>Welcome to your Patient Dashboard!</strong><br>
-        <span class="d-block mt-2">
-          <i class="bi bi-info-circle text-primary"></i>
-          Use this dashboard to view and manage your appointments, book new ones, 
-          and stay updated with your healthcare journey.
-        </span>
-      </div>
+  <div class="mx-auto" style="max-width: 700px;">
+    <div class="alert alert-info text-center shadow-sm" role="alert">
+      <strong>Welcome to your Patient Dashboard!</strong><br>
+      <span class="d-block mt-2">
+        <i class="bi bi-info-circle text-primary"></i>
+        Use this dashboard to view and manage your appointments, book new ones, 
+        and stay updated with your healthcare journey.
+      </span>
     </div>
   </div>
 </div>

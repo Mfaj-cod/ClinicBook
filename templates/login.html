@@ -1,55 +1,57 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container py-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6 col-lg-5">
-      <div class="card shadow-sm border-0">
-        <div class="card-body p-4">
-          <div class="text-center mb-4">
-            <i class="bi bi-person-circle" style="font-size:2.5rem; color:#0d6efd;"></i>
-            <h2 class="mt-2 mb-1">Sign In</h2>
-            <div class="text-muted">Access your account</div>
-          </div>
-          <form method="post" class="needs-validation" novalidate>
-            <div class="mb-3">
-              <label for="loginEmail" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="loginEmail" name="email" required autofocus>
-              <div class="invalid-feedback">Please enter a valid email address.</div>
-            </div>
-            <div class="mb-3">
-              <label for="loginPassword" class="form-label">Password</label>
-              <input type="password" class="form-control" id="loginPassword" name="password" required>
-              <div class="invalid-feedback">Please enter your password.</div>
-            </div>
-            <div class="d-grid mb-3">
-              <button type="submit" class="btn btn-primary btn-lg">
-                <i class="bi bi-box-arrow-in-right me-1"></i>Login
-              </button>
-            </div>
-            <div class="text-center">
-              <span class="text-muted small">Don't have an account?</span>
-              <a href="{{ url_for('register') }}" class="ms-1">Register</a>
-            </div>
-          </form>
-        </div>
-      </div>
-      <script>
-        // Bootstrap validation
-        (() => {
-          'use strict'
-          const forms = document.querySelectorAll('.needs-validation')
-          Array.from(forms).forEach(form => {
-            form.addEventListener('submit', event => {
-              if (!form.checkValidity()) {
-                event.preventDefault()
-                event.stopPropagation()
-              }
-              form.classList.add('was-validated')
-            }, false)
-          })
-        })()
-      </script>
+<div class="container my-4">
+  <div class="text-center mb-4">
+    <span class="d-inline-block rounded-circle bg-primary bg-opacity-10 p-3">
+      <i class="bi bi-person-badge" style="font-size:2.2rem; color:#0d6efd;"></i>
+    </span>
+    <h2 class="fw-bold mt-2" style="color:#0d3a6f;">Sign In</h2>
+    <div class="text-muted mb-2" style="font-size:1.1rem;">
+      Access your account
     </div>
+  </div>
+  <div class="mx-auto" style="max-width: 400px;">
+    <div class="card shadow-sm border-0">
+      <div class="card-body">
+        <form method="post" class="needs-validation" novalidate>
+          <div class="mb-3">
+            <label for="loginEmail" class="form-label fw-semibold" style="color:#0d3a6f;">Email address</label>
+            <input type="email" class="form-control" id="loginEmail" name="email" required autofocus>
+            <div class="invalid-feedback">Please enter a valid email address.</div>
+          </div>
+          <div class="mb-3">
+            <label for="loginPassword" class="form-label fw-semibold" style="color:#0d3a6f;">Password</label>
+            <input type="password" class="form-control" id="loginPassword" name="password" required>
+            <div class="invalid-feedback">Please enter your password.</div>
+          </div>
+          <div class="d-grid mb-3">
+            <button type="submit" class="btn btn-primary">
+              <i class="bi bi-box-arrow-in-right me-1"></i>Login
+            </button>
+          </div>
+          <div class="text-center">
+            <span class="text-muted small">Don't have an account?</span>
+            <a href="{{ url_for('register') }}" class="ms-1">Register</a>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      // Bootstrap validation
+      (() => {
+        'use strict'
+        const forms = document.querySelectorAll('.needs-validation')
+        Array.from(forms).forEach(form => {
+          form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+          }, false)
+        })
+      })()
+    </script>
   </div>
 </div>
 {% endblock %}
