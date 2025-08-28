@@ -63,12 +63,22 @@
       {% if slots %}
         <div class="list-group">
           {% for slot in slots %}
-          <a href="{{ url_for('book', slot_id=slot.id) }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-            <div>
-              <i class="bi bi-clock"></i> {{ slot.date }} - {{ slot.time }}
-            </div>
-            <span class="badge bg-primary rounded-pill">Book</span>
-          </a>
+            {% if slot.booked_count < slot.capacity %}
+              <a href="{{ url_for('book', slot_id=slot.id) }}" 
+                class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                <div>
+                  <i class="bi bi-clock"></i> {{ slot.date }} - {{ slot.time }}
+                </div>
+                <span class="badge bg-primary rounded-pill">Book</span>
+              </a>
+            {% else %}
+              <div class="list-group-item d-flex justify-content-between align-items-center disabled text-muted">
+                <div>
+                  <i class="bi bi-clock"></i> {{ slot.date }} - {{ slot.time }}
+                </div>
+                <span class="badge bg-secondary rounded-pill">Full</span>
+              </div>
+            {% endif %}
           {% endfor %}
         </div>
       {% else %}

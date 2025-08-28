@@ -4,7 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from sqlite3 import IntegrityError
 
 BASE = os.path.dirname(__file__)
-DB = os.path.join(BASE, 'instance', 'app_v2.db')
+DB = os.path.join(BASE, 'data', 'clinicBook.db')
 
 def create_app():
     app = Flask(__name__)
@@ -157,7 +157,7 @@ def create_app():
 
 
 
-    # Book appointment.
+    # Book appointment
     @app.route('/book/<int:slot_id>', methods=['GET', 'POST'])
     def book(slot_id):
         if 'patient_id' not in session:
@@ -178,16 +178,17 @@ def create_app():
             abort(404)
 
         if request.method == 'POST':
-            if 'capacity' in slot.keys() and 'booked_count' in slot.keys():
-                if slot['booked_count'] >= slot['capacity']:
-                    flash('Slot full', 'danger')
-                    return redirect(url_for('doctor_detail', doc_id=slot['doctor_id']))
+            if slot['booked_count'] >= slot['capacity']:
+                flash('Slot full', 'danger')
+                return redirect(url_for('doctor_detail', doc_id=slot['doctor_id']))
 
-                db.execute(
-                    'UPDATE slots SET booked_count = booked_count + 1 WHERE id = ?',
-                    (slot_id,)
-                )
+            # Increment booked count
+            db.execute(
+                'UPDATE slots SET booked_count = booked_count + 1 WHERE id = ?',
+                (slot_id,)
+            )
 
+            # Insert appointment
             db.execute(
                 '''INSERT INTO appointments (doctor_id, patient_id, slot_id, date, status)
                 VALUES (?, ?, ?, ?, ?)''',
@@ -196,9 +197,11 @@ def create_app():
 
             db.commit()
             flash('Appointment booked successfully!', 'success')
-            return redirect(url_for('dashboard'))
+            return redirect(url_for('profile'))   # <-- changed
 
+        # GET → show booking page
         return render_template('book.html', slot=slot)
+
 
 
 

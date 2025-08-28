@@ -1,9 +1,9 @@
 import sqlite3, os
 BASE = os.path.dirname(__file__)
-DB = os.path.join(BASE, 'instance', 'app_v2.db')
+DB = os.path.join(BASE, 'data', 'clinicBook.db')
 
 def setup():
-    os.makedirs(os.path.join(BASE, 'instance'), exist_ok=True)
+    os.makedirs(os.path.join(BASE, 'data'), exist_ok=True)
     conn = sqlite3.connect(DB)
     cur = conn.cursor()
     # Enable foreign key support
@@ -61,6 +61,7 @@ def setup():
         patient_name TEXT,
         patient_phone TEXT,
         symptoms TEXT,
+        date TEXT NOT NULL,
         status TEXT DEFAULT 'booked',
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE,

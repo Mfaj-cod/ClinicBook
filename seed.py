@@ -1,9 +1,9 @@
 import sqlite3, os
-from data import doctors_data
+from doctors_data import doctors_data
 import datetime
 
 BASE = os.path.dirname(__file__)
-DB = os.path.join(BASE, 'instance', 'app_v2.db')
+DB = os.path.join(BASE, 'data', 'clinicBook.db')
 
 def ensure_schema(conn):
     cur = conn.cursor()
