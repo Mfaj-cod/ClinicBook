@@ -40,13 +40,13 @@
     <!-- Main Content -->
     <div class="col-lg-8">
       <!-- Reviews Section -->
-      <div class="card border-0 shadow-lg mb-4">
+      <div class="card border-0 shadow-lg mb-4" style="background: linear-gradient(135deg, #667eea 0%, #0d3a6f 100%);">
         <div class="card-header bg-gradient-light border-0 py-3">
           <div class="d-flex align-items-center">
             <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
-              <i class="bi bi-chat-left-text text-white"></i>
+              <i class="bi bi-chat-left-text text-white" style="color: #0d3a6f;"></i>
             </div>
-            <h4 class="mb-0 fw-bold text-dark">Patient Reviews</h4>
+            <h4 class="mb-0 fw-bold text-white">Patient Reviews</h4>
             {% if reviews %}
             <span class="badge bg-primary ms-auto">{{ reviews|length }} reviews</span>
             {% endif %}
@@ -77,9 +77,9 @@
             {% endfor %}
           {% else %}
             <div class="text-center py-5">
-              <i class="bi bi-chat-dots text-muted" style="font-size: 3rem;"></i>
-              <h5 class="text-muted mt-3">No reviews yet</h5>
-              <p class="text-muted">Be the first to review this clinic and help others make informed decisions.</p>
+              <i class="bi bi-chat-dots text-white" style="font-size: 3rem;"></i>
+              <h5 class="text-white mt-3">No reviews yet</h5>
+              <p class="text-white">Be the first to review this clinic and help others make informed decisions.</p>
             </div>
           {% endif %}
         </div>
@@ -87,13 +87,13 @@
 
       <!-- Leave Review Section -->
       {% if session.patient_id %}
-      <div class="card border-0 shadow-lg">
+      <div class="card border-0 shadow-lg" style="background: linear-gradient(135deg, #667eea 0%, #0d3a6f 100%);">
         <div class="card-header bg-gradient-light border-0 py-3">
           <div class="d-flex align-items-center">
             <div class="bg-success rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
               <i class="bi bi-pencil-square text-white"></i>
             </div>
-            <h4 class="mb-0 fw-bold text-dark">Leave a Review</h4>
+            <h4 class="mb-0 fw-bold text-white">Leave a Review</h4>
           </div>
         </div>
         <div class="card-body p-4">
@@ -126,7 +126,7 @@
     <!-- Sidebar -->
     <div class="col-lg-4">
       <!-- Quick Info Card -->
-      <div class="card border-0 shadow-lg mb-4 sticky-top" style="top: 20px;">
+      <div class="card border-0 shadow-lg mb-4 sticky-top" style="top: 20px; background: linear-gradient(135deg, #667eea 0%, #0d3a6f 100%);">
         <div class="card-header bg-gradient-primary text-white border-0 py-3">
           <h5 class="mb-0 fw-bold">
             <i class="bi bi-info-circle me-2"></i>Clinic Information
@@ -135,32 +135,32 @@
         <div class="card-body p-4">
           <div class="mb-3">
             <div class="d-flex align-items-center mb-2">
-              <i class="bi bi-geo-alt text-primary me-2"></i>
+              <i class="bi bi-geo-alt text-white me-2"></i>
               <strong>Location</strong>
             </div>
-            <p class="text-muted mb-0">{{ clinic.city }}, {{ clinic.address }}</p>
+            <p class="text-white mb-0">{{ clinic.city }}, {{ clinic.address }}</p>
           </div>
           {% if clinic.phone %}
           <div class="mb-3">
             <div class="d-flex align-items-center mb-2">
-              <i class="bi bi-telephone text-primary me-2"></i>
+              <i class="bi bi-telephone text-white me-2"></i>
               <strong>Phone</strong>
             </div>
-            <p class="text-muted mb-0">{{ clinic.phone }}</p>
+            <p class="text-white mb-0">{{ clinic.phone }}</p>
           </div>
           {% endif %}
           <div class="mb-3">
             <div class="d-flex align-items-center mb-2">
-              <i class="bi bi-star text-primary me-2"></i>
+              <i class="bi bi-star text-white me-2"></i>
               <strong>Rating</strong>
             </div>
             {% if clinic.average_rating and clinic.average_rating > 0 %}
               <div class="d-flex align-items-center">
                 <span class="fs-5 fw-bold text-warning me-2">{{ "%.1f"|format(clinic.average_rating) }}</span>
-                <span class="text-muted">/ 5</span>
+                <span class="text-white">/ 5</span>
               </div>
             {% else %}
-              <span class="text-muted">No ratings yet</span>
+              <span class="text-white">No ratings yet</span>
             {% endif %}
           </div>
           {% if reviews %}

@@ -3,12 +3,12 @@
 
 <!-- Hero Section -->
 <section class="position-relative">
-  <div class="hero-section text-center text-white d-flex align-items-center justify-content-center" style="min-height: 52vh; border-radius: 1.2rem 1.2rem 1.2rem 0;">
-    <div class="p-4 p-md-5 shadow-sm" style="background: linear-gradient(120deg, #0d6efd 60%, #0d3a6f 100%); border-radius: 1.2rem; display: inline-block; min-width: 320px; max-width: 520px;">
+  <div class="hero-section text-center text-white d-flex align-items-center justify-content-center" style="min-height: 52vh; border-radius: 1.2rem 1.2rem 1.2rem 0; background: linear-gradient(135deg, #667eea 0%, #0d3a6f 100%);">
+    <div class="p-4 p-md-5 shadow-sm" style="background: linear-gradient(135deg, #667eea 0%, #0d3a6f 100%); border-radius: 1.2rem; display: inline-block; min-width: 320px; max-width: 520px;">
       <span class="d-inline-block mb-3" style="background: #fff; border-radius: 50%; width: 3.2rem; height: 3.2rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(0,0,0,0.10);">
-        <i class="bi bi-hospital" style="font-size:2rem; color:#0d6efd;"></i>
+        <i class="bi bi-hospital" style="font-size:2rem; color:#0d3a6f;"></i>
       </span>
-      <h1 class="fw-bold mb-2" style="color: #0d3a6f;">Welcome to ClinicBook</h1>
+      <h1 class="fw-bold mb-2 text-white" style="color: #0d3a6f;">Welcome to ClinicBook</h1>
 
       {% if session.doctor_id %}
       <p class="lead mb-4 text-light" style="font-size:1.18rem;">
@@ -47,7 +47,7 @@
 
 {% if not session.patient_id and not session.doctor_id %}
   <div class="mt-2 text-center justify-content-center align-items-center"
-       style="background: linear-gradient(90deg, #0d6efd 0%, #2a9df4 100%);
+       style="background: linear-gradient(135deg, #667eea 0%, #0d3a6f 100%);
               border-radius: 0 0 1rem 1rem;">
     <a href="{{ url_for('login') }}" class="btn btn-outline-light btn-lg mt-2 mb-2">
       <i class="bi bi-person"></i> Login / Register
@@ -137,7 +137,7 @@
 
   <!-- Why Choose -->
   <section class="why-choose-hero position-relative my-5">
-    <div class="why-choose-bg d-flex align-items-center justify-content-center text-white text-center" style="box-shadow: 0 4px 32px rgba(13,110,253,0.10);">
+    <div class="why-choose-bg d-flex align-items-center justify-content-center text-white text-center" style="box-shadow: 0 4px 32px rgba(13,110,253,0.10); background: linear-gradient(135deg, #667eea 0%, #0d3a6f 100%);">
       <div class="container">
         <h2 class="fw-bold mb-4 display-6">Why Choose <span style="color:#ffd600;">ClinicBook</span>?</h2>
         <div class="row g-4 justify-content-center">
@@ -291,16 +291,16 @@
   </section>
 
   <!-- Popular Clinics -->
-  <section class="popular-clinics-hero position-relative py-5">
+  <section class="popular-clinics-hero position-relative py-5" style="background: linear-gradient(135deg, #667eea 0%, #0d3a6f 100%);">
     <div class="container">
       <div class="row justify-content-center align-items-center">
         <div class="col-lg-10">
-          <div class="why-choose-bg p-4 p-md-5 shadow-sm mb-4" style="background: linear-gradient(120deg, #2d8cff 60%, #0d6efd 100%); border-radius: 1.2rem;">
+          <div class="why-choose-bg p-4 p-md-5 shadow-sm mb-4" style="background: linear-gradient(135deg, #667eea 0%, #0d3a6f 100%); border-radius: 1.2rem;">
             <div class="text-center mb-4">
               <span class="d-inline-block mb-2" style="background: #fff; border-radius: 50%; width: 3.2rem; height: 3.2rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(0,0,0,0.10);">
                 <i class="bi bi-hospital" style="font-size:2rem; color:#0d6efd;"></i>
               </span>
-              <h2 class="mt-2 mb-1" style="color: #0d3a6f;"><b>Popular Clinics</b></h2>
+              <h2 class="mt-2 mb-1" style="color: #0d3a6f; "><b>Popular Clinics</b></h2>
               <p class="text-light mb-0">Discover top-rated clinics trusted by patients in your city.</p>
             </div>
             <div class="row row-cols-1 row-cols-md-3 g-4">
