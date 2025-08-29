@@ -1,112 +1,223 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container my-4">
-  <div class="text-center mb-4">
-    <span class="d-inline-block rounded-circle bg-primary bg-opacity-10 p-3">
-      <i class="bi bi-person-circle" style="font-size:2.2rem; color:#0d6efd;"></i>
-    </span>
-    <h2 class="fw-bold mt-2" style="color:#0d3a6f;">Your Profile</h2>
-    <div class="text-muted mb-2" style="font-size:1.1rem;">
+<div class="container my-5">
+  <div class="text-center mb-5">
+    <div class="d-inline-block rounded-circle bg-gradient-primary p-4 mb-3 shadow-sm">
+      <i class="bi bi-person-circle" style="font-size:3rem; color:#ffffff;"></i>
+    </div>
+    <h1 class="fw-bold mb-2" style="color:#0d3a6f; font-size:2.5rem;">Your Profile</h1>
+    <div class="text-muted" style="font-size:1.2rem; font-weight:300;">
       View your account details and information
     </div>
   </div>
 
-  <div class="mx-auto" style="max-width: 600px;">
+  <div class="mx-auto" style="max-width: 700px;">
     {% if doctor %}
       <!-- Doctor Info -->
-      <div class="card shadow-sm border-0 mb-4">
-        <div class="card-body">
-          <h4 class="card-title mb-2 fw-semibold" style="color:#0d3a6f;">{{ doctor.name }}</h4>
-          <div class="mb-1 small text-muted">
-            <i class="bi bi-person-badge"></i>
-            <strong>Specialization:</strong> {{ doctor.specialization }}
+      <div class="card shadow-lg border-0 mb-4 rounded-3 overflow-hidden">
+        <div class="card-header bg-gradient-primary text-white py-3">
+          <h3 class="card-title mb-0 fw-bold">
+            <i class="bi bi-person-badge me-2"></i>Doctor Information
+          </h3>
+        </div>
+        <div class="card-body p-4">
+          <div class="row align-items-center mb-4">
+            <div class="col-auto">
+              <div class="rounded-circle bg-primary bg-opacity-10 p-3">
+                <i class="bi bi-person-circle" style="font-size:2.5rem; color:#0d6efd;"></i>
+              </div>
+            </div>
+            <div class="col">
+              <h4 class="mb-1 fw-bold" style="color:#0d3a6f;">{{ doctor.name }}</h4>
+              <p class="text-muted mb-0">Medical Professional</p>
+            </div>
           </div>
-          <div class="mb-1 small text-muted">
-            <i class="bi bi-currency-rupee"></i>
-            <strong>Fee:</strong> {{ doctor.fees }}
-          </div>
-          <div class="mb-1 small text-muted">
-            <i class="bi bi-telephone"></i>
-            <strong>Phone: +91</strong> {{ doctor.phone }}
+          
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="d-flex align-items-center p-3 rounded-3" style="background-color:#f8f9fa;">
+                <i class="bi bi-person-badge me-3" style="font-size:1.5rem; color:#0d6efd;"></i>
+                <div>
+                  <div class="small text-muted mb-1">Specialization</div>
+                  <div class="fw-semibold">{{ doctor.specialization }}</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="d-flex align-items-center p-3 rounded-3" style="background-color:#f8f9fa;">
+                <i class="bi bi-currency-rupee me-3" style="font-size:1.5rem; color:#0d6efd;"></i>
+                <div>
+                  <div class="small text-muted mb-1">Consultation Fee</div>
+                  <div class="fw-semibold">₹{{ doctor.fees }}</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="d-flex align-items-center p-3 rounded-3" style="background-color:#f8f9fa;">
+                <i class="bi bi-telephone me-3" style="font-size:1.5rem; color:#0d6efd;"></i>
+                <div>
+                  <div class="small text-muted mb-1">Contact Number</div>
+                  <div class="fw-semibold">+91 {{ doctor.phone }}</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
     {% elif patient %}
       <!-- Patient Info -->
-      <div class="card shadow-sm border-0 mb-4">
-        <div class="card-body">
-          <h4 class="card-title mb-2 fw-semibold" style="color:#0d3a6f;">{{ patient.name }}</h4>
-          <div class="mb-1 small text-muted">
-            <i class="bi bi-envelope"></i>
-            <strong>Email:</strong> {{ patient.email }}
+      <div class="card shadow-lg border-0 mb-4 rounded-3 overflow-hidden">
+        <div class="card-header bg-gradient-primary text-white py-3">
+          <h3 class="card-title mb-0 fw-bold">
+            <i class="bi bi-person me-2"></i>Patient Information
+          </h3>
+        </div>
+        <div class="card-body p-4">
+          <div class="row align-items-center mb-4">
+            <div class="col-auto">
+              <div class="rounded-circle bg-primary bg-opacity-10 p-3">
+                <i class="bi bi-person-circle" style="font-size:2.5rem; color:#0d6efd;"></i>
+              </div>
+            </div>
+            <div class="col">
+              <h4 class="mb-1 fw-bold" style="color:#0d3a6f;">{{ patient.name }}</h4>
+              <p class="text-muted mb-0">Patient</p>
+            </div>
           </div>
-          {% if patient.phone %}
-          <div class="mb-1 small text-muted">
-            <i class="bi bi-telephone"></i>
-            <strong>Phone:</strong> {{ patient.phone }}
+          
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="d-flex align-items-center p-3 rounded-3" style="background-color:#f8f9fa;">
+                <i class="bi bi-envelope me-3" style="font-size:1.5rem; color:#0d6efd;"></i>
+                <div>
+                  <div class="small text-muted mb-1">Email Address</div>
+                  <div class="fw-semibold">{{ patient.email }}</div>
+                </div>
+              </div>
+            </div>
+            {% if patient.phone %}
+            <div class="col-md-6">
+              <div class="d-flex align-items-center p-3 rounded-3" style="background-color:#f8f9fa;">
+                <i class="bi bi-telephone me-3" style="font-size:1.5rem; color:#0d6efd;"></i>
+                <div>
+                  <div class="small text-muted mb-1">Phone Number</div>
+                  <div class="fw-semibold">{{ patient.phone }}</div>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+            {% if patient.gender %}
+            <div class="col-md-6">
+              <div class="d-flex align-items-center p-3 rounded-3" style="background-color:#f8f9fa;">
+                <i class="bi bi-gender-ambiguous me-3" style="font-size:1.5rem; color:#0d6efd;"></i>
+                <div>
+                  <div class="small text-muted mb-1">Gender</div>
+                  <div class="fw-semibold">{{ patient.gender }}</div>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+            {% if patient.age %}
+            <div class="col-md-6">
+              <div class="d-flex align-items-center p-3 rounded-3" style="background-color:#f8f9fa;">
+                <i class="bi bi-calendar me-3" style="font-size:1.5rem; color:#0d6efd;"></i>
+                <div>
+                  <div class="small text-muted mb-1">Age</div>
+                  <div class="fw-semibold">{{ patient.age }} years</div>
+                </div>
+              </div>
+            </div>
+            {% endif %}
           </div>
-          {% endif %}
-          {% if patient.gender %}
-          <div class="mb-1 small text-muted">
-            <i class="bi bi-gender-ambiguous"></i>
-            <strong>Gender:</strong> {{ patient.gender }}
-          </div>
-          {% endif %}
-          {% if patient.age %}
-          <div class="mb-1 small text-muted">
-            <i class="bi bi-calendar"></i>
-            <strong>Age:</strong> {{ patient.age }} years
-          </div>
-          {% endif %}
         </div>
       </div>
 
       <!-- Reviews by Patient -->
-      <div class="card shadow-sm border-0 mb-4">
-        <div class="card-header bg-light fw-semibold">
-          <i class="bi bi-chat-left-text"></i> My Reviews
+      <div class="card shadow-lg border-0 mb-4 rounded-3 overflow-hidden">
+        <div class="card-header bg-gradient-primary text-white py-3">
+          <h3 class="card-title mb-0 fw-bold">
+            <i class="bi bi-chat-left-text me-2"></i>My Reviews
+          </h3>
         </div>
-        <div class="card-body">
+        <div class="card-body p-4">
           {% if my_reviews %}
             {% for r in my_reviews %}
-            <div class="mb-3 pb-2 border-bottom">
-              <div class="mb-1">
-                {% if r.doctor_name %}
-                  <strong>
-                    {% if r.doctor_name %}
-                      Doctor: {{ r.doctor_name }}
-                    {% elif r.doctor_id %}
-                      Doctor: {{ r.doctor_id }}
-                    {% else %}
-                      Doctor: Unknown
-                    {% endif %}
-                  </strong>
-              {% elif r.clinic_name %}
-                  <strong>Clinic: {{ r.clinic_name }}</strong>
-              {% endif %}
-                <span class="ms-2 small text-muted">{{ r.created_at }}</span>
+            <div class="mb-4 pb-3 border-bottom border-light">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <div class="fw-semibold text-primary">
+                  {% if r.doctor_name %}
+                    <i class="bi bi-person-badge me-2"></i>Dr. {{ r.doctor_name }}
+                  {% elif r.doctor_id %}
+                    <i class="bi bi-person-badge me-2"></i>Doctor ID: {{ r.doctor_id }}
+                  {% elif r.clinic_name %}
+                    <i class="bi bi-building me-2"></i>{{ r.clinic_name }}
+                  {% else %}
+                    <i class="bi bi-question-circle me-2"></i>Unknown
+                  {% endif %}
+                </div>
+                <span class="badge bg-light text-dark">{{ r.created_at }}</span>
               </div>
-              <div class="small mb-1">
-                <i class="bi bi-star-fill" style="color:#ffc107;"></i> {{ r.rating }} / 5
+              <div class="mb-2">
+                <div class="d-flex align-items-center">
+                  <div class="me-2">
+                    {% for i in range(r.rating) %}
+                      <i class="bi bi-star-fill" style="color:#ffc107; font-size:1.1rem;"></i>
+                    {% endfor %}
+                    {% for i in range(5 - r.rating) %}
+                      <i class="bi bi-star" style="color:#dee2e6; font-size:1.1rem;"></i>
+                    {% endfor %}
+                  </div>
+                  <span class="fw-semibold text-muted">{{ r.rating }}/5</span>
+                </div>
               </div>
               {% if r.comment %}
-              <p class="small mb-0">{{ r.comment }}</p>
+              <div class="p-3 rounded-3" style="background-color:#f8f9fa;">
+                <p class="mb-0 text-dark">{{ r.comment }}</p>
+              </div>
               {% endif %}
             </div>
             {% endfor %}
           {% else %}
-            <div class="text-muted">You haven't written any reviews yet.</div>
+            <div class="text-center py-5">
+              <i class="bi bi-chat-left-text" style="font-size:3rem; color:#dee2e6;"></i>
+              <p class="text-muted mt-3 mb-0">You haven't written any reviews yet.</p>
+              <small class="text-muted">Your reviews will appear here once you submit them.</small>
+            </div>
           {% endif %}
         </div>
       </div>
     {% endif %}
-    <div class="d-grid mt-3">
-      <a href="{{ url_for('logout') }}" class="btn btn-outline-danger">
-        <i class="bi bi-box-arrow-right me-1"></i>
+    
+    <div class="d-grid gap-2 mt-4">
+      <a href="{{ url_for('logout') }}" class="btn btn-outline-danger btn-lg rounded-3">
+        <i class="bi bi-box-arrow-right me-2"></i>
         Logout
       </a>
     </div>
   </div>
 </div>
+
+<style>
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #0d6efd 0%, #0d3a6f 100%);
+}
+
+.card {
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+.rounded-3 {
+  border-radius: 1rem !important;
+}
+
+.btn-lg {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+}
+</style>
 {% endblock %}

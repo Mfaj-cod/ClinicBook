@@ -191,13 +191,13 @@
         <span class="nav-label">Home</span>
       </a>
     </div>
+    {% if session.patient_id %}
     <div class="nav-item">
       <a href="/doctors" class="nav-link{% if request.path.startswith('/doctors') %} active{% endif %}">
         <i class="bi bi-person-badge"></i>
         <span class="nav-label">Doctors</span>
       </a>
     </div>
-    {% if session.patient_id %}
       <div class="nav-item">
         <a href="{{ url_for('dashboard') }}" class="nav-link{% if request.path.startswith('/dashboard') %} active{% endif %}">
           <i class="bi bi-speedometer2"></i>

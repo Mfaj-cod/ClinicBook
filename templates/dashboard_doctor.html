@@ -1,124 +1,197 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container my-4">
-  <div class="text-center mb-4">
-    <span class="d-inline-block rounded-circle bg-primary bg-opacity-10 p-3">
-      <i class="bi bi-person-badge" style="font-size:2.2rem; color:#0d6efd;"></i>
-    </span>
-    <h2 class="fw-bold mt-2" style="color:#0d3a6f;">Welcome, {{ doctor.name }}</h2>
-    <div class="text-muted mb-2" style="font-size:1.1rem;">
-      Manage your appointments and view your schedule
+<section class="position-relative">
+  <div class="doctor-hero-section text-center text-white d-flex align-items-center justify-content-center" style="min-height: 44vh; border-radius: 1.2rem 1.2rem 1.2rem 0;">
+    <div class="p-4 p-md-5 shadow-sm" style="background: linear-gradient(120deg, #2d8cff 60%, #0d6efd 100%); border-radius: 1.2rem; display: inline-block; min-width: 320px; max-width: 520px;">
+      <span class="d-inline-block mb-3" style="background: #fff; border-radius: 50%; width: 3.2rem; height: 3.2rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(0,0,0,0.10);">
+        <i class="bi bi-person-badge" style="font-size:2rem; color:#0d6efd;"></i>
+      </span>
+      <h2 class="fw-bold mb-2" style="color: #0d3a6f;">Welcome, {{ doctor.name }}</h2>
+      <div class="lead mb-2 text-light" style="font-size:1.1rem;">
+        Manage your appointments and view your schedule
+      </div>
+      <div class="small mt-1 d-flex align-items-center justify-content-center gap-1">
+        <i class="bi bi-star-fill" style="color:#ffc107;"></i>
+        {% if doctor.average_rating and doctor.average_rating > 0 %}
+          <span class="fw-semibold text-dark">{{ "%.1f"|format(doctor.average_rating) }}</span>
+          <span class="text-muted">/ 5</span>
+        {% else %}
+          <span class="text-muted">No ratings yet</span>
+        {% endif %}
+      </div>
     </div>
-    <!-- ⭐ Average Rating -->
-    <div class="small mt-1">
-      <i class="bi bi-star-fill" style="color:#ffc107;"></i>
-      {% if doctor.average_rating and doctor.average_rating > 0 %}
-        {{ "%.1f"|format(doctor.average_rating) }} / 5
-      {% else %}
-        No ratings yet
-      {% endif %}
+    <!-- Decorative wave -->
+    <div class="custom-shape-divider-bottom-doctor-hero">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44C161.39,65.44,0,120,0,120H1200V0
+          C1037.39,65.44,881.39,47.44,721.39,56.44,
+          561.39,65.44,481.39,47.44,321.39,56.44Z"
+          fill="#fff"></path>
+      </svg>
     </div>
   </div>
+</section>
 
-  <div class="mx-auto" style="max-width: 700px;">
-    <div class="card shadow-sm border-0 mb-4">
-      <div class="card-body">
-        <div class="row g-3 align-items-center">
-          <div class="col-12 col-md-4 text-center">
-            <span class="rounded-circle bg-primary bg-opacity-10 d-flex align-items-center justify-content-center mb-2" style="width:60px; height:60px; margin:auto;">
-              <i class="bi bi-person-circle" style="font-size:2.5rem; color:#0d6efd;"></i>
-            </span>
-          </div>
-          <div class="col-12 col-md-8">
-            <div class="mb-1">
-              <span class="fw-semibold" style="color:#0d3a6f;">Specialization:</span>
-              <span class="text-muted">{{ doctor.specialization }}</span>
+<div class="container mt-4 mb-4">
+  <div class="row g-4 justify-content-center">
+    <div class="col-12 col-lg-7">
+      <div class="card border-0 shadow feature-card mb-4">
+        <div class="card-body">
+          <div class="row g-3 align-items-center">
+            <div class="col-12 col-md-4 text-center">
+              <span class="feature-icon mx-auto mb-2 bg-primary bg-gradient">
+                <i class="bi bi-person-circle text-white"></i>
+              </span>
             </div>
-            <div class="mb-1">
-              <span class="fw-semibold" style="color:#0d3a6f;">Consultation Fee:</span>
-              <span class="text-muted"><i class="bi bi-currency-rupee"></i> {{ doctor.fees }}</span>
+            <div class="col-12 col-md-8">
+              <div class="mb-1">
+                <span class="fw-semibold" style="color:#0d3a6f;">Specialization:</span>
+                <span class="text-muted">{{ doctor.specialization }}</span>
+              </div>
+              <div class="mb-1">
+                <span class="fw-semibold" style="color:#0d3a6f;">Consultation Fee:</span>
+                <span class="text-muted"><i class="bi bi-currency-rupee"></i> {{ doctor.fees }}</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Appointments -->
-    <div class="d-flex justify-content-between align-items-center mb-3">
-      <h5 class="mb-0 fw-semibold" style="color:#0d3a6f;">Your Appointments</h5>
-    </div>
-    <div class="card shadow-sm mb-4">
-      <ul class="list-group list-group-flush">
-        {% if appointments %}
-          {% for a in appointments %}
-          <li class="list-group-item d-flex align-items-center">
-            <div class="flex-grow-1">
-              <div class="fw-bold" style="color:#0d3a6f;">
-                Patient: {{ a.patient_name }}
-                <span class="badge 
-                  {% if a.status == 'booked' %} bg-success 
-                  {% elif a.status == 'cancelled' %} bg-danger
-                  {% else %} bg-secondary {% endif %} ms-2">
-                  {{ a.status|capitalize }}
+      <!-- Appointments -->
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="mb-0 fw-semibold" style="color:#0d3a6f;">
+          <i class="bi bi-calendar-check me-1"></i>Your Appointments
+        </h5>
+      </div>
+      <div class="card shadow-sm mb-4 border-0">
+        <ul class="list-group list-group-flush">
+          {% if appointments %}
+            {% for a in appointments %}
+            <li class="list-group-item d-flex align-items-center"
+                style="border-left: 4px solid {% if a.status == 'booked' %}#198754{% elif a.status == 'cancelled' %}#dc3545{% else %}#adb5bd{% endif %};">
+              <div class="flex-grow-1">
+                <div class="fw-bold" style="color:#0d3a6f;">
+                  <i class="bi bi-person me-1"></i> {{ a.patient_name }}
+                  <span class="badge 
+                    {% if a.status == 'booked' %}bg-success
+                    {% elif a.status == 'cancelled' %}bg-danger
+                    {% else %}bg-secondary{% endif %} ms-2">
+                    {{ a.status|capitalize }}
+                  </span>
+                </div>
+                <div class="text-muted small">
+                  <i class="bi bi-telephone"></i> {{ a.patient_phone }}
+                </div>
+                <div class="text-muted small">
+                  <i class="bi bi-calendar-event"></i> {{ a.date }}
+                </div>
+              </div>
+            </li>
+            {% endfor %}
+          {% else %}
+            <li class="list-group-item text-center text-muted">
+              <i class="bi bi-emoji-frown"></i> No appointments yet.
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+
+      <!-- Reviews -->
+      <div class="card shadow-sm border-0 mb-4">
+        <div class="card-header bg-light fw-semibold">
+          <i class="bi bi-chat-left-text"></i> Patient Reviews
+        </div>
+        <div class="card-body">
+          {% if reviews %}
+            {% for r in reviews %}
+            <div class="mb-3 pb-2 border-bottom">
+              <div class="d-flex align-items-center mb-1">
+                <span class="feature-icon bg-info bg-gradient me-2" style="width:2rem; height:2rem; font-size:1.1rem;">
+                  <i class="bi bi-person-circle text-white"></i>
                 </span>
+                <strong>{{ r.patient_name }}</strong>
+                <span class="ms-2 small text-muted">{{ r.created_at }}</span>
               </div>
-              <div class="text-muted small">
-                <i class="bi bi-telephone"></i> {{ a.patient_phone }}
+              <div class="small mb-1">
+                <i class="bi bi-star-fill" style="color:#ffc107;"></i> {{ r.rating }} / 5
               </div>
-              <div class="text-muted small">
-                <i class="bi bi-calendar-event"></i> {{ a.date }}
-              </div>
+              {% if r.comment %}
+              <p class="small mb-0">{{ r.comment }}</p>
+              {% endif %}
             </div>
-          </li>
-          {% endfor %}
-        {% else %}
-          <li class="list-group-item text-center text-muted">
-            <i class="bi bi-emoji-frown"></i> No appointments yet.
-          </li>
-        {% endif %}
-      </ul>
-    </div>
-  </div>
-
-  <!-- Reviews -->
-  <div class="mx-auto" style="max-width: 700px;">
-    <div class="card shadow-sm border-0 mb-4">
-      <div class="card-header bg-light fw-semibold">
-        <i class="bi bi-chat-left-text"></i> Patient Reviews
+            {% endfor %}
+          {% else %}
+            <div class="text-muted">No reviews yet.</div>
+          {% endif %}
+        </div>
       </div>
-      <div class="card-body">
-        {% if reviews %}
-          {% for r in reviews %}
-          <div class="mb-3 pb-2 border-bottom">
-            <div class="d-flex align-items-center mb-1">
-              <i class="bi bi-person-circle me-2" style="font-size:1.3rem; color:#0d6efd;"></i>
-              <strong>{{ r.patient_name }}</strong>
-              <span class="ms-2 small text-muted">{{ r.created_at }}</span>
-            </div>
-            <div class="small mb-1">
-              <i class="bi bi-star-fill" style="color:#ffc107;"></i> {{ r.rating }} / 5
-            </div>
-            {% if r.comment %}
-            <p class="small mb-0">{{ r.comment }}</p>
-            {% endif %}
-          </div>
-          {% endfor %}
-        {% else %}
-          <div class="text-muted">No reviews yet.</div>
-        {% endif %}
-      </div>
-    </div>
-  </div>
 
-  <!-- Info Alert -->
-  <div class="mx-auto" style="max-width: 700px;">
-    <div class="alert alert-info text-center shadow-sm" role="alert">
-      <strong>Welcome to your Doctor Dashboard!</strong><br>
-      <span class="d-block mt-2">
-        <i class="bi bi-info-circle text-primary"></i>
-        Here you can view all your upcoming appointments, see your reviews, and manage your schedule.
-      </span>
+      <!-- Info Alert -->
+      <div class="alert alert-info text-center shadow-sm rounded-pill px-4 py-2" role="alert">
+        <strong>Welcome to your Doctor Dashboard!</strong>
+        <span class="d-block mt-2">
+          <i class="bi bi-info-circle text-primary"></i>
+          Here you can view all your upcoming appointments, see your reviews, and manage your schedule.
+        </span>
+      </div>
     </div>
   </div>
 </div>
+
+<style>
+.doctor-hero-section {
+  min-height: 45vh;
+  background: linear-gradient(135deg, #0d6efd, #2a9df4);
+  border-radius: 1rem 1rem 1rem 0rem;
+  padding: 3rem 1rem;
+  position: relative;
+}
+.custom-shape-divider-bottom-doctor-hero {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+.feature-card {
+  transition: transform 0.18s cubic-bezier(.4,2,.6,1), box-shadow 0.22s cubic-bezier(.4,2,.6,1);
+  border-radius: 1.1rem;
+  background: #fff;
+  position: relative;
+  overflow: visible;
+}
+.feature-card:hover, .feature-card:focus-within {
+  transform: scale(1.05) translateY(-4px);
+  box-shadow: 0 8px 32px rgba(13,110,253,0.13), 0 2px 12px rgba(0,0,0,0.08);
+  z-index: 2;
+}
+.feature-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  margin-bottom: 0.5rem;
+  border: 3px solid #fff;
+}
+@media (max-width: 576px) {
+  .doctor-hero-section {
+    border-radius: 0.8rem;
+    padding: 1.2rem 0.5rem;
+  }
+  .feature-card {
+    border-radius: 0.8rem;
+    padding: 1.2rem 0.5rem;
+  }
+  .feature-icon {
+    width: 2.7rem;
+    height: 2.7rem;
+    font-size: 1.2rem;
+  }
+}
+</style>
 {% endblock %}
