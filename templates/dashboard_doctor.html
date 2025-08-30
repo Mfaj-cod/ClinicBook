@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 <section class="position-relative">
-  <div class="doctor-hero-section text-center text-white d-flex align-items-center justify-content-center" style="min-height: 44vh; border-radius: 1.2rem 1.2rem 1.2rem 0;">
-    <div class="p-4 p-md-5 shadow-sm" style="background: linear-gradient(120deg, #2d8cff 60%, #0d6efd 100%); border-radius: 1.2rem; display: inline-block; min-width: 320px; max-width: 520px;">
+  <div class="doctor-hero-section text-center text-white d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #667eea 0%, #0d3a6f 100%); min-height: 44vh; border-radius: 1.2rem 1.2rem 1.2rem 0;">
+    <div class="p-4 p-md-5 shadow-sm" style="background: linear-gradient(135deg, #667eea 0%, #0d3a6f 100%); border-radius: 1.2rem; display: inline-block; min-width: 320px; max-width: 520px;">
       <span class="d-inline-block mb-3" style="background: #fff; border-radius: 50%; width: 3.2rem; height: 3.2rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(0,0,0,0.10);">
-        <i class="bi bi-person-badge" style="font-size:2rem; color:#0d6efd;"></i>
+        <i class="bi bi-person-badge" style="font-size:2rem; color:#0d3a6f;"></i>
       </span>
-      <h2 class="fw-bold mb-2" style="color: #0d3a6f;">Welcome, {{ doctor.name }}</h2>
+      <h2 class="fw-bold mb-2">Welcome, {{ doctor.name }}</h2>
       <div class="lead mb-2 text-light" style="font-size:1.1rem;">
         Manage your appointments and view your schedule
       </div>
@@ -14,9 +14,9 @@
         <i class="bi bi-star-fill" style="color:#ffc107;"></i>
         {% if doctor.average_rating and doctor.average_rating > 0 %}
           <span class="fw-semibold text-dark">{{ "%.1f"|format(doctor.average_rating) }}</span>
-          <span class="text-muted">/ 5</span>
+          <span class="fw-semibold text-dark">/ 5</span>
         {% else %}
-          <span class="text-muted">No ratings yet</span>
+          <span class="text-dark">No ratings yet</span>
         {% endif %}
       </div>
     </div>
@@ -32,7 +32,7 @@
   </div>
 </section>
 
-<div class="container mt-4 mb-4">
+<div class="container mt-4 mb-4" style="background: linear-gradient(135deg, #667eea 0%, #0d3a6f 100%); border-radius: 0 0 2rem 2rem;">
   <div class="row g-4 justify-content-center">
     <div class="col-12 col-lg-7">
       <div class="card border-0 shadow feature-card mb-4">

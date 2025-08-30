@@ -12,8 +12,8 @@
 
 <div class="container my-5">
   <!-- Add Slot Form -->
-  <div class="card shadow-lg border-0 mb-5" style="border-radius: 15px;">
-    <div class="card-header bg-primary text-white py-3" style="border-radius: 15px 15px 0 0;">
+  <div class="card shadow-lg border-0 mb-5" style="background: linear-gradient(135deg, #667eea 0%, #0d3a6f 100%); border-radius: 15px;">
+    <div class="card-header bg-primary text-white py-3" style="border-radius: 15px 15px 0 0; background: linear-gradient(135deg, #667eea 0%, #0d3a6f 100%);">
       <h4 class="mb-0">
         <i class="bi bi-plus-circle me-2"></i>Add New Slot
       </h4>
@@ -21,19 +21,19 @@
     <div class="card-body p-4">
       <form method="post" action="{{ url_for('add_slot') }}" class="row g-4 align-items-end">
         <div class="col-lg-4 col-md-6">
-          <label class="form-label fw-semibold text-muted">
+          <label class="form-label fw-semibold text-white">
             <i class="bi bi-calendar-event me-1"></i>Date
           </label>
           <input type="date" name="date" class="form-control form-control-lg" required>
         </div>
         <div class="col-lg-3 col-md-6">
-          <label class="form-label fw-semibold text-muted">
+          <label class="form-label fw-semibold text-white">
             <i class="bi bi-clock me-1"></i>Time
           </label>
           <input type="time" name="time" class="form-control form-control-lg" required>
         </div>
         <div class="col-lg-3 col-md-6">
-          <label class="form-label fw-semibold text-muted">
+          <label class="form-label fw-semibold text-white">
             <i class="bi bi-people me-1"></i>Capacity
           </label>
           <input type="number" name="capacity" class="form-control form-control-lg" min="1" value="5">
@@ -48,7 +48,7 @@
   </div>
 
   <!-- List of Slots -->
-  <div class="card shadow-lg border-0" style="border-radius: 15px;">
+  <div class="card shadow-lg border-0" style="border-radius: 15px; background: linear-gradient(135deg, #667eea 0%, #0d3a6f 100%);">
     <div class="card-header bg-gradient text-white py-3" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px 15px 15px 15px;">
       <h4 class="mb-0">
         <i class="bi bi-list-ul me-2"></i>Your Scheduled Slots
