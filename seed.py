@@ -40,7 +40,6 @@ def ensure_schema(conn):
         date TEXT NOT NULL,
         time TEXT NOT NULL,
         capacity INTEGER NOT NULL DEFAULT 5,
-        booked_count INTEGER NOT NULL DEFAULT 0,
         FOREIGN KEY (doctor_id) REFERENCES doctors(id) ON DELETE CASCADE
     );
                       

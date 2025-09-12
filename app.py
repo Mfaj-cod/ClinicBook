@@ -210,7 +210,7 @@ def create_app():
     def dashboard():
         if 'patient_id' not in session:
             flash("Please login as a patient first.", "danger")
-            return redirect(url_for('patient_login'))
+            return redirect(url_for('login'))
 
         db = get_db()
         appts = db.execute(
@@ -487,23 +487,20 @@ def create_app():
         return render_template("clinic_detail.html", clinic=clinic, reviews=reviews)
 
 
-    @app.route('/cancel_appointment/<int:appointment_id>', methods=['POST', 'GET'])
+    # Cancel appointment (doctor or patient can cancel)
+    @app.route('/cancel_appointment/<int:appointment_id>', methods=['GET', 'POST'])
     def cancel_appointment(appointment_id):
         db = get_db()
+
         if 'patient_id' not in session and 'doctor_id' not in session:
             flash('You must be logged in to cancel appointments.', 'warning')
             return redirect(url_for('login'))
 
-        appt = db.execute(
-            'SELECT * FROM appointments WHERE id=?',
-            (appointment_id,)
-        ).fetchone()
-
+        appt = db.execute('SELECT * FROM appointments WHERE id=?', (appointment_id,)).fetchone()
         if not appt:
             flash('Appointment not found.', 'danger')
             return redirect(url_for('dashboard'))
 
-        # Authorization check
         allowed = False
         if 'patient_id' in session and appt['patient_id'] == session['patient_id']:
             allowed = True
@@ -514,16 +511,37 @@ def create_app():
             flash('You are not authorized to cancel this appointment.', 'danger')
             return redirect(url_for('dashboard'))
 
-        if appt['status'] == 'cancelled':
-            flash('This appointment is already cancelled.', 'info')
-            return redirect(url_for('dashboard'))
-
-        # Cancel (don’t delete!)
-        db.execute("UPDATE appointments SET status='cancelled' WHERE id=?", (appointment_id,))
-        db.execute("UPDATE slots SET booked_count = booked_count - 1 WHERE id=?", (appt['slot_id'],))
+        # ✅ Instead of DELETE, just mark as cancelled
+        db.execute('UPDATE appointments SET status=? WHERE id=?', ('cancelled', appointment_id))
         db.commit()
 
-        flash('Appointment cancelled successfully.', 'success')
+        flash('Appointment cancelled.', 'success')
+        return redirect(url_for('dashboard'))
+
+
+    # Mark appointment as completed (doctor only)
+    @app.route('/complete_appointment/<int:appointment_id>', methods=['POST'])
+    def complete_appointment(appointment_id):
+        db = get_db()
+
+        if 'doctor_id' not in session:
+            flash('Only doctors can complete appointments.', 'warning')
+            return redirect(url_for('login'))
+
+        appt = db.execute('SELECT * FROM appointments WHERE id=?', (appointment_id,)).fetchone()
+        if not appt:
+            flash('Appointment not found.', 'danger')
+            return redirect(url_for('dashboard'))
+
+        if appt['doctor_id'] != session['doctor_id']:
+            flash('You are not authorized to complete this appointment.', 'danger')
+            return redirect(url_for('dashboard'))
+
+        # ✅ Update status to completed
+        db.execute('UPDATE appointments SET status=? WHERE id=?', ('completed', appointment_id))
+        db.commit()
+
+        flash('Appointment marked as completed.', 'success')
         return redirect(url_for('dashboard'))
 
 

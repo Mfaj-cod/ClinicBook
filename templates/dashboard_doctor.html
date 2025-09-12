@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 <section class="position-relative">
-  <div class="doctor-hero-section text-center text-white d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #667eea 0%, #0d3a6f 100%); min-height: 44vh; border-radius: 1.2rem 1.2rem 1.2rem 0;">
-    <div class="p-4 p-md-5 shadow-sm" style="background: linear-gradient(135deg, #667eea 0%, #0d3a6f 100%); border-radius: 1.2rem; display: inline-block; min-width: 320px; max-width: 520px;">
+  <div class="doctor-hero-section text-center text-white d-flex align-items-center justify-content-center">
+    <div class="p-4 p-md-5 shadow-sm" style="border-radius: 1.2rem; display: inline-block; min-width: 320px; max-width: 520px;">
       <span class="d-inline-block mb-3" style="background: #fff; border-radius: 50%; width: 3.2rem; height: 3.2rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(0,0,0,0.10);">
         <i class="bi bi-person-badge" style="font-size:2rem; color:#0d3a6f;"></i>
       </span>
@@ -32,7 +32,7 @@
   </div>
 </section>
 
-<div class="container mt-4 mb-4" style="background: linear-gradient(135deg, #667eea 0%, #0d3a6f 100%); border-radius: 0 0 2rem 2rem;">
+<div class="container mt-4 mb-4">
   <div class="row g-4 justify-content-center">
     <div class="col-12 col-lg-7">
       <div class="card border-0 shadow feature-card mb-4">
@@ -67,14 +67,15 @@
         <ul class="list-group list-group-flush">
           {% if appointments %}
             {% for a in appointments %}
-            <li class="list-group-item d-flex align-items-center"
-                style="border-left: 4px solid {% if a.status == 'booked' %}#198754{% elif a.status == 'cancelled' %}#dc3545{% else %}#adb5bd{% endif %};">
+            <li class="list-group-item d-flex align-items-center justify-content-between"
+                style="border-left: 4px solid {% if a.status == 'booked' %}#198754{% elif a.status == 'cancelled' %}#dc3545{% elif a.status == 'completed' %}#0d6efd{% else %}#adb5bd{% endif %};">
               <div class="flex-grow-1">
                 <div class="fw-bold" style="color:#0d3a6f;">
                   <i class="bi bi-person me-1"></i> {{ a.patient_name }}
                   <span class="badge 
                     {% if a.status == 'booked' %}bg-success
                     {% elif a.status == 'cancelled' %}bg-danger
+                    {% elif a.status == 'completed' %}bg-primary
                     {% else %}bg-secondary{% endif %} ms-2">
                     {{ a.status|capitalize }}
                   </span>
@@ -86,6 +87,20 @@
                   <i class="bi bi-calendar-event"></i> {{ a.date }}
                 </div>
               </div>
+              {% if a.status == 'booked' %}
+              <div class="ms-3 d-flex gap-2">
+                <form method="post" action="{{ url_for('complete_appointment', appointment_id=a.id) }}">
+                  <button class="btn btn-sm btn-outline-primary">
+                    <i class="bi bi-check2-circle"></i> Complete
+                  </button>
+                </form>
+                <form method="post" action="{{ url_for('cancel_appointment', appointment_id=a.id) }}">
+                  <button class="btn btn-sm btn-outline-danger">
+                    <i class="bi bi-x-circle"></i> Cancel
+                  </button>
+                </form>
+              </div>
+              {% endif %}
             </li>
             {% endfor %}
           {% else %}
@@ -97,7 +112,7 @@
       </div>
 
       <!-- Reviews -->
-      <div class="card shadow-sm border-0 mb-4">
+      <div class="card shadow-sm border-0 mb-4" style="background: linear-gradient(135deg, #667eea 0%, #0d3a6f 100%);">
         <div class="card-header bg-light fw-semibold">
           <i class="bi bi-chat-left-text"></i> Patient Reviews
         </div>
@@ -110,18 +125,18 @@
                   <i class="bi bi-person-circle text-white"></i>
                 </span>
                 <strong>{{ r.patient_name }}</strong>
-                <span class="ms-2 small text-muted">{{ r.created_at }}</span>
+                <span class="ms-2 small text-white">{{ r.created_at }}</span>
               </div>
               <div class="small mb-1">
                 <i class="bi bi-star-fill" style="color:#ffc107;"></i> {{ r.rating }} / 5
               </div>
               {% if r.comment %}
-              <p class="small mb-0">{{ r.comment }}</p>
+              <p class="small mb-0 text-white">{{ r.comment }}</p>
               {% endif %}
             </div>
             {% endfor %}
           {% else %}
-            <div class="text-muted">No reviews yet.</div>
+            <div class="text-white">No reviews yet.</div>
           {% endif %}
         </div>
       </div>
@@ -130,7 +145,7 @@
       <div class="alert alert-info text-center shadow-sm rounded-pill px-4 py-2" role="alert">
         <strong>Welcome to your Doctor Dashboard!</strong>
         <span class="d-block mt-2">
-          <i class="bi bi-info-circle text-primary"></i>
+          <i class="bi bi-info-circle text-white"></i>
           Here you can view all your upcoming appointments, see your reviews, and manage your schedule.
         </span>
       </div>
@@ -141,7 +156,7 @@
 <style>
 .doctor-hero-section {
   min-height: 45vh;
-  background: linear-gradient(135deg, #0d6efd, #2a9df4);
+  background: linear-gradient(135deg, #667eea 0%, #0d3a6f 100%);
   border-radius: 1rem 1rem 1rem 0rem;
   padding: 3rem 1rem;
   position: relative;
@@ -157,7 +172,7 @@
 .feature-card {
   transition: transform 0.18s cubic-bezier(.4,2,.6,1), box-shadow 0.22s cubic-bezier(.4,2,.6,1);
   border-radius: 1.1rem;
-  background: #fff;
+  background: linear-gradient(135deg, #667eea 0%, #0d3a6f 100%);
   position: relative;
   overflow: visible;
 }

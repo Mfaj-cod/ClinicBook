@@ -49,7 +49,6 @@ def setup():
         date TEXT,
         time TEXT,
         capacity INTEGER DEFAULT 1,
-        booked_count INTEGER DEFAULT 0,
         FOREIGN KEY (doctor_id) REFERENCES doctors(id) ON DELETE CASCADE
     );
 
