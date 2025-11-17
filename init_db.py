@@ -1,4 +1,5 @@
 import sqlite3, os
+
 BASE = os.path.dirname(__file__)
 DB = os.path.join(BASE, 'data', 'clinicBook.db')
 

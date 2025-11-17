@@ -607,9 +607,11 @@ def create_app():
     return app
 
 
+
 if __name__ == '__main__':
     from init_db import setup as init_setup
-    if not os.path.exists(DB):
-        init_setup()
     app = create_app()
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    with app.app_context():
+        init_setup()
+
+    app.run(debug=True)

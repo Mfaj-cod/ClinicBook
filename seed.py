@@ -1,4 +1,5 @@
 import sqlite3, os
+
 from doctors_data import doctors_data
 import datetime
 
@@ -98,7 +99,7 @@ def generate_slots(doctor_id, days=7):
 
 
 def seed():
-    os.makedirs(os.path.join(BASE, 'instance'), exist_ok=True)
+    os.makedirs(os.path.join(BASE, 'data'), exist_ok=True)
     conn = sqlite3.connect(DB)
     ensure_schema(conn)
     cur = conn.cursor()
