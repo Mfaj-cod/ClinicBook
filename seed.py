@@ -93,7 +93,7 @@ def generate_slots(doctor_id, days=7):
     for i in range(days):
         date = today + datetime.timedelta(days=i)
         for time in ["10:00", "16:00"]:  # 2 slots per day
-            slots.append((doctor_id, date.isoformat(), time, 5, 0))
+            slots.append((doctor_id, date.isoformat(), time, 5))
     return slots
 
 
@@ -129,8 +129,8 @@ def seed():
             if cur.fetchone()[0] == 0:
                 slots = generate_slots(doctor_id, days=7)
                 cur.executemany(
-                    '''INSERT INTO slots (doctor_id, date, time, capacity, booked_count)
-                    VALUES (?, ?, ?, ?, ?)''',
+                    '''INSERT INTO slots (doctor_id, date, time, capacity)
+                    VALUES (?, ?, ?, ?)''',
                     slots
                 )
 
