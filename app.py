@@ -35,7 +35,7 @@ def create_app():
         if db:
             db.close()
 
-    # Helper: update average rating
+    # Helper function: update average rating
     def update_avg_rating(db, doctor_id=None, clinic_id=None):
         if doctor_id:
             avg = db.execute("SELECT AVG(rating) FROM reviews WHERE doctor_id=?", (doctor_id,)).fetchone()[0]
@@ -45,7 +45,7 @@ def create_app():
             db.execute("UPDATE clinics SET average_rating=? WHERE id=?", (avg or 0, clinic_id))
         db.commit()
 
-    # Inject current user for templates
+    # Injecting current user for templates
     @app.context_processor
     def inject_user():
         user = None
@@ -57,7 +57,7 @@ def create_app():
             ).fetchone()
         return dict(current_user=user)
 
-    # Home page: show clinics with ratings
+    # home: show clinics with ratings
     @app.route('/')
     def index():
         db = get_db()
@@ -101,7 +101,7 @@ def create_app():
         )
 
 
-    # Doctor detail and available slots
+    # Doctor details and available slots
     @app.route('/doctor/<int:doc_id>')
     def doctor_detail(doc_id):
         db = get_db()
@@ -182,13 +182,13 @@ def create_app():
                 flash('Slot full', 'danger')
                 return redirect(url_for('doctor_detail', doc_id=slot['doctor_id']))
 
-            # Increment booked count
+            # Incrementing booked count
             db.execute(
                 'UPDATE slots SET booked_count = booked_count + 1 WHERE id = ?',
                 (slot_id,)
             )
 
-            # Insert appointment
+            # Inserting appointment
             db.execute(
                 '''INSERT INTO appointments (doctor_id, patient_id, slot_id, date, status)
                 VALUES (?, ?, ?, ?, ?)''',
@@ -197,7 +197,7 @@ def create_app():
 
             db.commit()
             flash('Appointment booked successfully!', 'success')
-            return redirect(url_for('profile'))   # <-- changed
+            return redirect(url_for('profile'))
 
         # GET → show booking page
         return render_template('book.html', slot=slot)
@@ -205,7 +205,7 @@ def create_app():
 
 
 
-    # Patient Dashboard
+    # Patient dashboard
     @app.route('/dashboard')
     def dashboard():
         if 'patient_id' not in session:
@@ -227,7 +227,7 @@ def create_app():
 
 
 
-
+    # Doctor dashboard
     @app.route('/doctors_dashboard')
     def doctors_dashboard():
         if 'doctor_id' not in session:
@@ -310,7 +310,7 @@ def create_app():
         return render_template('doctor_login.html')
 
 
-
+    # Patients list for doctor
     @app.route("/patients")
     def patients():
         if 'patient_id' not in session:
@@ -335,7 +335,7 @@ def create_app():
         doctors = db.execute("SELECT * FROM doctors").fetchall()
         return render_template("doctors.html", doctors=doctors)
 
-
+    # User profile
     @app.route("/profile")
     def profile():
         db = get_db()

@@ -9,6 +9,7 @@ def ensure_schema(conn):
     cur = conn.cursor()
     # Enable foreign key support
     cur.execute('PRAGMA foreign_keys = ON;')
+    
     # Create tables if not exist
     cur.executescript('''
     CREATE TABLE IF NOT EXISTS clinics (

@@ -8,6 +8,7 @@ def setup():
     cur = conn.cursor()
     # Enable foreign key support
     cur.execute('PRAGMA foreign_keys = ON;')
+    
     # Create tables
     cur.executescript('''
     CREATE TABLE IF NOT EXISTS patients (
