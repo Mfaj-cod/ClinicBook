@@ -410,6 +410,43 @@ def create_app():
             fees = int(request.form.get('fees') or 0)
             specialization = request.form.get('specialization', '').strip()
 
+            if password == '' or email == '' or name == '' or fees < 0:
+                flash('Please enter valid details.', 'danger')
+                return redirect(url_for('register_doctor'))
+            
+            # Re-read raw password for strength checks (the hashed password is already in `password`)
+            raw_password = request.form.get('password', '').strip()
+
+            # Basic email format check
+            email_re = re.compile(r'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$')
+            if not email_re.match(email) or len(email) > 254:
+                flash('Please provide a valid email address.', 'danger')
+                return redirect(url_for('register_doctor'))
+
+            # Ensure domain part looks sane
+            domain = email.split('@')[-1]
+            if '.' not in domain or any(len(part) == 0 for part in domain.split('.')):
+                flash('Email domain seems invalid.', 'danger')
+                return redirect(url_for('register_doctor'))
+
+            # Password strength checks
+            pw_errors = []
+            if len(raw_password) < 8:
+                pw_errors.append('at least 8 characters')
+            if not re.search(r'[A-Z]', raw_password):
+                pw_errors.append('an uppercase letter')
+            if not re.search(r'[a-z]', raw_password):
+                pw_errors.append('a lowercase letter')
+            if not re.search(r'\d', raw_password):
+                pw_errors.append('a digit')
+            if not re.search(r'[^A-Za-z0-9]', raw_password):
+                pw_errors.append('a special character')
+
+            if pw_errors:
+                flash('Password must contain ' + ', '.join(pw_errors) + '.', 'danger')
+                return redirect(url_for('register_doctor'))
+            
+
             db = get_db()
             cur = db.execute(
                 'SELECT id FROM clinics WHERE name=? AND city=?', 
@@ -610,6 +647,7 @@ def create_app():
 
 if __name__ == '__main__':
     from init_db import setup as init_setup
+    import re
     app = create_app()
     with app.app_context():
         init_setup()
