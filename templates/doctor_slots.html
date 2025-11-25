@@ -1,122 +1,150 @@
 {% extends "base.html" %}
 {% block content %}
-<!-- Hero Section -->
-<div class="hero-section text-center py-5" style="background: linear-gradient(135deg, #0d6efd 0, #0d3a6f 100%); border-radius: 2rem;">
-  <div class="container">
-    <h1 class="display-4 text-white fw-bold mb-3">
-      <i class="bi bi-calendar-check me-3"></i>Manage Your Slots
-    </h1>
-    <p class="lead text-white-50 mb-0">Schedule and organize your appointment availability</p>
-  </div>
-</div>
+<div class="min-vh-100" style="background: linear-gradient(135deg, #0d3a6f 0%, #084298 100%); border-radius: 2rem;">
+  <div class="container py-5">
+    <div class="text-center mb-5">
+      <div class="d-inline-flex align-items-center justify-content-center bg-white bg-opacity-20 rounded-circle p-4 mb-3" style="backdrop-filter: blur(10px);">
+        <i class="bi bi-calendar-check text-darkblue" style="font-size: 2.5rem; color: #0d3a6f;"></i>
+      </div>
+      <h1 class="display-5 fw-bold text-white mb-2">Manage Your Slots</h1>
+      <p class="lead text-white-50 mb-0">Schedule and organize your appointment availability</p>
+    </div>
 
-<div class="container my-5">
-  <!-- Add Slot Form -->
-  <div class="card shadow-lg border-0 mb-5" style="background: linear-gradient(135deg, #667eea 0%, #0d3a6f 100%); border-radius: 15px;">
-    <div class="card-header bg-primary text-white py-3" style="border-radius: 15px 15px 0 0; background: linear-gradient(135deg, #667eea 0%, #0d3a6f 100%);">
-      <h4 class="mb-0">
-        <i class="bi bi-plus-circle me-2"></i>Add New Slot
-      </h4>
-    </div>
-    <div class="card-body p-4">
-      <form method="post" action="{{ url_for('add_slot') }}" class="row g-4 align-items-end">
-        <div class="col-lg-4 col-md-6">
-          <label class="form-label fw-semibold text-white">
-            <i class="bi bi-calendar-event me-1"></i>Date
-          </label>
-          <input type="date" name="date" class="form-control form-control-lg" required>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <label class="form-label fw-semibold text-white">
-            <i class="bi bi-clock me-1"></i>Time
-          </label>
-          <input type="time" name="time" class="form-control form-control-lg" required>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <label class="form-label fw-semibold text-white">
-            <i class="bi bi-people me-1"></i>Capacity
-          </label>
-          <input type="number" name="capacity" class="form-control form-control-lg" min="1" value="5">
-        </div>
-        <div class="col-lg-2 col-md-6">
-          <button type="submit" class="btn btn-primary btn-lg w-100" style="border-radius: 10px;">
-            <i class="bi bi-plus-lg me-1"></i>Add Slot
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- List of Slots -->
-  <div class="card shadow-lg border-0" style="border-radius: 15px; background: linear-gradient(135deg, #667eea 0%, #0d3a6f 100%);">
-    <div class="card-header bg-gradient text-white py-3" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px 15px 15px 15px;">
-      <h4 class="mb-0">
-        <i class="bi bi-list-ul me-2"></i>Your Scheduled Slots
-      </h4>
-    </div>
-    <div class="card-body p-0">
-      {% if slots %}
-        <div class="table-responsive">
-          <table class="table table-hover mb-0">
-            <thead class="table-light">
-              <tr>
-                <th class="border-0 py-3 px-4">
-                  <i class="bi bi-calendar me-1"></i>Date & Time
-                </th>
-                <th class="border-0 py-3">
-                  <i class="bi bi-people me-1"></i>Capacity
-                </th>
-                <th class="border-0 py-3">
-                  <i class="bi bi-check-circle me-1"></i>Booked
-                </th>
-                <th class="border-0 py-3">
-                  <i class="bi bi-gear me-1"></i>Actions
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for s in slots %}
-              <tr class="border-bottom">
-                <td class="py-3 px-4">
-                  <div class="d-flex align-items-center">
-                    <div class="bg-primary bg-opacity-10 rounded-circle p-2 me-3">
-                      <i class="bi bi-clock text-primary"></i>
-                    </div>
-                    <div>
-                      <div class="fw-semibold">{{ s.date }}</div>
-                      <div class="text-muted small">{{ s.time }}</div>
-                    </div>
-                  </div>
-                </td>
-                <td class="py-3">
-                  <span class="badge bg-secondary fs-6 px-3 py-2">{{ s.capacity }}</span>
-                </td>
-                <td class="py-3">
-                  <span class="badge bg-success fs-6 px-3 py-2">{{ s.booked_count }}</span>
-                </td>
-                <td class="py-3">
-                  <a href="{{ url_for('delete_slot', slot_id=s.id) }}" 
-                     class="btn btn-outline-danger btn-sm"
-                     onclick="return confirm('Are you sure you want to delete this slot?');"
-                     style="border-radius: 8px;">
-                     <i class="bi bi-trash me-1"></i>Delete
-                  </a>
-                </td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
-      {% else %}
-        <div class="text-center py-5">
-          <div class="mb-3">
-            <i class="bi bi-calendar-x display-1 text-white"></i>
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        
+        <div class="card border-0 shadow-lg mb-4" style="backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.95);">
+          <div class="card-header bg-transparent border-0 py-4">
+            <h3 class="mb-0 fw-bold" style="color: #2c3e50;">
+              <i class="bi bi-plus-circle me-2 text-heading"></i>
+              Add New Slot
+            </h3>
           </div>
-          <h5 class="text-white mb-2">No slots scheduled yet</h5>
-          <p class="text-white">Add your first appointment slot using the form above</p>
+          
+          <div class="card-body px-4 pb-4">
+            <form method="post" action="{{ url_for('add_slot') }}" class="row g-4 align-items-end">
+              <div class="col-lg-4 col-md-6">
+                <label class="form-label fw-semibold text-muted">
+                  <i class="bi bi-calendar-event me-1"></i>Date
+                </label>
+                <input type="date" name="date" class="form-control form-control-lg shadow-sm" style="border-radius: 10px;" required>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <label class="form-label fw-semibold text-muted">
+                  <i class="bi bi-clock me-1"></i>Time
+                </label>
+                <input type="time" name="time" class="form-control form-control-lg shadow-sm" style="border-radius: 10px;" required>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <label class="form-label fw-semibold text-muted">
+                  <i class="bi bi-people me-1"></i>Capacity
+                </label>
+                <input type="number" name="capacity" class="form-control form-control-lg shadow-sm" style="border-radius: 10px;" min="1" value="5">
+              </div>
+              <div class="col-lg-2 col-md-6">
+                <button type="submit" class="btn btn-lg w-100 shadow-sm text-white" style="background: linear-gradient(135deg, #0d3a6f 0%, #084298 100%);">
+                  <i class="bi bi-plus-lg me-1"></i>Add
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-      {% endif %}
+
+        <div class="card border-0 shadow-lg" style="backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.95);">
+          <div class="card-header bg-transparent border-0 py-4">
+            <h3 class="mb-0 fw-bold" style="color: #2c3e50;">
+              <i class="bi bi-list-ul me-2 text-heading"></i>
+              Your Scheduled Slots
+            </h3>
+          </div>
+          
+          <div class="card-body p-0">
+            {% if slots %}
+              <div class="table-responsive">
+                <table class="table mb-0 align-middle">
+                  <thead class="bg-light bg-opacity-50">
+                    <tr>
+                      <th class="border-0 py-3 px-4 text-muted fw-semibold">Date & Time</th>
+                      <th class="border-0 py-3 text-muted fw-semibold">Capacity</th>
+                      <th class="border-0 py-3 text-muted fw-semibold">Booked</th>
+                      <th class="border-0 py-3 text-end px-4 text-muted fw-semibold">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for s in slots %}
+                    <tr class="hover-lift border-bottom" style="transition: all 0.3s ease;">
+                      <td class="py-4 px-4 border-0">
+                        <div class="d-flex align-items-center">
+                          <div class="bg-primary bg-opacity-10 rounded-circle p-2 me-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;">
+                            <i class="bi bi-clock text-primary"></i>
+                          </div>
+                          <div>
+                            <h6 class="fw-bold mb-0 text-dark">{{ s.date }}</h6>
+                            <small class="text-muted">{{ s.time }}</small>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="py-4 border-0">
+                        <span class="badge rounded-pill bg-secondary bg-opacity-10 text-secondary px-3 py-2 fw-semibold">
+                          <i class="bi bi-people-fill me-1"></i>
+                          {{ s.capacity }}
+                        </span>
+                      </td>
+                      <td class="py-4 border-0">
+                        <span class="badge rounded-pill bg-success bg-opacity-10 text-success px-3 py-2 fw-semibold">
+                          <i class="bi bi-check-circle-fill me-1"></i>
+                          {{ s.booked_count }}
+                        </span>
+                      </td>
+                      <td class="py-4 px-4 text-end border-0">
+                        <a href="{{ url_for('delete_slot', slot_id=s.id) }}" 
+                           class="btn btn-outline-danger shadow-sm btn-sm px-3 py-2"
+                           onclick="return confirm('Are you sure you want to delete this slot?');">
+                           <i class="bi bi-trash me-2"></i>Delete
+                        </a>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            {% else %}
+              <div class="text-center py-5">
+                <div class="mb-3">
+                  <i class="bi bi-calendar-x text-muted" style="font-size: 3rem;"></i>
+                </div>
+                <h5 class="text-muted mb-2">No slots scheduled yet</h5>
+                <p class="text-muted mb-4">Add your first appointment slot using the form above.</p>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>
+
+<style>
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  background-color: rgba(248, 249, 250, 0.5);
+}
+
+.card {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.btn {
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.form-control:focus {
+  border-color: #0d3a6f;
+  box-shadow: 0 0 0 0.25rem rgba(13, 58, 111, 0.25);
+}
+</style>
 {% endblock %}

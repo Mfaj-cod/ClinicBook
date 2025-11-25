@@ -28,7 +28,7 @@ A comprehensive web-based platform that streamlines the appointment booking proc
 - **Database**: SQLite
 - **Frontend**: HTML5, CSS3, Bootstrap 5, Jinja2 Templates
 - **Authentication**: Flask-Login
-
+- **Deployment**: Compatible with Render, Heroku, and any Flask-supporting server
 
 ## 🚀 Quick Start
 

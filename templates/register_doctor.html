@@ -1,90 +1,845 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container my-4">
-  <div class="text-center mb-4">
-    <span class="d-inline-block rounded-circle bg-primary bg-opacity-10 p-3">
-      <i class="bi bi-person-plus" style="font-size:2.2rem; color:#0d6efd;"></i>
-    </span>
-    <h2 class="fw-bold mt-2" style="color:#0d3a6f;">Register as Doctor</h2>
-    <div class="text-muted mb-2" style="font-size:1.1rem;">Add your clinic and professional details</div>
+
+<!-- Doctor Registration Page -->
+<div class="register-page-wrapper">
+  
+  <!-- Animated Background Particles -->
+  <div class="particles-bg">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
   </div>
-  <div class="mx-auto" style="max-width: 500px;">
-    <div class="card shadow-sm border-0">
-      <div class="card-body p-4">
-        <form method="post" class="needs-validation" novalidate>
-          <div class="mb-3">
-            <label for="doctorName" class="form-label fw-semibold" style="color:#0d3a6f;">Full Name</label>
-            <input type="text" class="form-control" id="doctorName" name="name" required autofocus>
-            <div class="invalid-feedback">Please enter your full name.</div>
+
+  <div class="container-fluid h-100">
+    <div class="row h-100 g-0">
+      
+      <!-- LEFT SIDE - Info & Illustration -->
+      <div class="col-lg-6 d-none d-lg-flex register-left-panel">
+        <div class="left-content">
+          
+          <!-- Animated Icon -->
+          <div class="feature-icon-animated mb-4">
+            <div class="icon-circle">
+              <i class="bi bi-heart-pulse"></i>
+            </div>
+            <div class="icon-ring ring-1"></div>
+            <div class="icon-ring ring-2"></div>
           </div>
-          <div class="mb-3">
-            <label for="doctorEmail" class="form-label fw-semibold" style="color:#0d3a6f;">Email address</label>
-            <input type="email" class="form-control" id="doctorEmail" name="email" required>
-            <div class="invalid-feedback">Please enter a valid email address.</div>
+
+          <!-- Heading -->
+          <h1 class="display-5 fw-bold text-white mb-3">
+            Join as <span class="gradient-text">Doctor</span>
+          </h1>
+          <p class="lead text-white-75 mb-4">
+            Expand your practice, reach more patients, and manage your appointments efficiently with our platform.
+          </p>
+
+          <!-- Feature List -->
+          <div class="features-list">
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="bi bi-people-fill"></i>
+              </div>
+              <div class="feature-text">
+                <h6>50,000+ Patients</h6>
+                <p>Access to a large patient database</p>
+              </div>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="bi bi-calendar-check"></i>
+              </div>
+              <div class="feature-text">
+                <h6>Smart Scheduling</h6>
+                <p>Automated appointment management</p>
+              </div>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="bi bi-graph-up"></i>
+              </div>
+              <div class="feature-text">
+                <h6>Practice Growth</h6>
+                <p>Increase your patient reach</p>
+              </div>
+            </div>
           </div>
-          <div class="mb-3">
-            <label for="doctorEmail" class="form-label fw-semibold" style="color:#0d3a6f;">Create Password</label>
-            <input type="passsword" class="form-control" id="doctorPassword" name="password" required>
-            <div class="invalid-feedback">Please enter a valid email address.</div>
+
+          <!-- Trust Badges -->
+          <div class="trust-badges mt-4">
+            <div class="badge-item">
+              <i class="bi bi-shield-check"></i>
+              <span>Verified Platform</span>
+            </div>
+            <div class="badge-item">
+              <i class="bi bi-star-fill"></i>
+              <span>4.9/5 Rating</span>
+            </div>
           </div>
-          <div class="mb-3">
-            <label for="doctorPhone" class="form-label fw-semibold" style="color:#0d3a6f;">Phone Number</label>
-            <input type="tel" class="form-control" id="doctorPhone" name="phone" required>
-            <div class="invalid-feedback">Please enter your phone number.</div>
-          </div>
-          <div class="mb-3">
-            <label for="clinicName" class="form-label fw-semibold" style="color:#0d3a6f;">Clinic Name</label>
-            <input type="text" class="form-control" id="clinicName" name="clinic" required>
-            <div class="invalid-feedback">Please enter your clinic name.</div>
-          </div>
-          <div class="mb-3">
-            <label for="clinicCity" class="form-label fw-semibold" style="color:#0d3a6f;">City</label>
-            <input type="text" class="form-control" id="clinicCity" name="city" required>
-            <div class="invalid-feedback">Please enter the city.</div>
-          </div>
-          <div class="mb-3">
-            <label for="clinicAddress" class="form-label fw-semibold" style="color:#0d3a6f;">Address</label>
-            <input type="text" class="form-control" id="clinicAddress" name="address" required>
-            <div class="invalid-feedback">Your Clinic's address.</div>
-          </div>
-          <div class="mb-3">
-            <label for="doctorSpecialization" class="form-label fw-semibold" style="color:#0d3a6f;">Specialization</label>
-            <input type="text" class="form-control" id="doctorSpecialization" name="specialization" required>
-            <div class="invalid-feedback">Please enter your specialization.</div>
-          </div>
-          <div class="mb-3">
-            <label for="doctorFees" class="form-label fw-semibold" style="color:#0d3a6f;">Consultation Fees (₹)</label>
-            <input type="number" class="form-control" id="doctorFees" name="fees" min="0" required>
-            <div class="invalid-feedback">Please enter your consultation fees.</div>
-          </div>
-          <div class="d-grid mb-3">
-            <button type="submit" class="btn btn-primary btn-lg">
-              <i class="bi bi-person-plus me-1"></i>Register
-            </button>
-          </div>
-          <div class="text-center">
-            <span class="text-muted small">Already have a doctor's account?</span>
-            <a href="{{ url_for('doctor_login') }}" class="ms-1">Login</a>
-          </div>
-        </form>
+
+        </div>
       </div>
+
+      <!-- RIGHT SIDE - Registration Form -->
+      <div class="col-lg-6 register-right-panel">
+        <div class="form-container">
+          
+          <!-- Mobile Logo -->
+          <div class="mobile-logo d-lg-none text-center mb-4">
+            <div class="logo-circle-sm">
+              <i class="bi bi-heart-pulse"></i>
+            </div>
+            <h3 class="mt-2 fw-bold text-primary">ClinicBook</h3>
+          </div>
+
+          <!-- Form Header -->
+          <div class="form-header text-center mb-4">
+            <h2 class="form-title">Doctor Registration</h2>
+            <p class="form-subtitle">Complete your professional profile</p>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="progress-container mb-4">
+            <div class="progress-bar-custom">
+              <div class="progress-step active" data-step="1">
+                <div class="step-circle">1</div>
+                <span class="step-label">Personal</span>
+              </div>
+              <div class="progress-line"></div>
+              <div class="progress-step" data-step="2">
+                <div class="step-circle">2</div>
+                <span class="step-label">Professional</span>
+              </div>
+              <div class="progress-line"></div>
+              <div class="progress-step" data-step="3">
+                <div class="step-circle">3</div>
+                <span class="step-label">Clinic</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Registration Form -->
+          <form method="post" class="register-form needs-validation" novalidate id="registerForm">
+            
+            <!-- STEP 1: Personal Information -->
+            <div class="form-step active" data-step="1">
+              <h5 class="step-heading mb-3">
+                <i class="bi bi-person-badge me-2"></i>Personal Information
+              </h5>
+
+              <div class="mb-3">
+                <label class="form-label">Full Name</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                  <input type="text" class="form-control" name="name" placeholder="Dr. John Doe" required>
+                </div>
+                <div class="invalid-feedback">Please enter your full name</div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Email Address</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                  <input type="email" class="form-control" name="email" placeholder="doctor@clinic.com" required>
+                </div>
+                <div class="invalid-feedback">Please enter a valid email</div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Password</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                  <input type="password" class="form-control" id="doctorPassword" name="password" placeholder="••••••••" required>
+                  <button type="button" class="input-group-text" onclick="togglePassword('doctorPassword')">
+                    <i class="bi bi-eye-fill" id="doctorPasswordIcon"></i>
+                  </button>
+                </div>
+                <div class="invalid-feedback">Password must be at least 6 characters</div>
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label">Phone Number</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-phone-fill"></i></span>
+                  <input type="tel" class="form-control" name="phone" placeholder="+91 9876543210" required>
+                </div>
+                <div class="invalid-feedback">Please enter phone number</div>
+              </div>
+
+              <button type="button" class="btn btn-primary w-100 py-2" onclick="nextStep()">
+                Continue <i class="bi bi-arrow-right ms-2"></i>
+              </button>
+            </div>
+
+            <!-- STEP 2: Professional Information -->
+            <div class="form-step" data-step="2">
+              <h5 class="step-heading mb-3">
+                <i class="bi bi-briefcase-fill me-2"></i>Professional Information
+              </h5>
+
+              <div class="mb-3">
+                <label class="form-label">Specialization</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-heart-pulse"></i></span>
+                  <input type="text" class="form-control" name="specialization" placeholder="Cardiology, Dermatology, etc." required>
+                </div>
+                <div class="invalid-feedback">Please enter your specialization</div>
+              </div>
+
+              <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                  <label class="form-label">Consultation Fees (₹)</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-currency-rupee"></i></span>
+                    <input type="number" class="form-control" name="fees" placeholder="500" min="0" required>
+                  </div>
+                  <div class="invalid-feedback">Please enter consultation fees</div>
+                </div>
+                
+                <div class="col-md-6">
+                  <label class="form-label">Experience (Years)</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-award-fill"></i></span>
+                    <input type="number" class="form-control" name="experience" placeholder="5" min="0" max="50">
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-grid gap-2">
+                <button type="button" class="btn btn-outline-secondary" onclick="prevStep()">
+                  <i class="bi bi-arrow-left me-2"></i>Back
+                </button>
+                <button type="button" class="btn btn-primary" onclick="nextStep()">
+                  Continue <i class="bi bi-arrow-right ms-2"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 3: Clinic Information -->
+            <div class="form-step" data-step="3">
+              <h5 class="step-heading mb-3">
+                <i class="bi bi-building me-2"></i>Clinic Information
+              </h5>
+
+              <div class="mb-3">
+                <label class="form-label">Clinic Name</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-hospital"></i></span>
+                  <input type="text" class="form-control" name="clinic" placeholder="Medicare Clinic" required>
+                </div>
+                <div class="invalid-feedback">Please enter clinic name</div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">City</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-geo-alt-fill"></i></span>
+                  <input type="text" class="form-control" name="city" placeholder="Mumbai" required>
+                </div>
+                <div class="invalid-feedback">Please enter city</div>
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label">Address</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-pin-map-fill"></i></span>
+                  <input type="text" class="form-control" name="address" placeholder="Street, Area, Landmark" required>
+                </div>
+                <div class="invalid-feedback">Please enter address</div>
+              </div>
+
+              <!-- Terms & Conditions -->
+              <div class="form-check mb-4">
+                <input class="form-check-input" type="checkbox" id="terms" required>
+                <label class="form-check-label small" for="terms">
+                  I agree to the <a href="#" class="text-decoration-none">Terms & Conditions</a> and <a href="#" class="text-decoration-none">Privacy Policy</a>
+                </label>
+                <div class="invalid-feedback">You must agree to continue</div>
+              </div>
+
+              <div class="d-grid gap-2 mb-3">
+                <button type="button" class="btn btn-outline-secondary" onclick="prevStep()">
+                  <i class="bi bi-arrow-left me-2"></i>Back
+                </button>
+                <button type="submit" class="btn btn-success">
+                  <i class="bi bi-person-plus-fill me-2"></i>Complete Registration
+                </button>
+              </div>
+            </div>
+
+            <!-- Login Link -->
+            <div class="text-center mt-4">
+              <p class="text-muted mb-0">
+                Already have a doctor account? 
+                <a href="{{ url_for('doctor_login') }}" class="text-primary fw-semibold text-decoration-none">Login here</a>
+              </p>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
     </div>
-    <script>
-      // Bootstrap validation
-      (() => {
-        'use strict'
-        const forms = document.querySelectorAll('.needs-validation')
-        Array.from(forms).forEach(form => {
-          form.addEventListener('submit', event => {
-            if (!form.checkValidity()) {
-              event.preventDefault()
-              event.stopPropagation()
-            }
-            form.classList.add('was-validated')
-          }, false)
-        })
-      })()
-    </script>
   </div>
 </div>
+
+<style>
+/* ===== REGISTER PAGE STYLES ===== */
+.register-page-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+/* Animated Particles Background */
+.particles-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  animation: float 15s infinite ease-in-out;
+}
+
+.particle:nth-child(1) { width: 60px; height: 60px; top: 20%; left: 10%; animation-delay: 0s; }
+.particle:nth-child(2) { width: 40px; height: 40px; top: 60%; left: 80%; animation-delay: 2s; }
+.particle:nth-child(3) { width: 70px; height: 70px; top: 40%; left: 60%; animation-delay: 4s; }
+.particle:nth-child(4) { width: 50px; height: 50px; top: 70%; left: 20%; animation-delay: 6s; }
+.particle:nth-child(5) { width: 45px; height: 45px; top: 30%; left: 50%; animation-delay: 8s; }
+.particle:nth-child(6) { width: 65px; height: 65px; top: 80%; left: 70%; animation-delay: 10s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+  50% { transform: translateY(-20px) rotate(180deg); opacity: 0.6; }
+}
+
+/* LEFT PANEL */
+.register-left-panel {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  padding: 3rem 2rem;
+  position: relative;
+  z-index: 2;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-content {
+  max-width: 500px;
+  text-align: center;
+}
+
+/* Animated Feature Icon */
+.feature-icon-animated {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 2rem;
+}
+
+.icon-circle {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  animation: iconPulse 2s ease-in-out infinite;
+  z-index: 2;
+  position: relative;
+}
+
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.icon-ring {
+  position: absolute;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  animation: ringExpand 3s ease-out infinite;
+}
+
+.ring-1 {
+  width: 140px;
+  height: 140px;
+  top: -10px;
+  left: -10px;
+  animation-delay: 0s;
+}
+
+.ring-2 {
+  width: 160px;
+  height: 160px;
+  top: -20px;
+  left: -20px;
+  animation-delay: 1.5s;
+}
+
+@keyframes ringExpand {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(1.3); opacity: 0; }
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-white-75 {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Features List */
+.features-list {
+  margin: 2rem 0;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(5px);
+}
+
+.feature-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: white;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.feature-text h6 {
+  color: white;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.feature-text p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+/* Trust Badges */
+.trust-badges {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.badge-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  color: white;
+  font-size: 0.875rem;
+  backdrop-filter: blur(10px);
+}
+
+.badge-item i {
+  color: #ffd700;
+}
+
+/* RIGHT PANEL */
+.register-right-panel {
+  background: white;
+  padding: 2rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 450px;
+  padding: 2rem;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+.form-header {
+  margin-bottom: 2rem;
+}
+
+.form-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e3c72;
+  margin-bottom: 0.5rem;
+}
+
+.form-subtitle {
+  color: #6b7280;
+  font-size: 1rem;
+}
+
+/* Progress Bar */
+.progress-container {
+  margin-bottom: 2rem;
+}
+
+.progress-bar-custom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  position: relative;
+  z-index: 2;
+}
+
+.step-circle {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.progress-step.active .step-circle {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.progress-step.completed .step-circle {
+  background: #10b981;
+  color: white;
+}
+
+.step-label {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.progress-step.active .step-label {
+  color: #667eea;
+  font-weight: 600;
+}
+
+.progress-line {
+  position: absolute;
+  top: 17px;
+  left: 15%;
+  right: 15%;
+  height: 2px;
+  background: #e5e7eb;
+  z-index: 1;
+}
+
+/* Form Steps */
+.form-step {
+  display: none;
+}
+
+.form-step.active {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.step-heading {
+  color: #1e3c72;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+}
+
+/* Form Styles */
+.form-label {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.input-group {
+  margin-bottom: 0.5rem;
+}
+
+.input-group-text {
+  background: #f8fafc;
+  border: 2px solid #e5e7eb;
+  border-right: none;
+  transition: all 0.3s ease;
+}
+
+.form-control {
+  border: 2px solid #e5e7eb;
+  padding: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+.input-group .form-control:focus + .input-group-text,
+.input-group .form-control:focus ~ .input-group-text {
+  border-color: #667eea;
+}
+
+/* Mobile Logo */
+.logo-circle-sm {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: white;
+  margin: 0 auto;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Buttons */
+.btn {
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border: none;
+}
+
+.btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+/* Mobile Responsive */
+@media (max-width: 991px) {
+  .register-page-wrapper {
+    background: white;
+  }
+  
+  .register-right-panel {
+    min-height: 100vh;
+  }
+  
+  .form-container {
+    padding: 1.5rem;
+    box-shadow: none;
+  }
+  
+  .form-title {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .form-container {
+    padding: 1rem;
+  }
+  
+  .form-title {
+    font-size: 1.5rem;
+  }
+  
+  .feature-icon-animated {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .icon-circle {
+    font-size: 2.5rem;
+  }
+  
+  .btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+  
+  .step-label {
+    display: none;
+  }
+  
+  .feature-item {
+    padding: 0.75rem;
+  }
+  
+  .feature-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+}
+</style>
+
+<script>
+// Multi-Step Form Logic
+let currentStep = 1;
+
+function nextStep() {
+  const currentStepElement = document.querySelector(`.form-step[data-step="${currentStep}"]`);
+  const inputs = currentStepElement.querySelectorAll('input[required], select[required]');
+  
+  let isValid = true;
+  inputs.forEach(input => {
+    if (!input.checkValidity()) {
+      isValid = false;
+      input.classList.add('is-invalid');
+    } else {
+      input.classList.remove('is-invalid');
+    }
+  });
+  
+  if (!isValid) {
+    document.getElementById('registerForm').classList.add('was-validated');
+    return;
+  }
+  
+  // Hide current step
+  currentStepElement.classList.remove('active');
+  
+  // Show next step
+  currentStep++;
+  const nextStepElement = document.querySelector(`.form-step[data-step="${currentStep}"]`);
+  nextStepElement.classList.add('active');
+  
+  // Update progress
+  updateProgress();
+}
+
+function prevStep() {
+  const currentStepElement = document.querySelector(`.form-step[data-step="${currentStep}"]`);
+  currentStepElement.classList.remove('active');
+  
+  currentStep--;
+  const prevStepElement = document.querySelector(`.form-step[data-step="${currentStep}"]`);
+  prevStepElement.classList.add('active');
+  
+  updateProgress();
+}
+
+function updateProgress() {
+  document.querySelectorAll('.progress-step').forEach((step, index) => {
+    const stepNum = index + 1;
+    if (stepNum < currentStep) {
+      step.classList.add('completed');
+      step.classList.remove('active');
+    } else if (stepNum === currentStep) {
+      step.classList.add('active');
+      step.classList.remove('completed');
+    } else {
+      step.classList.remove('active', 'completed');
+    }
+  });
+}
+
+// Password Toggle
+function togglePassword(inputId) {
+  const input = document.getElementById(inputId);
+  const icon = document.getElementById(inputId + 'Icon');
+  
+  if (input.type === 'password') {
+    input.type = 'text';
+    icon.classList.remove('bi-eye-fill');
+    icon.classList.add('bi-eye-slash-fill');
+  } else {
+    input.type = 'password';
+    icon.classList.remove('bi-eye-slash-fill');
+    icon.classList.add('bi-eye-fill');
+  }
+}
+
+// Form Validation
+(function() {
+  'use strict';
+  const forms = document.querySelectorAll('.needs-validation');
+  
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      form.classList.add('was-validated');
+    }, false);
+  });
+})();
+</script>
+
 {% endblock %}

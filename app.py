@@ -64,7 +64,18 @@ def create_app():
         clinics = db.execute(
             'SELECT id, name, city, address, phone, average_rating FROM clinics ORDER BY name LIMIT 6'
         ).fetchall()
-        return render_template('home.html', clinics=clinics)
+
+        # added: features list to send to template
+        features = [
+            {'icon': 'bi-calendar-check', 'title': 'Instant Booking', 'desc': 'Book in seconds with instant confirmation', 'color': 'primary'},
+            {'icon': 'bi-geo-alt', 'title': 'Nearby Clinics', 'desc': 'Find trusted clinics in your city', 'color': 'danger'},
+            {'icon': 'bi-people', 'title': 'Patient Friendly', 'desc': 'Easy for all ages, no tech skills needed', 'color': 'success'},
+            {'icon': 'bi-shield-lock', 'title': '100% Secure', 'desc': 'Your data is always safe and private', 'color': 'info'},
+            {'icon': 'bi-clock', 'title': '24/7 Availability', 'desc': 'Book anytime, anywhere', 'color': 'warning'},
+            {'icon': 'bi-star', 'title': 'Top Rated', 'desc': 'Verified doctors with patient reviews', 'color': 'purple'}
+        ]
+
+        return render_template('home.html', clinics=clinics, features=features)
 
     @app.route('/doctors', methods=['GET'])
     def doctors():
@@ -197,7 +208,7 @@ def create_app():
 
             db.commit()
             flash('Appointment booked successfully!', 'success')
-            return redirect(url_for('profile'))
+            return redirect(url_for('dashboard'))
 
         # GET → show booking page
         return render_template('book.html', slot=slot)
@@ -286,28 +297,28 @@ def create_app():
     
 
     
-    # Doctor login
-    @app.route('/doctor_login', methods=['GET', 'POST'])
-    def doctor_login():
-        if request.method == 'POST':
-            email = request.form.get('email', '').strip().lower()
-            password = request.form.get('password', '').strip()
+    # # Doctor login
+    # @app.route('/doctor_login', methods=['GET', 'POST'])
+    # def doctor_login():
+    #     if request.method == 'POST':
+    #         email = request.form.get('email', '').strip().lower()
+    #         password = request.form.get('password', '').strip()
 
-            db = get_db()
-            doctor = db.execute(
-                'SELECT * FROM doctors WHERE email=?',
-                (email,)
-            ).fetchone()
+    #         db = get_db()
+    #         doctor = db.execute(
+    #             'SELECT * FROM doctors WHERE email=?',
+    #             (email,)
+    #         ).fetchone()
 
-            if doctor and check_password_hash(doctor['password_hash'], password):
-                session.clear()
-                session['doctor_id'] = doctor['id']
-                flash("Welcome {}!".format(doctor['name']), "success")
-                return redirect(url_for('doctors_dashboard'))
-            else:
-                flash("Invalid credentials.", "danger")
+    #         if doctor and check_password_hash(doctor['password_hash'], password):
+    #             session.clear()
+    #             session['doctor_id'] = doctor['id']
+    #             flash("Welcome {}!".format(doctor['name']), "success")
+    #             return redirect(url_for('doctors_dashboard'))
+    #         else:
+    #             flash("Invalid credentials.", "danger")
 
-        return render_template('doctor_login.html')
+    #     return render_template('doctor_login.html')
 
 
     # Patients list for doctor
@@ -536,7 +547,9 @@ def create_app():
         appt = db.execute('SELECT * FROM appointments WHERE id=?', (appointment_id,)).fetchone()
         if not appt:
             flash('Appointment not found.', 'danger')
-            return redirect(url_for('dashboard'))
+            if 'patient_id' in session:
+                return redirect(url_for('dashboard'))
+            return redirect(url_for('doctors_dashboard'))
 
         allowed = False
         if 'patient_id' in session and appt['patient_id'] == session['patient_id']:
@@ -546,14 +559,18 @@ def create_app():
 
         if not allowed:
             flash('You are not authorized to cancel this appointment.', 'danger')
-            return redirect(url_for('dashboard'))
+            if 'patient_id' in session:
+                return redirect(url_for('dashboard'))
+            return redirect(url_for('doctors_dashboard'))
 
         # ✅ Instead of DELETE, just mark as cancelled
         db.execute('UPDATE appointments SET status=? WHERE id=?', ('cancelled', appointment_id))
         db.commit()
 
         flash('Appointment cancelled.', 'success')
-        return redirect(url_for('dashboard'))
+        if 'patient_id' in session:
+            return redirect(url_for('dashboard'))
+        return redirect(url_for('doctors_dashboard'))
 
 
     # Mark appointment as completed (doctor only)
@@ -568,18 +585,18 @@ def create_app():
         appt = db.execute('SELECT * FROM appointments WHERE id=?', (appointment_id,)).fetchone()
         if not appt:
             flash('Appointment not found.', 'danger')
-            return redirect(url_for('dashboard'))
+            return redirect(url_for('doctors_dashboard'))
 
         if appt['doctor_id'] != session['doctor_id']:
             flash('You are not authorized to complete this appointment.', 'danger')
-            return redirect(url_for('dashboard'))
+            return redirect(url_for('doctors_dashboard'))
 
         # ✅ Update status to completed
         db.execute('UPDATE appointments SET status=? WHERE id=?', ('completed', appointment_id))
         db.commit()
 
         flash('Appointment marked as completed.', 'success')
-        return redirect(url_for('dashboard'))
+        return redirect(url_for('doctors_dashboard'))
 
 
 
@@ -643,6 +660,8 @@ def create_app():
 
     return app
 
+#crousel
+    
 
 
 if __name__ == '__main__':

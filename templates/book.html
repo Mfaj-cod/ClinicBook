@@ -86,11 +86,11 @@
   <div class="row">
     <div class="col-lg-8">
       <!-- Doctor Profile Card -->
-      <div class="card border-0 shadow-lg rounded-4 mb-4">
-        <div class="card-body p-4">
+      <div class="card border-0 shadow-lg rounded-4 mb-4" style="background: linear-gradient(135deg, #0d3a6f 0%, #084298 100%); color: white;">
+        <div class="card-body p-4 text-white">
           <div class="row">
             <div class="col-md-3 text-center">
-              <div class="rounded-circle bg-gradient-primary d-flex align-items-center justify-content-center mx-auto mb-3" style="width:120px; height:120px;">
+              <div class="rounded-circle bg-gradient-heading d-flex align-items-center justify-content-center mx-auto mb-3" style="width:120px; height:120px;">
                 <i class="bi bi-person-circle text-white" style="font-size:4rem;"></i>
               </div>
               <div class="d-flex justify-content-center mb-2">
@@ -98,7 +98,7 @@
                   <i class="bi bi-star-fill me-1" style="color:#ffc107; font-size:1.1rem;"></i>
                 {% endfor %}
               </div>
-              <div class="small text-muted mb-3">
+              <div class="small text-white mb-3">
                 {% if doc.average_rating and doc.average_rating > 0 %}
                   {{ "%.1f"|format(doc.average_rating) }} / 5 ({{ doc.review_count|default(0) }} reviews)
                 {% else %}
@@ -108,42 +108,42 @@
             </div>
             
             <div class="col-md-9">
-              <h3 class="text-primary fw-bold mb-2">{{ doc.name }}</h3>
-              <div class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 mb-3">
+              <h3 class="text-white fw-bold mb-2">{{ doc.name }}</h3>
+              <div class="badge bg-primary bg-opacity-10 text-white px-3 py-2 mb-3">
                 <i class="bi bi-award me-1"></i>{{ doc.specialization }}
               </div>
               
               <div class="row g-3 mb-3">
                 <div class="col-sm-6">
                   <div class="d-flex align-items-center">
-                    <i class="bi bi-hospital text-primary me-2"></i>
-                    <span class="text-muted">{{ doc.clinic_name }} - {{ doc.clinic_city }}</span>
+                    <i class="bi bi-hospital text-white me-2"></i>
+                    <span class="text-white">{{ doc.clinic_name }} - {{ doc.clinic_city }}</span>
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="d-flex align-items-center">
-                    <i class="bi bi-geo-alt text-primary me-2"></i>
-                    <span class="text-muted">{{ doc.address }}</span>
+                    <i class="bi bi-geo-alt text-white me-2"></i>
+                    <span class="text-white">{{ doc.address }}</span>
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="d-flex align-items-center">
-                    <i class="bi bi-currency-rupee text-primary me-2"></i>
-                    <span class="fw-semibold">₹{{ doc.fees }}</span>
+                    <i class="bi bi-currency-rupee text-white me-2"></i>
+                    <span class="fw-semibold text-white">₹{{ doc.fees }}</span>
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="d-flex align-items-center">
-                    <i class="bi bi-clock text-primary me-2"></i>
-                    <span class="text-muted">30 min consultation</span>
+                    <i class="bi bi-clock text-white me-2"></i>
+                    <span class="text-white">30 min consultation</span>
                   </div>
                 </div>
               </div>
               
               {% if doc.about %}
-              <div class="bg-light p-3 rounded-3">
-                <h6 class="text-primary mb-2"><i class="bi bi-info-circle me-1"></i>About Doctor</h6>
-                <p class="mb-0 text-secondary">{{ doc.about }}</p>
+              <div class="bg-light p-3 rounded-3" style="background:rgba(255,255,255,0.13)!important;">
+                <h6 class="text-white mb-2"><i class="bi bi-info-circle me-1"></i>About Doctor</h6>
+                <p class="mb-0 text-white">{{ doc.about }}</p>
               </div>
               {% endif %}
             </div>
@@ -153,8 +153,8 @@
 
       <!-- Available Slots -->
       <div class="card border-0 shadow-lg rounded-4 mb-4">
-        <div class="card-header bg-gradient-primary text-white py-3 rounded-top-4">
-          <h5 class="mb-0">
+        <div class="card-header bg-gradient-primary text-white py-3 rounded-top-4" style="background: linear-gradient(135deg, #0d3a6f 0%, #084298 100%);">
+          <h5 class="mb-0 text-white">
             <i class="bi bi-calendar-check me-2"></i>Available Appointment Slots
           </h5>
         </div>
@@ -204,8 +204,8 @@
 
       <!-- Reviews Section -->
       <div class="card border-0 shadow-lg rounded-4 mb-4">
-        <div class="card-header bg-gradient-primary text-white py-3 rounded-top-4">
-          <h5 class="mb-0">
+        <div class="card-header bg-gradient-primary text-white py-3 rounded-top-4" style="background: linear-gradient(135deg, #0d3a6f 0%, #084298 100%);">
+          <h5 class="mb-0 text-white">
             <i class="bi bi-chat-left-text me-2"></i>Patient Reviews
           </h5>
         </div>
@@ -254,8 +254,8 @@
       <!-- Leave Review Card -->
       {% if session.patient_id %}
       <div class="card border-0 shadow-lg rounded-4 mb-4 sticky-top" style="top: 2rem;">
-        <div class="card-header bg-gradient-primary text-white py-3 rounded-top-4">
-          <h6 class="mb-0">
+        <div class="card-header bg-gradient-primary text-white py-3 rounded-top-4" style="background: linear-gradient(135deg, #0d3a6f 0%, #084298 100%);">
+          <h6 class="mb-0 text-white">
             <i class="bi bi-pencil-square me-2"></i>Leave a Review
           </h6>
         </div>
@@ -277,7 +277,7 @@
               <label class="form-label fw-semibold">Comment (optional)</label>
               <textarea name="comment" class="form-control border-2" rows="3" placeholder="Share your experience..."></textarea>
             </div>
-            <button type="submit" class="btn btn-primary w-100 py-2 rounded-pill">
+            <button type="submit" class="btn btn-primary w-100 py-2 rounded-pill" style="background: linear-gradient(135deg, #0d3a6f 0%, #084298 100%);">
               <i class="bi bi-send me-2"></i>Submit Review
             </button>
           </form>
@@ -288,27 +288,27 @@
       <!-- Quick Info Card -->
       <div class="card border-0 shadow-lg rounded-4">
         <div class="card-header bg-light py-3 rounded-top-4">
-          <h6 class="mb-0 text-primary">
+          <h6 class="mb-0 text-heading">
             <i class="bi bi-info-circle me-2"></i>Quick Info
           </h6>
         </div>
         <div class="card-body p-4">
           <div class="d-flex align-items-center mb-3">
-            <i class="bi bi-clock-history text-primary me-3"></i>
+            <i class="bi bi-clock-history text-heading me-3"></i>
             <div>
               <div class="small text-muted">Experience</div>
               <div class="fw-semibold">5+ years</div>
             </div>
           </div>
           <div class="d-flex align-items-center mb-3">
-            <i class="bi bi-people text-primary me-3"></i>
+            <i class="bi bi-people text-heading me-3"></i>
             <div>
               <div class="small text-muted">Patients Treated</div>
               <div class="fw-semibold">1000+</div>
             </div>
           </div>
           <div class="d-flex align-items-center">
-            <i class="bi bi-award text-primary me-3"></i>
+            <i class="bi bi-award text-heading me-3"></i>
             <div>
               <div class="small text-muted">Languages</div>
               <div class="fw-semibold">English, Hindi</div>

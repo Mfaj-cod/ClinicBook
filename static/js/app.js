@@ -94,3 +94,155 @@ window.addEventListener('DOMContentLoaded', animateOnScroll);
   `;
   document.head.appendChild(style);
 })();
+
+
+// Counter Animation
+document.addEventListener('DOMContentLoaded', function() {
+  // Counter animation
+  const counters = document.querySelectorAll('.counter');
+  const speed = 200;
+  
+  counters.forEach(counter => {
+    const updateCount = () => {
+      const target = +counter.getAttribute('data-target');
+      const count = +counter.innerText;
+      const increment = target / speed;
+      
+      if (count < target) {
+        counter.innerText = Math.ceil(count + increment);
+        setTimeout(updateCount, 1);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    
+    // Start counter when element is in viewport
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          updateCount();
+          observer.unobserve(entry.target);
+        }
+      });
+    });
+    
+    observer.observe(counter);
+  });
+
+  // Carousel navigation — guard bindings
+  const track = document.querySelector('.carousel-track');
+  const prevBtn = document.querySelector('.carousel-prev');
+  const nextBtn = document.querySelector('.carousel-next');
+
+  if (track && prevBtn && nextBtn) {
+    let position = 0;
+    nextBtn.addEventListener('click', () => {
+      position -= 300;
+      track.style.transform = `translateX(${position}px)`;
+    });
+
+    prevBtn.addEventListener('click', () => {
+      position += 300;
+      track.style.transform = `translateX(${position}px)`;
+    });
+  }
+
+  // Magnetic button effect
+  const magneticBtns = document.querySelectorAll('.btn-magnetic');
+  
+  magneticBtns.forEach(btn => {
+    const magneticArea = btn.querySelector('.btn-magnetic-area');
+    
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      magneticArea.style.left = x + 'px';
+      magneticArea.style.top = y + 'px';
+    });
+  });
+
+  // Parallax effect
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const parallaxLayers = document.querySelectorAll('.parallax-layer');
+    
+    parallaxLayers.forEach(layer => {
+      const depth = layer.getAttribute('data-depth');
+      const movement = -(scrolled * depth);
+      layer.style.transform = `translateY(${movement}px)`;
+    });
+  });
+});
+
+// Slider functionality
+class ClinicSlider {
+  constructor(container) {
+    this.container = container;
+    this.track = container.querySelector('.slider-container');
+    this.cards = container.querySelectorAll('.slider-card');
+    this.prevBtn = container.querySelector('.slider-prev');
+    this.nextBtn = container.querySelector('.slider-next');
+    this.dotsContainer = container.querySelector('.slider-dots');
+    
+    this.currentIndex = 0;
+    this.cardWidth = 350;
+    this.gap = 30;
+    
+    this.init();
+  }
+  
+  init() {
+    this.createDots();
+    this.addEventListeners();
+  }
+  
+  createDots() {
+    for (let i = 0; i < this.cards.length; i++) {
+      const dot = document.createElement('button');
+      dot.classList.add('slider-dot');
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => this.goToSlide(i));
+      this.dotsContainer.appendChild(dot);
+    }
+  }
+  
+  addEventListeners() {
+    this.prevBtn.addEventListener('click', () => this.prevSlide());
+    this.nextBtn.addEventListener('click', () => this.nextSlide());
+  }
+  
+  nextSlide() {
+    this.currentIndex = (this.currentIndex + 1) % this.cards.length;
+    this.updateSlider();
+  }
+  
+  prevSlide() {
+    this.currentIndex = (this.currentIndex - 1 + this.cards.length) % this.cards.length;
+    this.updateSlider();
+  }
+  
+  goToSlide(index) {
+    this.currentIndex = index;
+    this.updateSlider();
+  }
+  
+  updateSlider() {
+    const translateX = -this.currentIndex * (this.cardWidth + this.gap);
+    this.track.style.transform = `translateX(${translateX}px)`;
+    
+    // Update dots
+    this.dotsContainer.querySelectorAll('.slider-dot').forEach((dot, index) => {
+      dot.classList.toggle('active', index === this.currentIndex);
+    });
+  }
+}
+
+// Initialize slider when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  const sliderContainer = document.querySelector('.clinics-slider');
+  if (sliderContainer) {
+    new ClinicSlider(sliderContainer);
+  }
+});
