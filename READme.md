@@ -80,9 +80,11 @@ The application will be available at: **http://127.0.0.1:5000/**
 ```
 ClinicBook/
 ├── app.py              # Main Flask application
-├── init_db.py          # Database initialization script
-├── seed.py             # Database seeding with sample data
-├── doctors_data.py     # Sample doctors data
+├── src/
+|     |___init_db.py    # Database initialization script
+|     |___seed.py       # Database seeding with sample data
+|     |_doctors_data.py # Sample doctors data    
+|
 ├── data/
 │   └── db              # SQLite database files
 ├── templates/          # Jinja2 HTML templates

@@ -1,10 +1,11 @@
 import sqlite3, os
+from .logg import logger
 
 BASE = os.path.dirname(__file__)
-DB = os.path.join(BASE, 'data', 'clinicBook.db')
+DB = os.path.join('./data', 'clinicBook.db')
 
 def setup():
-    os.makedirs(os.path.join(BASE, 'data'), exist_ok=True)
+    os.makedirs(os.path.join('./data'), exist_ok=True)
     conn = sqlite3.connect(DB)
     cur = conn.cursor()
     # Enable foreign key support
@@ -91,7 +92,7 @@ def setup():
 
     conn.commit()
     conn.close()
-    print('DB schema ready at', DB)
+    logger.info(f'DB schema ready at {DB}')
 
 if __name__ == '__main__':
     setup()

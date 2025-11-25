@@ -1,10 +1,11 @@
 import sqlite3, os
 
-from doctors_data import doctors_data
+from .doctors_data import doctors_data
+from .logg import logger
 import datetime
 
 BASE = os.path.dirname(__file__)
-DB = os.path.join(BASE, 'data', 'clinicBook.db')
+DB = os.path.join('./data', 'clinicBook.db')
 
 def ensure_schema(conn):
     cur = conn.cursor()
@@ -86,6 +87,7 @@ def ensure_schema(conn):
     );
     ''')
     conn.commit()
+    logger.info(f"schema ensured in seeding.")
 
 
 def generate_slots(doctor_id, days=7):
@@ -96,14 +98,18 @@ def generate_slots(doctor_id, days=7):
         date = today + datetime.timedelta(days=i)
         for time in ["10:00", "16:00"]:  # 2 slots per day
             slots.append((doctor_id, date.isoformat(), time, 5))
+    logger.info(f"Slots generated for demo doctors.")
     return slots
 
 
 def seed():
-    os.makedirs(os.path.join(BASE, 'data'), exist_ok=True)
-    conn = sqlite3.connect(DB)
-    ensure_schema(conn)
-    cur = conn.cursor()
+    try:
+        os.makedirs(os.path.join('./data'), exist_ok=True)
+        conn = sqlite3.connect(DB)
+        ensure_schema(conn)
+        cur = conn.cursor()
+    except Exception as e:
+        logger.error(f"Problem in DB-connection. {e}")
 
     for d in doctors_data:
         cur.execute('SELECT id FROM clinics WHERE name=? AND city=?', (d['clinic'], d['city']))
@@ -138,10 +144,11 @@ def seed():
 
         except Exception as e:
             print('Error', e)
+            logger.error(e)
 
     conn.commit()
     conn.close()
-    print('Seeding complete. DB at', DB)
+    logger.info(f'Seeding complete. DB at {DB}')
 
 
 if __name__ == '__main__':

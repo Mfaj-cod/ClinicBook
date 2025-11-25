@@ -2,6 +2,11 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 import os, sqlite3, functools, datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlite3 import IntegrityError
+import re
+
+from src.init_db import setup
+from src.seed import seed
+from src.logg import logger
 
 BASE = os.path.dirname(__file__)
 DB = os.path.join(BASE, 'data', 'clinicBook.db')
@@ -10,17 +15,7 @@ def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
     app.config['DATABASE'] = DB
-
-    # Serve manifest.json for PWA
-    @app.route('/manifest.json')
-    def manifest():
-        return send_from_directory(os.path.join(BASE, 'static'), 'manifest.json')
-
-    # Serve service worker JS for PWA
-    @app.route('/sw.js')
-    def sw():
-        # Set correct mimetype for service worker
-        return send_from_directory(os.path.join(BASE, 'static', 'js'), 'sw.js', mimetype='application/javascript')
+    logger.info("App and DB connected.")
 
     # Database connection
     def get_db():
@@ -164,6 +159,7 @@ def create_app():
         update_avg_rating(db, doctor_id=doctor_id, clinic_id=clinic_id)
 
         flash("Thank you for your review!", "success")
+        logger.info(f"New review submitted.")
         return redirect(request.referrer or url_for("index"))
 
 
@@ -211,6 +207,7 @@ def create_app():
             return redirect(url_for('dashboard'))
 
         # GET → show booking page
+        logger.info(f"New appointment booked.")
         return render_template('book.html', slot=slot)
 
 
@@ -294,32 +291,6 @@ def create_app():
             reviews=reviews
         )
 
-    
-
-    
-    # # Doctor login
-    # @app.route('/doctor_login', methods=['GET', 'POST'])
-    # def doctor_login():
-    #     if request.method == 'POST':
-    #         email = request.form.get('email', '').strip().lower()
-    #         password = request.form.get('password', '').strip()
-
-    #         db = get_db()
-    #         doctor = db.execute(
-    #             'SELECT * FROM doctors WHERE email=?',
-    #             (email,)
-    #         ).fetchone()
-
-    #         if doctor and check_password_hash(doctor['password_hash'], password):
-    #             session.clear()
-    #             session['doctor_id'] = doctor['id']
-    #             flash("Welcome {}!".format(doctor['name']), "success")
-    #             return redirect(url_for('doctors_dashboard'))
-    #         else:
-    #             flash("Invalid credentials.", "danger")
-
-    #     return render_template('doctor_login.html')
-
 
     # Patients list for doctor
     @app.route("/patients")
@@ -345,6 +316,7 @@ def create_app():
         db = get_db()
         doctors = db.execute("SELECT * FROM doctors").fetchall()
         return render_template("doctors.html", doctors=doctors)
+
 
     # User profile
     @app.route("/profile")
@@ -379,7 +351,6 @@ def create_app():
 
 
 
-
     # Patient registration
     @app.route("/register", methods=["GET", "POST"])
     def register():
@@ -403,6 +374,7 @@ def create_app():
             except sqlite3.IntegrityError:
                 flash("Email already registered.", "danger")
 
+        logger.info(f"New user registered: {name}")
         return render_template("register.html")
 
 
@@ -486,7 +458,7 @@ def create_app():
             except IntegrityError:
                 flash('❌ This email is already registered. Please use a different email.', 'danger')
                 return redirect(url_for('register_doctor'))
-
+        logger.info(f"New doctor registered: {name}")
         return render_template('register_doctor.html')
 
 
@@ -567,6 +539,7 @@ def create_app():
         db.execute('UPDATE appointments SET status=? WHERE id=?', ('cancelled', appointment_id))
         db.commit()
 
+        logger.info(f"An appointment cancelled. Unfortunately")
         flash('Appointment cancelled.', 'success')
         if 'patient_id' in session:
             return redirect(url_for('dashboard'))
@@ -595,6 +568,7 @@ def create_app():
         db.execute('UPDATE appointments SET status=? WHERE id=?', ('completed', appointment_id))
         db.commit()
 
+        logger.info(f"An appointment attended by the patient.")
         flash('Appointment marked as completed.', 'success')
         return redirect(url_for('doctors_dashboard'))
 
@@ -634,6 +608,7 @@ def create_app():
         )
         db.commit()
         flash("New slot added!", "success")
+        logger.info(f"Added new slots: ", 'doctor_id')
         return redirect(url_for("doctor_slots"))
 
 
@@ -656,19 +631,18 @@ def create_app():
     def logout():
         session.clear()
         flash('Logged out', 'info')
+        logger.info(f"User logged out.")
         return redirect(url_for('index'))
 
     return app
-
-#crousel
     
 
 
 if __name__ == '__main__':
-    from init_db import setup as init_setup
-    import re
     app = create_app()
     with app.app_context():
-        init_setup()
+        setup()
+        seed()
 
     app.run(debug=True)
+    logger.info(f"App running..................")
