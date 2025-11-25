@@ -58,17 +58,7 @@ A comprehensive web-based platform that streamlines the appointment booking proc
    pip install -r requirements.txt
    ```
 
-4. **Initialize the database**
-   ```bash
-   python init_db.py
-   ```
-
-5. **Seed the database with sample data**
-   ```bash
-   python seed.py
-   ```
-
-6. **Run the application**
+4. **Run the application**
    ```bash
    python app.py
    ```

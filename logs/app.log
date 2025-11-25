@@ -1,0 +1,10 @@
+2025-11-25 22:53:49,853 - src.logg - INFO - App and DB connected.
+2025-11-25 22:53:49,877 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-25 22:53:49,881 - src.logg - INFO - schema ensured in seeding.
+2025-11-25 22:53:49,891 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-25 22:53:50,969 - src.logg - INFO - App and DB connected.
+2025-11-25 22:53:50,992 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-25 22:53:50,995 - src.logg - INFO - schema ensured in seeding.
+2025-11-25 22:53:51,005 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-25 22:54:11,172 - src.logg - INFO - App running..................
+2025-11-25 22:54:11,256 - src.logg - INFO - App running..................
