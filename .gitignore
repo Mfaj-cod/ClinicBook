@@ -18,6 +18,11 @@ data/
 # Database
 *.db
 
+# logs
+logs/
+/logs
+*/logs
+
 # VS Code settings
 .vscode/
 
