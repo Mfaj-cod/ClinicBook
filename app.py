@@ -15,7 +15,7 @@ def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
     app.config['DATABASE'] = DB
-    logger.info("App and DB connected.")
+    logger.info("\nApp and DB connected.")
 
     # Database connection
     def get_db():

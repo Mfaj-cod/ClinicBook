@@ -8,3 +8,19 @@
 2025-11-25 22:53:51,005 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
 2025-11-25 22:54:11,172 - src.logg - INFO - App running..................
 2025-11-25 22:54:11,256 - src.logg - INFO - App running..................
+
+2025-11-26 18:11:01,271 - src.logg - INFO - App and DB connected.
+2025-11-26 18:11:01,287 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-26 18:11:01,289 - src.logg - INFO - schema ensured in seeding.
+2025-11-26 18:11:01,297 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-26 18:11:01,870 - src.logg - INFO - App and DB connected.
+2025-11-26 18:11:01,880 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-26 18:11:01,881 - src.logg - INFO - schema ensured in seeding.
+2025-11-26 18:11:01,903 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-26 18:16:28,977 - src.logg - INFO - 
+App and DB connected.
+2025-11-26 18:16:28,986 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-26 18:16:28,987 - src.logg - INFO - schema ensured in seeding.
+2025-11-26 18:16:29,167 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-26 18:17:13,239 - src.logg - INFO - App running..................
+2025-11-26 18:17:13,295 - src.logg - INFO - App running..................
