@@ -374,7 +374,7 @@ def create_app():
             except sqlite3.IntegrityError:
                 flash("Email already registered.", "danger")
 
-        logger.info(f"New user registered: {name}")
+        logger.info(f"New user registered.")
         return render_template("register.html")
 
 
