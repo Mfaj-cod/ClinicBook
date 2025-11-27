@@ -75,21 +75,22 @@ A comprehensive web-based platform that streamlines the appointment booking proc
 ---
 **📁 Project Structure**
 
-ClinicBook/
-├── app.py              # Main Flask application
-├── gem.py              # Gemini AI Chatbot logic & Tool definitions
-├── .env                # Environment variables (API Keys)
-├── src/
-|   |___init_db.py      # Database initialization script
-|   |___seed.py         # Database seeding with sample data
-|   |_doctors_data.py   # Sample doctors data    
-|
-├── data/
-│   └── clinicBook.db   # SQLite database files
-├── templates/          # Jinja2 HTML templates
-├── static/             # Static assets (CSS, JS, icons)
-├── requirements.txt    # Python dependencies
-└── README.md           # Project documentation
+   ```bash
+   ClinicBook/
+   ├── app.py              # Main Flask application
+   ├── gem.py              # Gemini AI Chatbot logic & Tool definitions
+   ├── .env                # Environment variables (API Keys)
+   ├── src/
+   |   |___init_db.py      # Database initialization script
+   |   |___seed.py         # Database seeding with sample data
+   |   |_doctors_data.py   # Sample doctors data    
+   |
+   ├── data/
+   │   └── clinicBook.db   # SQLite database files
+   ├── templates/          # Jinja2 HTML templates
+   ├── static/             # Static assets (CSS, JS, icons)
+   ├── requirements.txt    # Python dependencies
+   └── README.md           # Project documentation
 
 ---
 
