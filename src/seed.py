@@ -85,6 +85,15 @@ def ensure_schema(conn):
             (doctor_id IS NULL AND clinic_id IS NOT NULL)
         )
     );
+    CREATE TABLE IF NOT EXISTS chat_history (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_id INTEGER,
+        user_type TEXT, -- 'patient' or 'doctor'
+        role TEXT,      -- 'user' or 'model'
+        message TEXT,
+        timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+    
     ''')
     conn.commit()
     logger.info(f"schema ensured in seeding.")
