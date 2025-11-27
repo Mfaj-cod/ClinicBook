@@ -95,222 +95,225 @@ AttributeError: 'GenerateContentResponse' object has no attribute 'has_tool_call
 2025-11-27 22:38:19,111 - src.logg - INFO - App running..................
 2025-11-27 22:38:21,307 - src.logg - INFO - App running..................
 2025-11-27 22:40:20,842 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:40:20,846 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:40:20,884 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:40:20,890 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:40:21,073 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:40:27,056 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:40:27,061 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:40:27,100 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:40:27,106 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:40:27,289 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:41:13,469 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:41:13,472 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:41:13,488 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:41:13,490 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:41:13,501 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:41:23,933 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:41:23,935 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:41:23,952 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:41:23,954 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:41:23,960 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:41:25,676 - src.logg - INFO - App running..................
-2025-11-27 22:41:25,848 - src.logg - INFO - App running..................
-2025-11-27 22:41:31,650 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:41:31,656 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:41:31,696 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:41:31,700 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:41:31,717 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:41:36,582 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:41:36,585 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:41:36,599 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:41:36,601 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:41:36,610 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:42:09,845 - src.logg - INFO - DEBUG: Type of response is: <class 'google.generativeai.types.generation_types.GenerateContentResponse'>
-2025-11-27 22:42:09,846 - src.logg - ERROR - extract_text failed: 'str' object has no attribute '_result'
-2025-11-27 22:44:10,869 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:44:10,872 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:44:10,896 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:44:10,899 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:44:10,911 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:44:16,098 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:44:16,104 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:44:16,168 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:44:16,177 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:44:16,193 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:44:44,817 - src.logg - INFO - DEBUG: Type of response is: <class 'google.generativeai.types.generation_types.GenerateContentResponse'>
-2025-11-27 22:46:54,620 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:46:54,622 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:46:54,637 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:46:54,640 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:46:54,648 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:46:59,797 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:46:59,799 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:46:59,832 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:46:59,834 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:46:59,982 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:47:10,413 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:47:10,416 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:47:10,433 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:47:10,436 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:47:10,444 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:47:23,061 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:47:23,064 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:47:23,083 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:47:23,085 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:47:23,154 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:47:30,101 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:47:30,105 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:47:30,139 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:47:30,143 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:47:30,325 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:47:35,053 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:47:35,056 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:47:35,077 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:47:35,080 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:47:35,089 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:47:39,347 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:47:39,351 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:47:39,369 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:47:39,372 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:47:39,379 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:47:48,373 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:47:48,375 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:47:48,395 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:47:48,397 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:47:48,405 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:47:58,595 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:47:58,598 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:47:58,621 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:47:58,625 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:47:58,633 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:48:07,973 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:48:07,976 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:48:08,004 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:48:08,008 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:48:08,020 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:48:25,362 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:48:25,364 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:48:25,391 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:48:25,394 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:48:25,403 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:49:29,691 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:49:29,695 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:49:29,713 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:49:29,716 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:49:29,727 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:49:32,998 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:49:33,000 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:49:33,024 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:49:33,027 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:49:33,036 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:49:46,166 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:49:46,172 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:49:46,211 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:49:46,215 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:49:46,229 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:50:19,873 - src.logg - INFO - DEBUG: Type of response is: <class 'google.generativeai.types.generation_types.GenerateContentResponse'>
-2025-11-27 22:50:34,559 - src.logg - INFO - DEBUG: Type of response is: <class 'google.generativeai.types.generation_types.GenerateContentResponse'>
-2025-11-27 22:50:47,847 - src.logg - INFO - DEBUG: Type of response is: <class 'google.generativeai.types.generation_types.GenerateContentResponse'>
-2025-11-27 22:51:13,919 - src.logg - INFO - DEBUG: Type of response is: <class 'google.generativeai.types.generation_types.GenerateContentResponse'>
-2025-11-27 22:51:45,100 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:51:45,103 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:51:45,128 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:51:45,133 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:51:45,144 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:51:51,836 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:51:51,838 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:51:51,858 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:51:51,860 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:51:52,040 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:52:08,655 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:52:08,658 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:52:08,680 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:52:08,683 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:52:08,691 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:53:30,082 - src.logg - INFO - DEBUG: Type of response is: <class 'google.generativeai.types.generation_types.GenerateContentResponse'>
-2025-11-27 22:53:41,116 - src.logg - INFO - DEBUG: Type of response is: <class 'google.generativeai.types.generation_types.GenerateContentResponse'>
-2025-11-27 22:54:11,611 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:54:11,614 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:54:11,633 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:54:11,636 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:54:11,816 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:54:26,250 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:54:26,252 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:54:26,273 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:54:26,276 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:54:26,284 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:54:34,148 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:54:34,151 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:54:34,174 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:54:34,177 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:54:34,186 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:54:40,661 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:54:40,664 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:54:40,689 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:54:40,692 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:54:40,702 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:54:56,260 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:54:56,264 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:54:56,286 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:54:56,289 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:54:56,299 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:55:02,472 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:55:02,477 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:55:02,496 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:55:02,498 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:55:02,506 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:55:09,894 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:55:09,897 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:55:09,930 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:55:09,933 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:55:09,946 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:55:26,250 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:55:26,252 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:55:26,277 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:55:26,281 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:55:26,292 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:55:34,778 - src.logg - INFO - [Gemini] Model loaded with tools.
-2025-11-27 22:55:34,783 - src.logg - INFO - 
-App and DB connected.
-2025-11-27 22:55:34,829 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-27 22:55:34,837 - src.logg - INFO - schema ensured in seeding.
-2025-11-27 22:55:34,848 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-27 22:55:49,104 - src.logg - INFO - DEBUG: Type of response is: <class 'google.generativeai.types.generation_types.GenerateContentResponse'>
-2025-11-27 22:56:04,200 - src.logg - INFO - DEBUG: Type of response is: <class 'google.generativeai.types.generation_types.GenerateContentResponse'>
-2025-11-27 22:56:41,553 - src.logg - INFO - DEBUG: Type of response is: <class 'google.generativeai.types.generation_types.GenerateContentResponse'>
-2025-11-27 22:56:53,295 - src.logg - INFO - App running..................
 2025-11-27 22:56:55,461 - src.logg - INFO - App running..................
+2025-11-27 23:17:27,125 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-27 23:17:27,128 - src.logg - INFO - 
+App and DB connected.
+2025-11-27 23:17:27,141 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-27 23:17:27,143 - src.logg - INFO - schema ensured in seeding.
+2025-11-27 23:17:27,322 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-27 23:17:31,058 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-27 23:17:31,064 - src.logg - INFO - 
+App and DB connected.
+2025-11-27 23:17:31,108 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-27 23:17:31,115 - src.logg - INFO - schema ensured in seeding.
+2025-11-27 23:17:31,304 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-27 23:18:17,160 - src.logg - INFO - DEBUG: Type of response is: <class 'google.generativeai.types.generation_types.GenerateContentResponse'>
+2025-11-27 23:18:34,609 - src.logg - INFO - DEBUG: Type of response is: <class 'google.generativeai.types.generation_types.GenerateContentResponse'>
+2025-11-27 23:19:24,242 - src.logg - INFO - DEBUG: Type of response is: <class 'google.generativeai.types.generation_types.GenerateContentResponse'>
+2025-11-27 23:19:24,253 - src.logg - ERROR - Chat failure: Could not create `Blob`, expected `Blob`, `dict` or an `Image` type(`PIL.Image.Image` or `IPython.display.Image`).
+Got a: <class 'google.generativeai.types.generation_types.GenerateContentResponse'>
+Value: response:
+GenerateContentResponse(
+    done=True,
+    iterator=None,
+    result=protos.GenerateContentResponse({
+      "candidates": [
+        {
+          "content": {
+            "parts": [
+              {
+                "function_call": {
+                  "name": "search_doctor_by_name",
+                  "args": {
+                    "name": "Arjun Patel"
+                  }
+                }
+              }
+            ],
+            "role": "model"
+          },
+          "finish_reason": "STOP",
+          "index": 0
+        }
+      ],
+      "usage_metadata": {
+        "prompt_token_count": 665,
+        "candidates_token_count": 21,
+        "total_token_count": 745
+      },
+      "model_version": "gemini-2.5-flash"
+    }),
+)
+Traceback (most recent call last):
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\gem.py", line 187, in gemini_chat
+    final = gemini_model.generate_content([
+        response, # The chat history so far
+    ...<5 lines>...
+        )
+    ])
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\clinic\Lib\site-packages\google\generativeai\generative_models.py", line 305, in generate_content
+    request = self._prepare_request(
+        contents=contents,
+    ...<3 lines>...
+        tool_config=tool_config,
+    )
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\clinic\Lib\site-packages\google\generativeai\generative_models.py", line 154, in _prepare_request
+    contents = content_types.to_contents(contents)
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\clinic\Lib\site-packages\google\generativeai\types\content_types.py", line 333, in to_contents
+    contents = [to_content(contents)]
+                ~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\clinic\Lib\site-packages\google\generativeai\types\content_types.py", line 296, in to_content
+    return protos.Content(parts=[to_part(part) for part in content])
+                                 ~~~~~~~^^^^^^
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\clinic\Lib\site-packages\google\generativeai\types\content_types.py", line 264, in to_part
+    return protos.Part(inline_data=to_blob(part))
+                                   ~~~~~~~^^^^^^
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\clinic\Lib\site-packages\google\generativeai\types\content_types.py", line 210, in to_blob
+    raise TypeError(
+    ...<4 lines>...
+    )
+TypeError: Could not create `Blob`, expected `Blob`, `dict` or an `Image` type(`PIL.Image.Image` or `IPython.display.Image`).
+Got a: <class 'google.generativeai.types.generation_types.GenerateContentResponse'>
+Value: response:
+GenerateContentResponse(
+    done=True,
+    iterator=None,
+    result=protos.GenerateContentResponse({
+      "candidates": [
+        {
+          "content": {
+            "parts": [
+              {
+                "function_call": {
+                  "name": "search_doctor_by_name",
+                  "args": {
+                    "name": "Arjun Patel"
+                  }
+                }
+              }
+            ],
+            "role": "model"
+          },
+          "finish_reason": "STOP",
+          "index": 0
+        }
+      ],
+      "usage_metadata": {
+        "prompt_token_count": 665,
+        "candidates_token_count": 21,
+        "total_token_count": 745
+      },
+      "model_version": "gemini-2.5-flash"
+    }),
+)
+2025-11-27 23:23:52,039 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-27 23:23:52,048 - src.logg - INFO - 
+App and DB connected.
+2025-11-27 23:23:52,103 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-27 23:23:52,106 - src.logg - INFO - schema ensured in seeding.
+2025-11-27 23:23:52,289 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-27 23:24:08,149 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-27 23:24:08,150 - src.logg - INFO - 
+App and DB connected.
+2025-11-27 23:24:08,167 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-27 23:24:08,169 - src.logg - INFO - schema ensured in seeding.
+2025-11-27 23:24:08,177 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-27 23:24:13,332 - src.logg - INFO - App running..................
+2025-11-27 23:24:13,515 - src.logg - INFO - App running..................
+2025-11-27 23:24:19,643 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-27 23:24:19,646 - src.logg - INFO - 
+App and DB connected.
+2025-11-27 23:24:19,659 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-27 23:24:19,661 - src.logg - INFO - schema ensured in seeding.
+2025-11-27 23:24:19,668 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-27 23:24:22,122 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-27 23:24:22,125 - src.logg - INFO - 
+App and DB connected.
+2025-11-27 23:24:22,141 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-27 23:24:22,143 - src.logg - INFO - schema ensured in seeding.
+2025-11-27 23:24:22,284 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-27 23:26:55,069 - src.logg - INFO - DEBUG: Type of response is: <class 'google.generativeai.types.generation_types.GenerateContentResponse'>
+2025-11-27 23:27:09,404 - src.logg - INFO - DEBUG: Type of response is: <class 'google.generativeai.types.generation_types.GenerateContentResponse'>
+2025-11-27 23:27:09,459 - src.logg - ERROR - Chat failure: Could not create `Blob`, expected `Blob`, `dict` or an `Image` type(`PIL.Image.Image` or `IPython.display.Image`).
+Got a: <class 'google.ai.generativelanguage_v1beta.types.content.Content'>
+Value: parts {
+  function_call {
+    name: "search_doctor_by_name"
+    args {
+      fields {
+        key: "name"
+        value {
+          string_value: "Dr. M. Fajal"
+        }
+      }
+    }
+  }
+}
+role: "model"
+Traceback (most recent call last):
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\gem.py", line 189, in gemini_chat
+    final = gemini_model.generate_content([
+        user_msg,                        # 1. Include the User's original query
+    ...<6 lines>...
+        )
+    ])
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\clinic\Lib\site-packages\google\generativeai\generative_models.py", line 305, in generate_content
+    request = self._prepare_request(
+        contents=contents,
+    ...<3 lines>...
+        tool_config=tool_config,
+    )
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\clinic\Lib\site-packages\google\generativeai\generative_models.py", line 154, in _prepare_request
+    contents = content_types.to_contents(contents)
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\clinic\Lib\site-packages\google\generativeai\types\content_types.py", line 333, in to_contents
+    contents = [to_content(contents)]
+                ~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\clinic\Lib\site-packages\google\generativeai\types\content_types.py", line 296, in to_content
+    return protos.Content(parts=[to_part(part) for part in content])
+                                 ~~~~~~~^^^^^^
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\clinic\Lib\site-packages\google\generativeai\types\content_types.py", line 264, in to_part
+    return protos.Part(inline_data=to_blob(part))
+                                   ~~~~~~~^^^^^^
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\clinic\Lib\site-packages\google\generativeai\types\content_types.py", line 210, in to_blob
+    raise TypeError(
+    ...<4 lines>...
+    )
+TypeError: Could not create `Blob`, expected `Blob`, `dict` or an `Image` type(`PIL.Image.Image` or `IPython.display.Image`).
+Got a: <class 'google.ai.generativelanguage_v1beta.types.content.Content'>
+Value: parts {
+  function_call {
+    name: "search_doctor_by_name"
+    args {
+      fields {
+        key: "name"
+        value {
+          string_value: "Dr. M. Fajal"
+        }
+      }
+    }
+  }
+}
+role: "model"
+
+2025-11-27 23:28:42,792 - src.logg - INFO - DEBUG: Type of response is: <class 'google.generativeai.types.generation_types.GenerateContentResponse'>
+2025-11-27 23:30:16,393 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-27 23:30:16,396 - src.logg - INFO - 
+App and DB connected.
+2025-11-27 23:30:16,411 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-27 23:30:16,413 - src.logg - INFO - schema ensured in seeding.
+2025-11-27 23:30:16,592 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-27 23:30:35,143 - src.logg - INFO - App running..................
+2025-11-27 23:30:35,311 - src.logg - INFO - App running..................
+2025-11-27 23:30:40,401 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-27 23:30:40,403 - src.logg - INFO - 
+App and DB connected.
+2025-11-27 23:30:40,420 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-27 23:30:40,422 - src.logg - INFO - schema ensured in seeding.
+2025-11-27 23:30:40,601 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-27 23:30:42,946 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-27 23:30:42,948 - src.logg - INFO - 
+App and DB connected.
+2025-11-27 23:30:42,964 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-27 23:30:42,966 - src.logg - INFO - schema ensured in seeding.
+2025-11-27 23:30:43,145 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db

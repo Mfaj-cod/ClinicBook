@@ -2,6 +2,8 @@ import os
 import sqlite3
 from flask import current_app, jsonify
 from dotenv import load_dotenv
+from google.generativeai.protos import Part, FunctionResponse
+
 from src.logg import logger
 from src.prompt import sys_prompt
 
@@ -139,6 +141,7 @@ def extract_text(resp):
 
 
 # MAIN CHAT HANDLER (CALLED BY APP.PY)
+# MAIN CHAT HANDLER (CALLED BY APP.PY)
 def gemini_chat(request):
     """Handles a chat request from Flask route."""
 
@@ -147,28 +150,28 @@ def gemini_chat(request):
 
     user_msg = request.json.get("message", "").strip()
 
-
     if not user_msg:
         return jsonify({"reply": "Say something…"}), 200
 
     try:
-        # STEP 1 → Ask Gemini
-        response = gemini_model.generate_content(
-            (sys_prompt + user_msg),
+        # 1. Start a local chat session (handles history automatically)
+        chat = gemini_model.start_chat(history=[])
+        
+        # 2. Send the user's message (with sys prompt)
+        response = chat.send_message(
+            sys_prompt + user_msg,
             generation_config={"candidate_count": 1, "temperature": 0.4}
         )
-        logger.info(f"DEBUG: Type of response is: {type(response)}")
-
-        # STEP 2 → Did Gemini call a tool?
-        # STEP 2 → Manually check for tool calls (Compatible with older versions)
+        
+        # 3. Check if Gemini wants to call a function
         try:
-            # specific check for older library versions
             part = response.candidates[0].content.parts[0]
             function_call = part.function_call
         except (AttributeError, IndexError):
             function_call = None
 
-        if function_call:
+        # 4. If a tool was called, execute it and send result back
+        if function_call and function_call.name:
             fname = function_call.name
             args = dict(function_call.args)
 
@@ -180,26 +183,23 @@ def gemini_chat(request):
             else:
                 result = "Error: Tool function not found."
 
-            # STEP 3 → Feed results back to model
-            # We must construct the FunctionResponse explicitly for older versions
+            # Import Proto types
             from google.generativeai.protos import Part, FunctionResponse
-            
-            final = gemini_model.generate_content([
-                response, # The chat history so far
+
+            # Send the tool result back to the EXISTING chat session
+            # The chat session already knows the previous context, so we only send the new part
+            response = chat.send_message(
                 Part(
                     function_response=FunctionResponse(
                         name=fname,
                         response={'result': result}
                     )
                 )
-            ])
-            
-            # Note: final is an object, so we extract text from it
-            final_text = extract_text(final) 
-            return jsonify({"reply": final_text})
-        
-        # STEP 4 → Normal LLM answer
-        final_text = extract_text(response.text)
+            )
+
+        # 5. Extract text from the final response
+        # Pass the whole object to your extract_text function
+        final_text = extract_text(response)
         return jsonify({"reply": final_text})
 
     except Exception as exc:
