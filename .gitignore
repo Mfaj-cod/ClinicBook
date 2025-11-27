@@ -3,6 +3,8 @@
 env/
 /env
 *.env
+clinic/
+/clinic
 
 # Python cache
 __pycache__/

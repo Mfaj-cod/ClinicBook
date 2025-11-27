@@ -1,12 +1,15 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash, g, send_from_directory, abort
+from flask import Flask, render_template, request, jsonify, redirect, url_for, session, flash, g, send_from_directory, abort
 import os, sqlite3, functools, datetime
 from werkzeug.security import generate_password_hash, check_password_hash
+from functools import wraps
 from sqlite3 import IntegrityError
 import re
 
 from src.init_db import setup
 from src.seed import seed
 from src.logg import logger
+from gem import gemini_chat
+
 
 BASE = os.path.dirname(__file__)
 DB = os.path.join(BASE, 'data', 'clinicBook.db')
@@ -29,6 +32,18 @@ def create_app():
         db = g.pop('db', None)
         if db:
             db.close()
+
+    #defining login required function
+    def login_required(f):
+        @wraps(f)
+        def decorated_function(*args, **kwargs):
+            if "pateint_id" or "doctor_id" not in session:
+                flash("Please log in first.", "warning")
+                return redirect(url_for("login"))
+            return f(*args, **kwargs)
+        
+        return decorated_function
+    
 
     # Helper function: update average rating
     def update_avg_rating(db, doctor_id=None, clinic_id=None):
@@ -108,6 +123,7 @@ def create_app():
 
 
     # Doctor details and available slots
+    @login_required
     @app.route('/doctor/<int:doc_id>')
     def doctor_detail(doc_id):
         db = get_db()
@@ -139,6 +155,7 @@ def create_app():
 
 
     # Submit review
+    @login_required
     @app.route('/review', methods=['POST'])
     def review():
         if "patient_id" not in session:
@@ -165,6 +182,7 @@ def create_app():
 
 
     # Book appointment
+    @login_required
     @app.route('/book/<int:slot_id>', methods=['GET', 'POST'])
     def book(slot_id):
         if 'patient_id' not in session:
@@ -488,7 +506,7 @@ def create_app():
 
         return render_template("login.html")
 
-
+    
     @app.route('/clinic/<int:clinic_id>')
     def clinic_detail(clinic_id):
         db = get_db()
@@ -623,7 +641,12 @@ def create_app():
         db.commit()
         flash("Slot deleted.", "info")
         return redirect(url_for("doctor_slots"))
+    
 
+        
+    @app.route("/chat_with_gemini", methods=["POST"])
+    def chat_with_gemini_route():
+        return gemini_chat(request)
 
 
     # Logout

@@ -318,8 +318,142 @@
     {% endif %}
   </nav>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Floating Chat Button -->
+<div id="chatbot-toggle"
+     style="position: fixed; bottom: 25px; right: 25px; z-index: 9999;">
+  <button class="btn btn-primary rounded-circle shadow-lg"
+          style="width: 65px; height: 65px; background: linear-gradient(135deg,#0d3a6f,#084298); border: none;"
+          onclick="toggleChat()">
+    <i class="bi bi-chat-dots-fill text-white" style="font-size:1.8rem;"></i>
+  </button>
+</div>
+
+{% if session.patient_id or session.doctor_id %}
+<!-- Chat Window -->
+    <div id="chatbot-window"
+        class="shadow-lg"
+        style="
+            position: fixed;
+            bottom: 110px;
+            right: 25px;
+            width: 350px;
+            height: 480px;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 9999;">
+      
+      <!-- Header -->
+      <div style="
+          padding: 15px;
+          background: linear-gradient(135deg,#0d3a6f,#084298);
+          color: white;
+          font-weight: bold;
+          font-size: 1.1rem;">
+        ClinicBook Assistant
+      </div>
+
+      <!-- Messages -->
+      <div id="chat-messages"
+          style="flex:1; padding: 15px; overflow-y:auto; font-size:0.9rem;"></div>
+
+      <!-- Input -->
+      <div style="padding: 12px; border-top: 1px solid rgba(0,0,0,0.1); background:white;">
+        <div class="input-group">
+          <input id="chat-input" type="text" class="form-control"
+                placeholder="Ask anything..."
+                style="border-radius: 12px;">
+          <button class="btn btn-primary"
+                  style="background: linear-gradient(135deg,#0d3a6f,#084298); border:none; border-radius:12px;"
+                  onclick="sendMessage()">
+            <i class="bi bi-send-fill"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+{% endif %}
+
+<script>
+    function toggleChat() {
+      const win = document.getElementById("chatbot-window");
+      win.style.display = win.style.display === "flex" ? "none" : "flex";
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById("chat-input");
+      const msgBox = document.getElementById("chat-messages");
+      const text = input.value.trim();
+      if (!text) return;
+
+      // User bubble
+      msgBox.innerHTML += `
+        <div style="margin-bottom:10px; text-align:right;">
+          <span style="display:inline-block; padding:8px 12px; background:#0d6efd; color:white; border-radius:12px;">
+            ${text}
+          </span>
+        </div>`;
+
+      msgBox.scrollTop = msgBox.scrollHeight;
+      input.value = "";
+
+      // Loading bubble
+      let loader = document.createElement("div");
+      loader.innerHTML = `
+        <div style="margin-bottom:10px;">
+          <span style="display:inline-block; padding:8px 12px; background:#f1f1f1; border-radius:12px; color:#555;">
+            Typing...
+          </span>
+        </div>`;
+      msgBox.appendChild(loader);
+      msgBox.scrollTop = msgBox.scrollHeight;
+
+      const reply = await askGemini(text);
+
+      loader.remove();
+
+      // Gemini bubble
+      msgBox.innerHTML += `
+        <div style="margin-bottom:10px;">
+          <span style="display:inline-block; padding:10px 12px; background:#f8f9fa; border-radius:12px; border:1px solid #e5e5e5;">
+            ${reply}
+          </span>
+        </div>`;
+
+      msgBox.scrollTop = msgBox.scrollHeight;
+    }
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- base.html mein -->
 <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script>
+    async function askGemini(message) {
+      try {
+        const res = await fetch("/chat_with_gemini", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message })
+        });
+        
+        const data = await res.json();
+        
+        // FIX: Check if there is an error key first
+        if (data.error) {
+            return "Error: " + data.error;
+        }
+        
+        // Fallback if reply is somehow empty
+        return data.reply || "No response received.";
+        
+      } catch (err) {
+        return "Network error, please try again.";
+      }
+    }
+</script>
+
 </body>
 </html>
