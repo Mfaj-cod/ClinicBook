@@ -91,7 +91,7 @@ A comprehensive web-based platform that streamlines the appointment booking proc
    ├── static/             # Static assets (CSS, JS, icons)
    ├── requirements.txt    # Python dependencies
    └── README.md           # Project documentation
-
+   ```
 ---
 
 ***Note on AI Features:*** To enable the chatbot, ensure the GEMINI_API_KEY is set in your .env file. If the key is missing, the app will run, but the chat feature will return an error or be disabled.
