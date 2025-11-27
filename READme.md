@@ -111,19 +111,20 @@ A comprehensive web-based platform that streamlines the appointment booking proc
 
 ---
 **🔮 Roadmap**
-[x] AI Chatbot: Integrated Gemini for natural language queries
 
-[ ] Payment Integration: Online payment processing for consultations
+- [x] AI Chatbot: Integrated Gemini for natural language queries
 
-[ ] Communication System: Email and SMS reminders for appointments
+- [ ] Payment Integration: Online payment processing for consultations
 
-[ ] Multi-clinic Support: Enhanced support for multiple clinic locations
+- [ ] Communication System: Email and SMS reminders for appointments
 
-[ ] Admin Dashboard: Comprehensive administrative interface
+- [ ] Multi-clinic Support: Enhanced support for multiple clinic locations
 
-[ ] API Development: RESTful API for mobile app integration
+- [ ] Admin Dashboard: Comprehensive administrative interface
 
-[ ] Analytics: Appointment analytics and reporting features
+- [ ] API Development: RESTful API for mobile app integration
+
+- [ ] Analytics: Appointment analytics and reporting features
 
 **📞 Support**
 For support, please open an issue in the GitHub repository or contact the development team.
