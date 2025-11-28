@@ -23,6 +23,7 @@ if GEMINI_API_KEY and genai:
         genai.configure(api_key=GEMINI_API_KEY)
         gemini_model = genai.GenerativeModel(
             model_name=GEMINI_MODEL_NAME,
+            # tools that the model can call
             tools=[{
                 "function_declarations": [
                     {
@@ -71,8 +72,7 @@ else:
     logger.warning("Gemini not configured. API key or package missing.")
 
 
-# --- DB HELPERS ---
-
+# DB Helpers
 def get_db_connection():
     db_path = current_app.config["DATABASE"]
     conn = sqlite3.connect(db_path)
@@ -121,7 +121,7 @@ def get_chat_history_for_gemini(user_id, user_type, limit=10):
     return history
 
 
-# --- TOOL FUNCTIONS ---
+# Tool Functions
 
 def search_doctor_by_specialization(specialization: str):
     return run_query(
@@ -161,7 +161,7 @@ def extract_text(resp):
     if isinstance(resp, str):
         return resp
     try:
-        # Check if the object has a direct 'text' property (simple response)
+        # Checking if the object has a direct 'text' property (simple response)
         if hasattr(resp, 'text'):
             return resp.text
             
@@ -175,7 +175,7 @@ def extract_text(resp):
 
 
 
-# --- MAIN CHAT HANDLER ---
+# main function
 
 def gemini_chat(request):
     """Handles a chat request with memory and tools."""
@@ -186,7 +186,7 @@ def gemini_chat(request):
     if not user_msg:
         return jsonify({"reply": "Say something…"}), 200
 
-    # 1. IDENTIFY USER
+
     if 'patient_id' in session:
         user_id = session['patient_id']
         user_type = 'patient'
@@ -194,22 +194,20 @@ def gemini_chat(request):
         user_id = session['doctor_id']
         user_type = 'doctor'
     else:
-        # Anonymous user (no memory persistence)
+        # no user = no memory persistence
         user_id = 0
         user_type = 'guest'
 
     try:
-        # 2. LOAD HISTORY FROM DB
+        # loading history from DB
         db_history = []
         if user_id != 0:
             db_history = get_chat_history_for_gemini(user_id, user_type, limit=10)
 
-        # 3. START CHAT WITH HISTORY
+        # start chat with history
         chat = gemini_model.start_chat(history=db_history)
         
-        # 4. SEND MESSAGE (with system prompt instruction on first turn if needed, 
-        #    but usually sys_prompt is better sent as the first history item or prepended.
-        #    Here we prepend it to the current message to enforce instructions.)
+        """ Sending MESSAGE (with system prompt instruction on first turn if needed, but usually sys_prompt is better sent as the first history item or prepended. Here we prepend it to the current message to enforce instructions."""
         full_prompt = sys_prompt + "\nUser Query: " + user_msg
         
         response = chat.send_message(
@@ -217,7 +215,7 @@ def gemini_chat(request):
             generation_config={"candidate_count": 1, "temperature": 0.5}
         )
 
-        # 5. CHECK FOR TOOLS
+        # checking for tools
         try:
             part = response.candidates[0].content.parts[0]
             function_call = part.function_call
@@ -234,7 +232,7 @@ def gemini_chat(request):
             else:
                 result = "Error: Tool function not found."
 
-            # Send tool result back to chat
+            # Sending tool result back to chat
             response = chat.send_message(
                 Part(
                     function_response=FunctionResponse(
@@ -244,10 +242,10 @@ def gemini_chat(request):
                 )
             )
 
-        # 6. EXTRACT FINAL TEXT
+        # extracting final text
         final_reply = extract_text(response)
 
-        # 7. SAVE TO DB (Only if user is logged in)
+        # save to DB (Only if user is logged in)
         if user_id != 0:
             save_chat_log(user_id, user_type, "user", user_msg)
             save_chat_log(user_id, user_type, "model", final_reply)
