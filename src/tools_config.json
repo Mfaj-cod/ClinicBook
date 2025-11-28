@@ -1,0 +1,76 @@
+[
+  {
+    "name": "search_doctor_by_specialization",
+    "description": "Finds doctors by specialization. IMPORTANT: Convert input to the SINGULAR PRACTITIONER TITLE (e.g., 'Cardiologist' instead of 'Cardiology').",
+    "parameters": {
+      "type": "object",
+      "properties": {}
+    }
+  },
+  {
+    "name": "search_doctor_by_name",
+    "description": "Returns doctor details whose name matches the given input.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" }
+      },
+      "required": ["name"]
+    }
+  },
+  {
+    "name": "search_clinic_by_city",
+    "description": "Finds clinics in a given city.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "city": { "type": "string" }
+      },
+      "required": ["city"]
+    }
+  },
+  {
+    "name": "search_appointments_by_patient",
+    "description": "Retrieves a list of upcoming and past appointments for the currently logged-in patient.",
+    "parameters": {
+      "type": "object",
+      "properties": {}
+    }
+  },
+  {
+    "name": "get_doctor_schedule",
+    "description": "Retrieves the schedule of appointments (patients, times, status) for the currently logged-in DOCTOR.",
+    "parameters": {
+      "type": "object",
+      "properties": {}
+    }
+  },
+  {
+    "name": "cancel_appointment_by_patient",
+    "description": "Cancels a specific appointment. Requires the appointment ID (integer) found in the user's appointment list.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "appointment_id": {
+          "type": "integer",
+          "description": "The ID of the appointment to cancel"
+        }
+      },
+      "required": ["appointment_id"]
+    }
+  },
+  {
+    "name": "complete_appointment_by_doctor",
+    "description": "Complete a specific appointment. Requires the appointment ID (integer) found in the user's (i.e. doctor's) appointment list.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "appointment_id": {
+          "type": "integer",
+          "description": "The ID of the appointment to complete"
+        }
+      },
+      "required": ["appointment_id"]
+    }
+  }
+]

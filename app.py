@@ -473,11 +473,11 @@ def create_app():
                 )
                 db.commit()
                 flash('Doctor registered successfully ✅ Please login.', 'success')
-                return redirect(url_for('doctor_login'))
+                return redirect(url_for('login'))
             except IntegrityError:
                 flash('❌ This email is already registered. Please use a different email.', 'danger')
                 return redirect(url_for('register_doctor'))
-        logger.info(f"New doctor registered: {name}")
+        logger.info(f"New doctor registered.")
         return render_template('register_doctor.html')
 
 
