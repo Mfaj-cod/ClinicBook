@@ -1,56 +1,68 @@
 # 🏥 Clinic Appointment Booking System
 
-A comprehensive web-based platform that streamlines the appointment booking process between patients and healthcare providers. This system eliminates the need for physical visits to clinics for appointment scheduling, offering a seamless digital experience for both patients and doctors.
+A comprehensive web-based platform that streamlines the appointment booking process between patients and healthcare providers. This system combines a robust Flask backend with an **Agentic AI Assistant** to offer a seamless, conversational experience for managing healthcare needs.
 
 ---
+
 ## ✨ Key Features
 
-### 🤖 AI Health Assistant (Powered by Gemini)
-- **Smart Doctor Search**: Find doctors using natural language (e.g., *"Find me a cardiologist"* or *"Is Dr. Arjun available?"*).
-- **Intelligent Querying**: Automatically converts patient symptoms or general terms into specific medical specializations (e.g., searches for "Urologist" when asked for "urologists").
-- **Context-Aware Memory**: Remembers the last 10 interactions for logged-in users, allowing for smooth, continuous conversations.
-- **Database Integration**: Directly connects with the clinic database to fetch real-time doctor details, clinic locations, and appointment slots.
+### 🤖 Agentic AI Health Assistant (Powered by Gemini)
+*Unlike standard chatbots, this assistant acts as an agent with direct database access.*
+
+- **Zero-Touch Context**: Automatically identifies the logged-in user (Patient or Doctor) via session data—no need to ask for emails or IDs.
+- **Smart Appointment Management**: 
+  - **Fetching**: "Show my appointments" retrieves real-time data from the database.
+  - **Cancelling**: "Cancel the booked one" works intuitively. The system uses an **"Invisible Ink" strategy** to handle database IDs, allowing users to refer to items naturally without seeing technical ID numbers.
+- **Intelligent Routing**: Converts symptoms (e.g., *"I have chest pain"*) into specific specialist queries (searches for *Cardiologists*) using Function Calling.
+- **Clean UI Formatting**: The AI automatically cleans markdown and formats database results into readable, bulleted lists for the frontend.
+- **Context-Aware Memory**: Remembers the last 10 interactions, allowing for follow-up questions like *"Where is that clinic located?"* after searching for a doctor.
 
 ### 👩‍⚕️ Doctor Portal
-- **Profile Management**: Create and maintain detailed doctor profiles including specialization, consultation fees, and clinic information
-- **Slot Management**: Add and manage available appointment slots with specific dates and times
-- **Appointment Dashboard**: View all booked appointments with patient details and appointment status
-- **Appointment Control**: Cancel or modify appointments as needed
+- **Profile Management**: Maintain professional details, specialization, and consultation fees.
+- **Slot Management**: Create and manage availability slots.
+- **Patient Dashboard**: View booked patients and upcoming schedule.
+- **Secure Access**: Session-based security ensures doctors only manage their own slots.
 
 ### 🧑‍🤝‍🧑 Patient Portal
-- **Doctor Discovery**: Browse and search doctors by specialization and clinic location
-- **Easy Booking**: Book appointments in available time slots with just a few clicks
-- **Personal Dashboard**: Manage upcoming appointments and view booking history
-- **Flexible Cancellation**: Cancel appointments easily through the patient dashboard
+- **Doctor Discovery**: Search by name, specialization, or city.
+- **One-Click Booking**: Streamlined booking process for available slots.
+- **Personal Dashboard**: View history, check status, and cancel upcoming visits.
+- **Visual Status**: Clear indicators for 'Booked' vs 'Cancelled' appointments.
 
 ### ⚙️ System Features
-- **Secure Authentication**: Robust login system for both patients and healthcare providers
-- **Responsive Design**: Mobile-friendly interface built with Bootstrap 5
-- **Real-time Notifications**: Flash messages and status updates for better user experience
-- **Lightweight Database**: SQLite backend for easy deployment and maintenance
+- **Secure Authentication**: Flask-Login implementation for session management.
+- **Robust Database**: SQLite with transactional integrity (Commit/Rollback protections).
+- **Responsive Design**: Mobile-friendly interface built with Bootstrap 5.
+- **Real-time Updates**: changes made via Chatbot are immediately reflected in the dashboard.
+
+---
 
 ## 🛠️ Technology Stack
 
-- **Backend Framework**: Flask (Python)
-- **AI/LLM**: Google Gemini 1.5 Flash (via `google-generativeai`)
-- **Database**: SQLite
-- **Frontend**: HTML5, CSS3, Bootstrap 5, Jinja2 Templates
-- **Authentication**: Flask-Login
-- **Deployment**: Compatible with Render, Heroku, and any Flask-supporting server
+- **Backend**: Flask (Python 3.x)
+- **AI Engine**: Google Gemini 1.5 Flash via `google-generativeai`
+- **AI Techniques**: 
+  - **Function Calling** (Tool Use)
+  - **Prompt Engineering** (System Instructions)
+  - **Context Caching** (Chat History via DB)
+- **Database**: SQLite (Native Python support)
+- **Frontend**: HTML5, CSS3, Bootstrap 5, Jinja2
+- **Authentication**: Flask-Login & Bcrypt
+- **Deployment**: Ready for Render / Heroku
 
 ---
+
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Python 3.7 or higher
-- pip (Python package installer)
+- Python 3.8 or higher
 - A Google Cloud API Key for Gemini
 
 ### Installation Steps
 
 1. **Clone the repository**
    ```bash
-   git clone [https://github.com/Mfaj-cod/ClinicBook](https://github.com/Mfaj-cod/ClinicBook)
+   git clone [https://github.com/Mfaj-cod/ClinicBook.git](https://github.com/Mfaj-cod/ClinicBook.git)
    cd ClinicBook
 2. **Create and activate virtual environment**
    ```bash
