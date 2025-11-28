@@ -912,3 +912,69 @@ App and DB connected.
 2025-11-28 11:40:17,188 - src.logg - INFO - schema ensured in seeding.
 2025-11-28 11:40:17,193 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
 2025-11-28 11:40:38,276 - src.logg - INFO - Gemini Tool request --> search_appointments_by_patient({})
+2025-11-28 17:43:05,620 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 17:43:05,622 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 17:43:05,634 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 17:43:05,636 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 17:43:05,816 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 17:43:12,120 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 17:43:12,122 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 17:43:12,140 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 17:43:12,145 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 17:43:12,329 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 17:43:23,816 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 17:43:23,818 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 17:43:23,830 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 17:43:23,832 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 17:43:23,837 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 17:43:34,187 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 17:43:34,189 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 17:43:34,203 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 17:43:34,205 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 17:43:34,294 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 17:43:42,200 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 17:43:42,202 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 17:43:42,217 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 17:43:42,219 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 17:43:42,273 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 17:43:50,131 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 17:43:50,133 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 17:43:50,146 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 17:43:50,147 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 17:43:50,153 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 17:43:59,104 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 17:43:59,106 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 17:43:59,118 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 17:43:59,120 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 17:43:59,126 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 17:44:08,615 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 17:44:08,617 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 17:44:08,631 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 17:44:08,632 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 17:44:08,639 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 17:44:16,912 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 17:44:16,915 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 17:44:16,933 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 17:44:16,936 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 17:44:16,944 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 17:44:25,764 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 17:44:25,766 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 17:44:25,776 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 17:44:25,778 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 17:44:25,786 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 17:44:27,982 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 17:44:27,983 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 17:44:27,994 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 17:44:27,996 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 17:44:28,003 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
