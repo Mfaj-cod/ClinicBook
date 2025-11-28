@@ -1305,3 +1305,68 @@ App and DB connected.
 2025-11-28 18:27:33,570 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
 2025-11-28 18:27:33,571 - src.logg - INFO - schema ensured in seeding.
 2025-11-28 18:27:33,578 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 18:45:46,237 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 18:45:46,239 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 18:45:46,256 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 18:45:46,258 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 18:45:46,265 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 18:46:05,493 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 18:46:05,495 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 18:46:05,512 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 18:46:05,514 - src.logg - ERROR - Problem in DB-connection. near ")": syntax error
+2025-11-28 19:24:48,650 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 19:24:48,652 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 19:24:48,669 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 19:24:48,670 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 19:24:48,851 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 19:24:50,713 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 19:24:50,715 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 19:24:50,726 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 19:24:50,728 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 19:24:50,907 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 19:24:57,428 - src.logg - INFO - User logged out.
+2025-11-28 19:24:59,176 - src.logg - INFO - New user registered.
+2025-11-28 19:25:18,848 - src.logg - INFO - New user registered.
+2025-11-28 19:28:19,597 - src.logg - INFO - New user registered.
+2025-11-28 19:29:30,076 - src.logg - INFO - New user registered.
+2025-11-28 19:30:07,819 - src.logg - INFO - App running..................
+2025-11-28 19:30:07,997 - src.logg - INFO - App running..................
+2025-11-28 19:30:12,484 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 19:30:12,486 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 19:30:12,525 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 19:30:12,529 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 19:30:12,530 - src.logg - INFO - Slots generated for demo doctors.
+2025-11-28 19:30:12,531 - src.logg - INFO - Slots generated for demo doctors.
+2025-11-28 19:30:12,531 - src.logg - INFO - Slots generated for demo doctors.
+2025-11-28 19:30:12,531 - src.logg - INFO - Slots generated for demo doctors.
+2025-11-28 19:30:12,531 - src.logg - INFO - Slots generated for demo doctors.
+2025-11-28 19:30:12,532 - src.logg - INFO - Slots generated for demo doctors.
+2025-11-28 19:30:12,532 - src.logg - INFO - Slots generated for demo doctors.
+2025-11-28 19:30:12,532 - src.logg - INFO - Slots generated for demo doctors.
+2025-11-28 19:30:12,532 - src.logg - INFO - Slots generated for demo doctors.
+2025-11-28 19:30:12,532 - src.logg - INFO - Slots generated for demo doctors.
+2025-11-28 19:30:12,533 - src.logg - INFO - Slots generated for demo doctors.
+2025-11-28 19:30:12,533 - src.logg - INFO - Slots generated for demo doctors.
+2025-11-28 19:30:12,533 - src.logg - INFO - Slots generated for demo doctors.
+2025-11-28 19:30:12,533 - src.logg - INFO - Slots generated for demo doctors.
+2025-11-28 19:30:12,534 - src.logg - INFO - Slots generated for demo doctors.
+2025-11-28 19:30:12,534 - src.logg - INFO - Slots generated for demo doctors.
+2025-11-28 19:30:12,534 - src.logg - INFO - Slots generated for demo doctors.
+2025-11-28 19:30:12,534 - src.logg - INFO - Slots generated for demo doctors.
+2025-11-28 19:30:12,534 - src.logg - INFO - Slots generated for demo doctors.
+2025-11-28 19:30:12,535 - src.logg - INFO - Slots generated for demo doctors.
+2025-11-28 19:30:12,535 - src.logg - INFO - Slots generated for demo doctors.
+2025-11-28 19:30:12,535 - src.logg - INFO - Slots generated for demo doctors.
+2025-11-28 19:30:12,538 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 19:30:14,395 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 19:30:14,396 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 19:30:14,410 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 19:30:14,412 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 19:30:14,418 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 19:30:29,808 - src.logg - INFO - New user registered.

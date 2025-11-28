@@ -20,6 +20,7 @@ def setup():
         age INTEGER,
         gender TEXT,
         phone TEXT,
+        city TEXT,
         password_hash TEXT
     );
                       

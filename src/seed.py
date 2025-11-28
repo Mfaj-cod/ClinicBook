@@ -54,7 +54,8 @@ def ensure_schema(conn):
         password TEXT NOT NULL,
         phone TEXT,
         age INTEGER,
-        gender TEXT
+        gender TEXT,
+        city TEXT
     );
 
     CREATE TABLE IF NOT EXISTS appointments (

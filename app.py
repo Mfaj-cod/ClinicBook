@@ -379,12 +379,13 @@ def create_app():
             gender = request.form["gender"]
             phone = request.form["phone"]
             password = generate_password_hash(request.form["password"])
+            city = request.form["city"]
 
             db = get_db()
             try:
                 db.execute(
-                    "INSERT INTO patients (name, email, age, gender, phone, password_hash) VALUES (?, ?, ?, ?, ?, ?)",
-                    (name, email, age, gender, phone, password),
+                    "INSERT INTO patients (name, email, age, gender, phone, password_hash, city) VALUES (?, ?, ?, ?, ?, ?, ?)",
+                    (name, email, age, gender, phone, password, city),
                 )
                 db.commit()
                 flash("Registration successful. Please login.", "success")
