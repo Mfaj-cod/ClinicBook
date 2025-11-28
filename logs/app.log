@@ -978,3 +978,187 @@ App and DB connected.
 2025-11-28 17:44:27,994 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
 2025-11-28 17:44:27,996 - src.logg - INFO - schema ensured in seeding.
 2025-11-28 17:44:28,003 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 17:49:29,178 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 17:49:29,179 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 17:49:29,191 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 17:49:29,193 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 17:49:29,201 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 17:49:30,977 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 17:49:30,978 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 17:49:30,989 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 17:49:30,991 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 17:49:30,998 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 17:54:58,057 - src.logg - ERROR - Chat failure: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+Traceback (most recent call last):
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\src\gem.py", line 243, in gemini_chat
+    response = chat.send_message(
+        full_prompt,
+        generation_config={"candidate_count": 1, "temperature": 0.5}
+    )
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\clinic\Lib\site-packages\google\generativeai\generative_models.py", line 578, in send_message
+    response = self.model.generate_content(
+        contents=history,
+    ...<5 lines>...
+        request_options=request_options,
+    )
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\clinic\Lib\site-packages\google\generativeai\generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+        request,
+        **request_options,
+    )
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\clinic\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 835, in generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\clinic\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\clinic\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+        target,
+    ...<3 lines>...
+        on_error=on_error,
+    )
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\clinic\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+        exc,
+    ...<6 lines>...
+        timeout,
+    )
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\clinic\Lib\site-packages\google\api_core\retry\retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\clinic\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\clinic\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\clinic\Lib\site-packages\google\api_core\grpc_helpers.py", line 77, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.NotFound: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-11-28 17:55:27,687 - src.logg - INFO - App running..................
+2025-11-28 17:55:29,859 - src.logg - INFO - App running..................
+2025-11-28 17:55:35,303 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 17:55:35,305 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 17:55:35,328 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 17:55:35,330 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 17:55:35,510 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 17:55:37,453 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 17:55:37,455 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 17:55:37,472 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 17:55:37,474 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 17:55:37,481 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 18:07:22,086 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 18:07:22,088 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 18:07:22,103 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 18:07:22,106 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 18:07:22,154 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 18:07:23,924 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 18:07:23,926 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 18:07:23,938 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 18:07:23,940 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 18:07:24,011 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 18:08:08,189 - src.logg - INFO - Gemini Tool request --> search_appointments_by_patient({})
+2025-11-28 18:08:21,500 - src.logg - INFO - Gemini Tool request --> cancel_appointment_by_patient({})
+2025-11-28 18:08:21,506 - src.logg - ERROR - Chat failure: near "=": syntax error
+Traceback (most recent call last):
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\src\gem.py", line 300, in gemini_chat
+    result = globals()[fname](**args)
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\src\gem.py", line 203, in cancel_appointment_by_patient
+    return run_query(
+        """
+    ...<7 lines>...
+        (f"%{email}%",)
+    )
+  File "C:\Users\fajal\OneDrive\Desktop\ClinicBook\src\gem.py", line 92, in run_query
+    rows = cur.execute(query, args).fetchall()
+           ~~~~~~~~~~~^^^^^^^^^^^^^
+sqlite3.OperationalError: near "=": syntax error
+2025-11-28 18:14:19,902 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 18:14:19,904 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 18:14:19,913 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 18:14:19,915 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 18:14:19,942 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 18:14:21,795 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 18:14:21,800 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 18:14:21,827 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 18:14:21,831 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 18:14:22,033 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 18:14:40,776 - src.logg - INFO - Gemini Tool request --> search_appointments_by_patient({})
+2025-11-28 18:16:10,842 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 18:16:10,844 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 18:16:10,855 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 18:16:10,857 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 18:16:10,864 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 18:16:18,889 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 18:16:18,892 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 18:16:18,902 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 18:16:18,904 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 18:16:19,084 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 18:17:36,240 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 18:17:36,244 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 18:17:36,290 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 18:17:36,295 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 18:17:36,478 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 18:17:58,636 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 18:17:58,641 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 18:17:58,677 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 18:17:58,683 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 18:17:58,696 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 18:20:26,383 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 18:20:34,250 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 18:20:58,548 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 18:20:58,549 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 18:20:58,564 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 18:20:58,566 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 18:20:58,575 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 18:21:00,541 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 18:21:00,544 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 18:21:00,557 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 18:21:00,559 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 18:21:00,567 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 18:21:22,167 - src.logg - INFO - Gemini Tool request --> search_appointments_by_patient({})
+2025-11-28 18:21:36,386 - src.logg - INFO - Gemini Tool request --> cancel_appointment_by_patient({'appointment_id': 2.0})
+2025-11-28 18:22:47,718 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 18:22:47,721 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 18:22:47,738 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 18:22:47,739 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 18:22:47,838 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 18:22:51,330 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 18:22:51,331 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 18:22:51,344 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 18:22:51,345 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 18:22:51,525 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 18:22:59,584 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 18:22:59,586 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 18:22:59,597 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 18:22:59,599 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 18:22:59,606 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 18:23:06,465 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 18:23:06,467 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 18:23:06,483 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 18:23:06,485 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 18:23:06,492 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-28 18:23:10,936 - src.logg - INFO - [Gemini] Model loaded with tools.
+2025-11-28 18:23:10,937 - src.logg - INFO - 
+App and DB connected.
+2025-11-28 18:23:10,948 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-28 18:23:10,950 - src.logg - INFO - schema ensured in seeding.
+2025-11-28 18:23:10,956 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db

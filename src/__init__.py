@@ -1,7 +1,7 @@
 from .logg import logger
 from .init_db import setup
 from .seed import seed
-from .gem import get_db_connection, run_query, save_chat_log, get_chat_history_for_gemini, search_doctor_by_specialization, search_appointments_by_patient, search_clinic_by_city, search_doctor_by_name, extract_text, gemini_chat
+from .gem import get_db_connection, run_query, save_chat_log, get_chat_history_for_gemini, search_doctor_by_specialization, search_appointments_by_patient, search_clinic_by_city, search_doctor_by_name, gemini_chat, cancel_appointment_by_patient, get_response_text
 
 __all__ = [
     'setup',
@@ -15,6 +15,8 @@ __all__ = [
     'search_doctor_by_name',
     'search_clinic_by_city',
     'search_appointments_by_patient',
-    'extract_text',
+    'get_response_text',
+    'cancel_appointment_by_patient',
+    'clean_text_for_display',
     'gemini_chat',
 ]
