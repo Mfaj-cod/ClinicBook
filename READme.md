@@ -11,8 +11,9 @@ A comprehensive web-based platform that streamlines the appointment booking proc
 
 - **Zero-Touch Context**: Automatically identifies the logged-in user (Patient or Doctor) via session data—no need to ask for emails or IDs.
 - **Smart Appointment Management**: 
-  - **Fetching**: "Show my appointments" retrieves real-time data from the database.
-  - **Cancelling**: "Cancel the booked one" works intuitively. The system uses an **"Invisible Ink" strategy** to handle database IDs, allowing users to refer to items naturally without seeing technical ID numbers.
+- **Fetching**: "Show my appointments" retrieves real-time data from the database.
+- **Cancelling**: "Cancel the booked one" works intuitively. The system uses an **"Invisible Ink" strategy** to handle database IDs, allowing users to refer to items naturally without seeing technical ID numbers.
+- **Completing**: "Complete the booked one" works intuitively. The system uses an **"Invisible Ink" strategy** to handle database IDs, allowing doctors to complete the appointments naturally without seeing technical ID numbers.
 - **Intelligent Routing**: Converts symptoms (e.g., *"I have chest pain"*) into specific specialist queries (searches for *Cardiologists*) using Function Calling.
 - **Clean UI Formatting**: The AI automatically cleans markdown and formats database results into readable, bulleted lists for the frontend.
 - **Context-Aware Memory**: Remembers the last 10 interactions, allowing for follow-up questions like *"Where is that clinic located?"* after searching for a doctor.

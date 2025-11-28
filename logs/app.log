@@ -1571,3 +1571,4 @@ App and DB connected.
 2025-11-28 22:03:01,200 - src.logg - INFO - Tool Result: [{'id': 3, 'patient_name': 'honey', 'date': '2025-11-29', 'time': '11:30', 'status': 'booked'}]
 2025-11-28 22:03:22,672 - src.logg - INFO - Gemini Tool request --> complete_appointment_by_doctor({'appointment_id': 3.0})
 2025-11-28 22:03:22,685 - src.logg - INFO - Tool Result: Success
+2025-11-28 22:06:40,307 - src.logg - INFO - An appointment cancelled. Unfortunately
