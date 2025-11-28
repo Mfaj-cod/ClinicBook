@@ -6,13 +6,13 @@
   <div class="row justify-content-center">
     <div class="col-lg-8">
       <div class="card border-0 shadow-lg rounded-4">
-        <div class="card-header bg-gradient-primary text-white py-4 rounded-top-4">
+        <div class="card-header text-white py-4 rounded-top-4" style="background: linear-gradient(135deg, #0d3a6f 0%, #084298 100%);">
           <div class="d-flex align-items-center">
             <div class="rounded-circle bg-white bg-opacity-25 d-flex align-items-center justify-content-center me-3" style="width:60px; height:60px;">
               <i class="bi bi-calendar-check" style="font-size:2rem;"></i>
             </div>
             <div>
-              <h4 class="mb-1">Confirm Your Booking</h4>
+              <h4 class="mb-1 text-white">Confirm Your Booking</h4>
               <p class="mb-0 opacity-75">Please review your appointment details</p>
             </div>
           </div>
@@ -22,10 +22,10 @@
             <div class="col-md-8">
               <div class="d-flex align-items-center mb-4">
                 <div class="rounded-circle bg-primary bg-opacity-10 d-flex align-items-center justify-content-center me-3" style="width:50px; height:50px;">
-                  <i class="bi bi-person-circle" style="font-size:1.8rem; color:#0d6efd;"></i>
+                  <i class="bi bi-person-circle" style="font-size:1.8rem; color: --heading;"></i>
                 </div>
                 <div>
-                  <h5 class="mb-1 text-primary fw-bold">{{ slot.doctor_name }}</h5>
+                  <h5 class="mb-1 fw-bold" style="color: --heading;">{{ slot.doctor_name }}</h5>
                   <div class="text-muted small">
                     <i class="bi bi-hospital me-1"></i> {{ slot.clinic_name }}
                   </div>
@@ -35,7 +35,7 @@
               <div class="row g-3 mb-4">
                 <div class="col-sm-6">
                   <div class="d-flex align-items-center p-3 bg-light rounded-3">
-                    <i class="bi bi-calendar-event text-primary me-3" style="font-size:1.2rem;"></i>
+                    <i class="bi bi-calendar-event me-3" style="font-size:1.2rem; color: --heading;"></i>
                     <div>
                       <div class="small text-muted">Date & Time</div>
                       <div class="fw-semibold">{{ slot.date }} at {{ slot.time }}</div>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="d-flex align-items-center p-3 bg-light rounded-3">
-                    <i class="bi bi-currency-rupee text-primary me-3" style="font-size:1.2rem;"></i>
+                    <i class="bi bi-currency-rupee me-3" style="font-size:1.2rem; color: --heading;"></i>
                     <div>
                       <div class="small text-muted">Consultation Fee</div>
                       <div class="fw-semibold">₹{{ slot.fees }}</div>
@@ -57,7 +57,7 @@
             <div class="col-md-4">
               <div class="bg-primary bg-opacity-10 p-4 rounded-4 h-100 d-flex flex-column justify-content-center">
                 <div class="text-center mb-3">
-                  <i class="bi bi-shield-check text-primary" style="font-size:2rem;"></i>
+                  <i class="bi bi-shield-check" style="font-size:2rem; color: green;"></i>
                 </div>
                 <h6 class="text-center mb-3">Secure Booking</h6>
                 <ul class="list-unstyled small text-muted">
@@ -71,8 +71,8 @@
           
           <div class="text-center pt-3">
             <form method="post">
-              <button class="btn btn-primary btn-lg px-5 py-3 rounded-pill shadow-sm">
-                <i class="bi bi-check-circle me-2"></i>Confirm Booking
+              <button class="btn btn-lg px-5 py-3 rounded-pill shadow-sm" style="background: linear-gradient(135deg, #0d3a6f 0%, #084298 100%); color: white;">
+                <i class="bi bi-check-circle me-2 text-white"></i>Confirm Booking
               </button>
             </form>
           </div>
