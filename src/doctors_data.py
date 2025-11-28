@@ -1,6 +1,17 @@
 # data.py - add doctor entries here, then run `python seed.py`
 doctors_data = [
     {
+        "name": "Dr. Ajay Kumar",
+        "specialization": "Physician",
+        "clinic": "Purnea Hospital",
+        "city": "Purnea",
+        "address": "Line bazaar, near Panchadevi hospital",
+        "fees": 800,
+        "email": "ajay.kumar@gmail.com",
+        "phone": "+91-8634520923",
+        "about": "Experienced MBBS, MD Physician."
+    },
+    {
         "name": "Dr. Anjali Mehta",
         "specialization": "Dermatologist",
         "clinic": "SkinGlow Clinic",
