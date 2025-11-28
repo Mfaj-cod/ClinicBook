@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for, session, flash, g, send_from_directory, abort
-import os, sqlite3, functools, datetime
+from flask import Flask, render_template, request, redirect, url_for, session, flash, g, abort
+import os, sqlite3, datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
 from sqlite3 import IntegrityError
