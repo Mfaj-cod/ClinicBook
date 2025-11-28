@@ -4,6 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
 from sqlite3 import IntegrityError
 import re
+from flask_cors import CORS
 
 from src.init_db import setup
 from src.seed import seed
@@ -16,6 +17,7 @@ DB = os.path.join(BASE, 'data', 'clinicBook.db')
 
 def create_app():
     app = Flask(__name__)
+    CORS(app) # Enable CORS for all routes
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
     app.config['DATABASE'] = DB
     logger.info("\nApp and DB connected.")
