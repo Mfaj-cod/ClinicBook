@@ -31,8 +31,7 @@ if GEMINI_API_KEY and genai:
                         "description": "Finds doctors by specialization. IMPORTANT: Convert input to the SINGULAR PRACTITIONER TITLE (e.g., 'Cardiologist' instead of 'Cardiology', 'Urologist' instead of 'Urologists').",
                         "parameters": {
                             "type": "object",
-                            "properties": {"specialization": {"type": "string"}},
-                            "required": ["specialization"]
+                            "properties": {},
                         }
                     },
                     {
@@ -55,11 +54,10 @@ if GEMINI_API_KEY and genai:
                     },
                     {
                         "name": "search_appointments_by_patient",
-                        "description": "Returns upcoming appointments for a patient by email. NECESSARY: fetch email using user_id in the chat history",
+                        "description": "Retrieves a list of upcoming and past appointments for the currently logged-in patient, including doctor names, dates, times, and status.",
                         "parameters": {
                             "type": "object",
-                            "properties": {"email": {"type": "string"}},
-                            "required": ["email"]
+                            "properties": {},
                         }
                     }
                 ]
@@ -141,7 +139,27 @@ def search_clinic_by_city(city: str):
         (f"%{city}%",)
     )
 
-def search_appointments_by_patient(email: str):
+def search_appointments_by_patient():
+    # Get the user_id securely from the Flask session
+    user_id = session.get('patient_id') or session.get('doctor_id')
+    
+    if not user_id:
+        return "Error: You must be logged in to view appointments."
+
+    # Fetch the email from the database using the ID
+    conn = get_db_connection()
+    if 'patient_id' in session:
+        user_row = conn.execute("SELECT email FROM patients WHERE id = ?", (user_id,)).fetchone()
+    elif 'doctor_id' in session:
+        user_row = conn.execute("SELECT email FROM doctors WHERE id = ?", (user_id,)).fetchone()
+    conn.close()
+
+    if not user_row:
+        return "Error: user profile not found."
+    
+    email = user_row['email']
+
+    # Run the query using the retrieved email
     return run_query(
         """
         SELECT a.id, a.status, s.date, s.time, d.name AS doctor
@@ -149,7 +167,7 @@ def search_appointments_by_patient(email: str):
         JOIN patients p ON a.patient_id = p.id
         JOIN slots s ON a.slot_id = s.id
         JOIN doctors d ON a.doctor_id = d.id
-        WHERE p.email LIKE ?
+        WHERE p.email LIKE ? and status LIKE 'booked'
         ORDER BY s.date DESC
         """,
         (f"%{email}%",)
@@ -157,22 +175,34 @@ def search_appointments_by_patient(email: str):
 
 
 def extract_text(resp):
-    """Extracts Gemini text from the final result object or returns string as-is."""
-    if isinstance(resp, str):
-        return resp
+    """Extracts text and cleans up Markdown formatting for plain-text displays."""
+    text = ""
     try:
-        # Checking if the object has a direct 'text' property (simple response)
+        # Get the raw text from the response object
         if hasattr(resp, 'text'):
-            return resp.text
+            text = resp.text
+        else:
+            result = resp._result
+            parts = result.candidates[0].content.parts
+            text = "\n".join([p.text for p in parts if hasattr(p, "text")])
             
-        result = resp._result
-        parts = result.candidates[0].content.parts
-        texts = [p.text for p in parts if hasattr(p, "text")]
-        return "\n".join(texts).strip() if texts else ""
+        # Clean up the Markdown for a better look
+        if text:
+            # Remove bolding markers (**)
+            text = text.replace("**", "")
+            
+            # Convert list bullets (*) to a clean newline + unicode bullet
+            # This fixes the "wall of text" issue
+            text = text.replace("* ", "\n• ")
+            
+            # Optional: Add extra spacing between sections if needed
+            text = text.strip()
+            
+        return text
+
     except Exception as e:
         logger.error(f"extract_text failed: {e}")
         return "I couldn't generate a response."
-
 
 
 # main function
