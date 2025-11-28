@@ -554,7 +554,7 @@ def create_app():
                 return redirect(url_for('dashboard'))
             return redirect(url_for('doctors_dashboard'))
 
-        # ✅ Instead of DELETE, just mark as cancelled
+        # Instead of DELETE, just mark as cancelled
         db.execute('UPDATE appointments SET status=? WHERE id=?', ('cancelled', appointment_id))
         db.commit()
 
