@@ -77,13 +77,12 @@ A comprehensive web-based platform that streamlines the appointment booking proc
 
    ```bash
    ClinicBook/
-   ├── app.py              # Main Flask application
-   ├── gem.py              # Gemini AI Chatbot logic & Tool definitions
-   ├── .env                # Environment variables (API Keys)
+   ├── app.py              # Main Flask application            
    ├── src/
    |   |___init_db.py      # Database initialization script
    |   |___seed.py         # Database seeding with sample data
-   |   |_doctors_data.py   # Sample doctors data    
+   |   |___gem.py          # Gemini AI Chatbot logic & Tool definitions
+   |   |___doctors_data.py # Sample doctors data    
    |
    ├── data/
    │   └── clinicBook.db   # SQLite database files

@@ -8,7 +8,7 @@ import re
 from src.init_db import setup
 from src.seed import seed
 from src.logg import logger
-from gem import gemini_chat
+from src.gem import gemini_chat
 
 
 BASE = os.path.dirname(__file__)
