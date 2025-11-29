@@ -1,53 +1,80 @@
-# 🏥 ClinicBook - AI-Powered Healthcare Platform
+# 🏥 ClinicBook - Multimodal AI Healthcare Platform
 
-A comprehensive web-based platform that streamlines the appointment booking process between patients and healthcare providers. ClinicBook transforms standard booking into an intelligent, conversational experience using a **Context-Aware Agentic AI**.
+A comprehensive web-based platform that transforms appointment booking into an intelligent, conversational experience. **ClinicBook** features a **Context-Aware Agentic AI** capable of reading, writing, listening (Voice), and reasoning to manage healthcare needs seamlessly.
 
 ---
 
 ## ✨ Key Features
 
 ### 🤖 Agentic AI Health Assistant (Powered by Gemini)
-*Unlike standard chatbots, this assistant acts as an intelligent agent with direct database access.*
+*A Hybrid AI system combining Agentic Tool Use with Retrieval-Augmented Generation (RAG).*
 
-- **Context-Aware Identity**: Automatically detects if the user is a **Doctor** or **Patient** and adjusts its behavior and available tools accordingly.
-- **Temporal Intelligence**: Understands natural language dates and times (e.g., *"Generate slots for tomorrow at 4 PM"* or *"Cancel the appointment next Friday"*) by referencing the live system date.
-- **Smart Data Handling ("Invisible Ink")**: Uses internal database IDs to perform precise actions (like cancellations) without exposing technical details to the user, keeping the chat clean and conversational.
-- **Role-Based Workflows**:
-  - **For Patients**: Finds specialists, checks availability, views history, and cancels appointments.
-  - **For Doctors**: Manages schedules, views upcoming patient lists, and creates new appointment slots using simple voice-like commands.
+- **🗣️ Voice Interface**: Built-in **Speech-to-Text** allows doctors and patients to speak commands naturally (e.g., *"Book an appointment"* or *"Generate 5 slots"*).
+- **📚 Hybrid RAG System**: 
+  - **Dynamic Data**: Queries the SQLite database for live schedules and doctor availability.
+  - **Static Knowledge**: Instantly answers policy questions (Refunds, Insurance, Hours) from a local Knowledge Base (`clinic_policies.txt`) without unnecessary database calls.
+- **🧠 Context-Aware Identity**: Automatically detects User Role (Doctor/Patient) and Current Date to handle relative queries like *"Show me tomorrow's schedule"*.
+- **📧 Active Notifications**: Automatically sends email confirmations via **Flask-Mail** upon successful bookings.
 
 ### 👩‍⚕️ Doctor Portal
-- **AI Slot Generation**: Create bulk appointment slots instantly by simply typing *"Create 10 slots for tomorrow at 5 PM"*.
-- **Schedule Management**: Ask *"Who is visiting me today?"* to get a real-time list of patients.
-- **Workflow Automation**: Mark appointments as "Completed" directly through the chat interface.
-- **Secure Profile Control**: Manage fees, specialization, and clinic details securely.
+- **Voice-Powered Management**: Dictate commands like *"Create slots for next Monday at 10 AM"* to bulk-generate schedule capacity.
+- **Smart Dashboard**: Ask *"Who is visiting me today?"* to get a filtered, real-time patient list.
+- **Workflow Automation**: Mark appointments as "Completed" directly through chat.
+- **Secure Access**: Session-based isolation ensures doctors only manage their own data.
 
 ### 🧑‍🤝‍🧑 Patient Portal
-- **Natural Language Search**: Find doctors by describing symptoms (e.g., *"I have a migraine"* -> searches for *Neurologists*).
-- **One-Click Booking**: Streamlined booking process for available slots.
-- **Visual Dashboard**: Track appointment status (Booked, Cancelled, Completed) in real-time.
+- **Symptom-to-Specialist**: AI intelligently maps symptoms (e.g., *"chest pain"*) to the correct specialist (e.g., *Cardiologist*).
+- **One-Click Booking**: Streamlined booking flow with email confirmation.
+- **Transparency**: Clear visibility of appointment status, fees, and clinic policies via the AI assistant.
 
 ---
 
 ## 🛠️ Technology Stack
 
 - **Backend**: Flask (Python 3.x)
-- **AI Engine**: Google Gemini 2.5 Flash
+- **AI Engine**: Google Gemini 1.5 Flash
 - **AI Architecture**: 
-  - **Function Calling**: Modular tool definitions stored in `tools_config.json`.
-  - **System Prompting**: Robust rule sets for safety, formatting, and role management.
-  - **Context Injection**: Dynamically injects User Role and System Date into every prompt.
-- **Database**: SQLite (Native Python support)
-- **Frontend**: HTML5, CSS3, Bootstrap 5, Jinja2
-- **Authentication**: Flask-Login & Bcrypt
+  - **Agentic Tools**: Function Calling for DB Writes/Reads.
+  - **Lightweight RAG**: Context injection for policy documents.
+  - **System Prompting**: Role-based behavior control.
+- **Frontend**: 
+  - **Framework**: Bootstrap 5 & Jinja2
+  - **Voice**: Web Speech API (Native JavaScript)
+- **Database**: SQLite (Transactional)
+- **Services**: Flask-Mail (SMTP Notifications)
+
+---
+## 🎯 AI Capabilities Breakdown
+
+The system uses a **Router Architecture** to decide how to handle a user query:
+
+1. **Knowledge Query** (e.g., *"Do you accept insurance?"*)
+   - **Source:** `clinic_policies.txt`
+   - **Action:** RAG Response (No DB Call)
+
+2. **Data Query** (e.g., *"Find a Urologist"*)
+   - **Source:** `search_doctor_by_specialization` Tool
+   - **Action:** DB Read → Returns List with `[Hidden IDs]`
+
+3. **Action Command** (e.g., *"Book the 10 AM slot"*)
+   - **Source:** `book_appointment_by_patient` Tool
+   - **Action:** DB Write → Email Trigger → Confirmation
 
 ---
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Python 3.8 or higher
-- A Google Cloud API Key for Gemini
+- Python 3.8+
+- Google Cloud API Key (Gemini)
+- Gmail Account (for sending notifications)
+
+### Installation Steps
+
+1. **Clone the repository**
+   ```bash
+   git clone [https://github.com/Mfaj-cod/ClinicBook.git](https://github.com/Mfaj-cod/ClinicBook.git)
+   cd ClinicBook
 
 ### Installation Steps
 
@@ -82,14 +109,18 @@ A comprehensive web-based platform that streamlines the appointment booking proc
    ClinicBook/
    ├── app.py              # Main Flask application            
    ├── src/
+   |___|__ __init__.py
    |   |___init_db.py      # Database initialization script
    |   |___seed.py         # Database seeding with sample data
    |   |___gem.py          # Gemini AI Chatbot logic
+   |   |___logg.py
    |   |___doctors_data.py # Sample doctors data  
+   |   |___prompt.py
    |   |_tools_config.json # Stores tool definitions 
    |
    ├── data/
-   │   └── clinicBook.db   # SQLite database files
+   │   |___clinicBook.db   # SQLite database files
+   |   |_clinic_policies.txt
    ├── templates/          # Jinja2 HTML templates
    ├── static/             # Static assets (CSS, JS, icons)
    ├── requirements.txt    # Python dependencies
@@ -115,17 +146,13 @@ A comprehensive web-based platform that streamlines the appointment booking proc
 ---
 **🔮 Roadmap**
 
-- [x] AI Chatbot: Integrated Gemini for natural language queries
+- [x] Multimodal: Voice Input & Text Output
 
-- [ ] Payment Integration: Online payment processing for consultations
+- [x] RAG Integration: Knowledge Base for FAQ
 
-- [ ] Communication System: Email and SMS reminders for appointments
+- [x] Agentic Writes: Booking & Slot Generation
 
-- [ ] Multi-clinic Support: Enhanced support for multiple clinic locations
-
-- [ ] Admin Dashboard: Comprehensive administrative interface
-
-- [ ] API Development: RESTful API for mobile app integration
+- [ ] Payment Integration
 
 - [ ] Analytics: Appointment analytics and reporting features
 
