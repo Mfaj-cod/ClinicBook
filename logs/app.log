@@ -204,3 +204,15 @@ App and DB connected.
 2025-11-29 19:50:42,054 - src.logg - INFO - User logged out.
 2025-11-29 19:51:00,142 - src.logg - INFO - Gemini Tool request --> search_doctor_by_name({'name': 'Dr John'})
 2025-11-29 19:51:00,146 - src.logg - INFO - Tool Result: []
+2025-11-29 22:19:04,417 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2025-11-29 22:19:04,420 - src.logg - INFO - 
+App and DB connected.
+2025-11-29 22:19:04,436 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-29 22:19:04,440 - src.logg - INFO - schema ensured in seeding.
+2025-11-29 22:19:04,447 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-29 22:19:20,625 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2025-11-29 22:19:20,626 - src.logg - INFO - 
+App and DB connected.
+2025-11-29 22:19:20,640 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-29 22:19:20,642 - src.logg - INFO - schema ensured in seeding.
+2025-11-29 22:19:20,650 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
