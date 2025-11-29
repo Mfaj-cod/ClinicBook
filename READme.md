@@ -14,7 +14,6 @@ A comprehensive web-based platform that transforms appointment booking into an i
   - **Dynamic Data**: Queries the SQLite database for live schedules and doctor availability.
   - **Static Knowledge**: Instantly answers policy questions (Refunds, Insurance, Hours) from a local Knowledge Base (`clinic_policies.txt`) without unnecessary database calls.
 - **🧠 Context-Aware Identity**: Automatically detects User Role (Doctor/Patient) and Current Date to handle relative queries like *"Show me tomorrow's schedule"*.
-- **📧 Active Notifications**: Automatically sends email confirmations via **Flask-Mail** upon successful bookings.
 
 ![Agentic Workflow Diagram](assets\Agent.jpg)
 
