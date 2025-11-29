@@ -32,6 +32,19 @@ def load_tools_config():
         return []
 
 
+def load_policy_document():
+    """Loads the static policy text file for RAG."""
+    try:
+        base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) # Go up one level to root
+        policy_path = os.path.join(base_path, "data", "clinic_policies.txt")
+        
+        with open(policy_path, "r") as f:
+            return f.read()
+    except Exception as e:
+        logger.warning(f"Could not load policy document: {e}")
+        return ""
+    
+
 gemini_model = None
 
 if GEMINI_API_KEY and genai:
@@ -381,7 +394,7 @@ def gemini_chat(request):
             db_history = get_chat_history_for_gemini(user_id, user_type, limit=10)
 
         chat = gemini_model.start_chat(history=db_history)
-
+        policy_text = load_policy_document()
         today_str = datetime.now().strftime("%A, %d-%m-%Y")
 
         context_header = f"CURRENT USER ROLE: {user_type.upper()}"
@@ -390,7 +403,15 @@ def gemini_chat(request):
         
         context_header += f"\nCURRENT SYSTEM DATE: {today_str}" 
         
-        full_prompt = f"{sys_prompt}\n\n{context_header}\nUser Query: {user_msg}"
+        full_prompt = f"""{sys_prompt}
+
+        ### 📚 KNOWLEDGE BASE (Clinic Policies)
+        Use the following information to answer questions about refunds, hours, or insurance.
+        If the answer is found here, you do NOT need to call a tool.
+        {policy_text}
+
+        {context_header}
+        User Query: {user_msg}"""
         
         response = chat.send_message(
             full_prompt,
