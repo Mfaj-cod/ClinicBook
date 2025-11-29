@@ -32,7 +32,7 @@ A comprehensive web-based platform that streamlines the appointment booking proc
 ## 🛠️ Technology Stack
 
 - **Backend**: Flask (Python 3.x)
-- **AI Engine**: Google Gemini 1.5 Flash
+- **AI Engine**: Google Gemini 2.5 Flash
 - **AI Architecture**: 
   - **Function Calling**: Modular tool definitions stored in `tools_config.json`.
   - **System Prompting**: Robust rule sets for safety, formatting, and role management.
