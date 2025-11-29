@@ -72,5 +72,27 @@
       },
       "required": ["appointment_id"]
     }
+  },
+  {
+    "name": "generate_slots_by_doctor",
+    "description": "Generate a new availability slot for the doctor.",
+    "parameters": {
+        "type": "object",
+        "properties": {
+        "date": {
+            "type": "string",
+            "description": "The date for the slot in DD-MM-YYYY format"
+        },
+        "time": {
+            "type": "string",
+            "description": "The time for the slot in HH:MM format"
+        },
+        "n_slots": {
+            "type": "integer",
+            "description": "Total capacity (number of patients) for this slot"
+        }
+        },
+        "required": ["date", "time", "n_slots"]
+    }
   }
 ]

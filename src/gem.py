@@ -229,6 +229,20 @@ def complete_appointment_by_doctor(appointment_id):
         (appointment_id, user_id)
     )
 
+def generate_slots_by_doctor(date, time, n_slots):
+    user_id = session.get('doctor_id')
+
+    if not user_id:
+        return "Error: You must be logged in as a doctor to generate slots."
+
+    return write_query(
+        """
+        INSERT INTO slots (doctor_id, date, time, capacity)
+        VALUES (?, ?, ?, ?)
+        """,
+        (user_id, date, time, n_slots)
+    )
+
 
 # TEXT PROCESSING HELPERS
 
