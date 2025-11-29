@@ -121,6 +121,7 @@ The system uses a **Router Architecture** to decide how to handle a user query:
    ├── data/
    │   |___clinicBook.db   # SQLite database files
    |   |_clinic_policies.txt
+   |
    ├── templates/          # Jinja2 HTML templates
    ├── static/             # Static assets (CSS, JS, icons)
    ├── requirements.txt    # Python dependencies
