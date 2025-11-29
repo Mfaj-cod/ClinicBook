@@ -1,125 +1,145 @@
-2025-11-28 22:36:10,348 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
-2025-11-28 22:36:10,349 - src.logg - INFO - 
+2025-11-29 18:52:02,633 - src.logg - INFO - App running..................
+2025-11-29 18:52:02,823 - src.logg - INFO - App running..................
+2025-11-29 18:52:09,524 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2025-11-29 18:52:09,526 - src.logg - INFO - 
 App and DB connected.
-2025-11-28 22:36:10,358 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-28 22:36:10,359 - src.logg - INFO - schema ensured in seeding.
-2025-11-28 22:36:10,539 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-28 22:38:58,028 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
-2025-11-28 22:38:58,030 - src.logg - INFO - 
+2025-11-29 18:52:09,537 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-29 18:52:09,539 - src.logg - INFO - schema ensured in seeding.
+2025-11-29 18:52:09,546 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-29 18:52:11,368 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2025-11-29 18:52:11,370 - src.logg - INFO - 
 App and DB connected.
-2025-11-28 22:38:58,039 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-28 22:38:58,041 - src.logg - INFO - schema ensured in seeding.
-2025-11-28 22:38:58,219 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-28 22:39:03,517 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
-2025-11-28 22:39:03,519 - src.logg - INFO - 
+2025-11-29 18:52:11,383 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-29 18:52:11,384 - src.logg - INFO - schema ensured in seeding.
+2025-11-29 18:52:11,391 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-29 18:52:42,781 - src.logg - INFO - Gemini Tool request --> search_appointments_by_patient({})
+2025-11-29 18:52:42,786 - src.logg - INFO - Tool Result: []
+2025-11-29 18:59:21,984 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2025-11-29 18:59:21,995 - src.logg - INFO - 
 App and DB connected.
-2025-11-28 22:39:03,543 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-28 22:39:03,546 - src.logg - INFO - schema ensured in seeding.
-2025-11-28 22:39:03,726 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-28 22:40:50,564 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
-2025-11-28 22:40:50,565 - src.logg - INFO - 
+2025-11-29 18:59:22,121 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-29 18:59:22,131 - src.logg - INFO - schema ensured in seeding.
+2025-11-29 18:59:22,171 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-29 18:59:54,032 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2025-11-29 18:59:54,036 - src.logg - INFO - 
 App and DB connected.
-2025-11-28 22:40:50,576 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-28 22:40:50,577 - src.logg - INFO - schema ensured in seeding.
-2025-11-28 22:40:50,582 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-28 22:48:03,248 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
-2025-11-28 22:48:03,250 - src.logg - INFO - 
+2025-11-29 18:59:54,068 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-29 18:59:54,073 - src.logg - INFO - schema ensured in seeding.
+2025-11-29 18:59:54,084 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-29 19:00:31,607 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2025-11-29 19:00:31,613 - src.logg - INFO - 
 App and DB connected.
-2025-11-28 22:48:03,263 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-28 22:48:03,265 - src.logg - INFO - schema ensured in seeding.
-2025-11-28 22:48:03,271 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-28 22:48:05,814 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
-2025-11-28 22:48:05,816 - src.logg - INFO - 
+2025-11-29 19:00:31,674 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-29 19:00:31,681 - src.logg - INFO - schema ensured in seeding.
+2025-11-29 19:00:31,705 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-29 19:00:43,836 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2025-11-29 19:00:43,842 - src.logg - INFO - 
 App and DB connected.
-2025-11-28 22:48:05,832 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-28 22:48:05,834 - src.logg - INFO - schema ensured in seeding.
-2025-11-28 22:48:05,843 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-28 22:48:38,813 - src.logg - INFO - Gemini Tool request --> get_doctor_schedule({})
-2025-11-28 22:48:38,816 - src.logg - INFO - Tool Result: []
-2025-11-29 12:35:47,569 - src.logg - INFO - App running..................
-2025-11-29 12:35:49,962 - src.logg - INFO - App running..................
-2025-11-29 13:55:24,692 - src.logg - ERROR - [Gemini] Failed to configure model: 'DD-MM-YYYY'2025-11-29 14:00:17,643 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
-2025-11-29 14:00:17,645 - src.logg - INFO - 
+2025-11-29 19:00:43,892 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-29 19:00:43,898 - src.logg - INFO - schema ensured in seeding.
+2025-11-29 19:00:43,914 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-29 19:03:33,469 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2025-11-29 19:03:33,471 - src.logg - INFO - 
 App and DB connected.
-2025-11-29 14:00:17,658 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-29 14:00:17,661 - src.logg - INFO - schema ensured in seeding.
-2025-11-29 14:00:17,842 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-29 14:01:34,330 - src.logg - INFO - Gemini Tool request --> generate_slots_by_doctor({'date': '01-12-2025', 'n_slots': 5.0, 'time': '12:00'})
-2025-11-29 14:01:34,334 - src.logg - ERROR - SQL Write Error: table slots has no column named booked
-2025-11-29 14:01:34,335 - src.logg - INFO - Tool Result: Database error: table slots has no column named booked
-2025-11-29 14:02:13,683 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
-2025-11-29 14:02:13,687 - src.logg - INFO - 
+2025-11-29 19:03:33,482 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-29 19:03:33,484 - src.logg - INFO - schema ensured in seeding.
+2025-11-29 19:03:33,663 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-29 19:03:46,674 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2025-11-29 19:03:46,676 - src.logg - INFO - 
 App and DB connected.
-2025-11-29 14:02:13,721 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-29 14:02:13,725 - src.logg - INFO - schema ensured in seeding.
-2025-11-29 14:02:13,741 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-29 14:02:34,459 - src.logg - INFO - Gemini Tool request --> generate_slots_by_doctor({'date': '01-12-2025', 'n_slots': 5.0, 'time': '12:00'})
-2025-11-29 14:02:34,475 - src.logg - INFO - Tool Result: Success
-2025-11-29 14:03:19,966 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
-2025-11-29 14:03:19,969 - src.logg - INFO - 
+2025-11-29 19:03:46,689 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-29 19:03:46,691 - src.logg - INFO - schema ensured in seeding.
+2025-11-29 19:03:46,697 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-29 19:03:59,431 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2025-11-29 19:03:59,434 - src.logg - INFO - 
 App and DB connected.
-2025-11-29 14:03:19,983 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-29 14:03:19,985 - src.logg - INFO - schema ensured in seeding.
-2025-11-29 14:03:19,993 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-29 14:03:23,422 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
-2025-11-29 14:03:23,424 - src.logg - INFO - 
+2025-11-29 19:03:59,457 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-29 19:03:59,461 - src.logg - INFO - schema ensured in seeding.
+2025-11-29 19:03:59,641 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-29 19:04:06,262 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2025-11-29 19:04:06,264 - src.logg - INFO - 
 App and DB connected.
-2025-11-29 14:03:23,436 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-29 14:03:23,438 - src.logg - INFO - schema ensured in seeding.
-2025-11-29 14:03:23,447 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-29 14:10:26,674 - src.logg - INFO - Gemini Tool request --> get_doctor_schedule({})
-2025-11-29 14:10:26,679 - src.logg - INFO - Tool Result: []
-2025-11-29 14:10:46,655 - src.logg - INFO - Gemini Tool request --> get_doctor_schedule({})
-2025-11-29 14:10:46,658 - src.logg - INFO - Tool Result: []
-2025-11-29 14:15:51,191 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
-2025-11-29 14:15:51,198 - src.logg - INFO - 
+2025-11-29 19:04:06,274 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-29 19:04:06,276 - src.logg - INFO - schema ensured in seeding.
+2025-11-29 19:04:06,352 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-29 19:04:24,528 - src.logg - INFO - Gemini Tool request --> search_appointments_by_patient({})
+2025-11-29 19:04:24,533 - src.logg - INFO - Tool Result: You have no booked appointments at the moment.
+2025-11-29 19:04:56,516 - src.logg - INFO - Gemini Tool request --> search_doctor_by_specialization({})
+2025-11-29 19:04:56,517 - src.logg - INFO - Tool Result: Tool Execution Error: search_doctor_by_specialization() missing 1 required positional argument: 'specialization'
+2025-11-29 19:09:04,418 - src.logg - INFO - App running..................
+2025-11-29 19:09:06,585 - src.logg - INFO - App running..................
+2025-11-29 19:09:11,343 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2025-11-29 19:09:11,345 - src.logg - INFO - 
 App and DB connected.
-2025-11-29 14:15:51,237 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-29 14:15:51,241 - src.logg - INFO - schema ensured in seeding.
-2025-11-29 14:15:51,424 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-29 14:16:17,402 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
-2025-11-29 14:16:17,407 - src.logg - INFO - 
+2025-11-29 19:09:11,358 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-29 19:09:11,360 - src.logg - INFO - schema ensured in seeding.
+2025-11-29 19:09:11,541 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-29 19:09:13,731 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2025-11-29 19:09:13,734 - src.logg - INFO - 
 App and DB connected.
-2025-11-29 14:16:17,449 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-29 14:16:17,453 - src.logg - INFO - schema ensured in seeding.
-2025-11-29 14:16:17,636 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-29 14:17:15,825 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
-2025-11-29 14:17:15,827 - src.logg - INFO - 
+2025-11-29 19:09:13,746 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-29 19:09:13,749 - src.logg - INFO - schema ensured in seeding.
+2025-11-29 19:09:13,927 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-29 19:09:38,781 - src.logg - INFO - Gemini Tool request --> search_doctor_by_specialization({'specialization': 'Urologist'})
+2025-11-29 19:09:38,785 - src.logg - INFO - Tool Result: [{'id': 7, 'name': 'Dr. Ramesh Gupta', 'specialization': 'Neurologist', 'fees': 1100, 'phone': '+91-9860006666', 'email': 'ramesh.gupta@example.com'}, {'id': 15, 'name': 'Dr. Deepak Sinha', 'specialization': 'Urologist', 'fees': 1200, 'phone': '+91-9940055555', 'email': 'deepak.sinha@example.com'}]
+2025-11-29 19:10:02,857 - src.logg - INFO - Gemini Tool request --> get_available_slots({'doctor_id': 7.0})
+2025-11-29 19:10:02,862 - src.logg - INFO - Tool Result: [{'id': 85, 'date': '2025-11-28', 'time': '10:00'}, {'id': 86, 'date': '2025-11-28', 'time': '16:00'}, {'id': 87, 'date': '2025-11-29', 'time': '10:00'}, {'id': 88, 'date': '2025-11-29', 'time': '16:00'}, {'id': 89, 'date': '2025-11-30', 'time': '10:00'}, {'id': 90, 'date': '2025-11-30', 'time': '16:00'}, {'id': 91, 'date': '2025-12-01', 'time': '10:00'}, {'id': 92, 'date': '2025-12-01', 'time': '16:00'}, {'id': 93, 'date': '2025-12-02', 'time': '10:00'}, {'id': 94, 'date': '2025-12-02', 'time': '16:00'}, {'id': 95, 'date': '2025-12-03', 'time': '10:00'}, {'id': 96, 'date': '2025-12-03', 'time': '16:00'}, {'id': 97, 'date': '2025-12-04', 'time': '10:00'}, {'id': 98, 'date': '2025-12-04', 'time': '16:00'}]
+2025-11-29 19:10:26,674 - src.logg - INFO - Gemini Tool request --> book_appointment_by_patient({'slot_id': 98.0})
+2025-11-29 19:10:26,678 - src.logg - ERROR - Booking Failed: NOT NULL constraint failed: appointments.date
+2025-11-29 19:10:26,678 - src.logg - INFO - Tool Result: Database Error: NOT NULL constraint failed: appointments.date
+2025-11-29 19:13:11,597 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2025-11-29 19:13:11,599 - src.logg - INFO - 
 App and DB connected.
-2025-11-29 14:17:15,841 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-29 14:17:15,843 - src.logg - INFO - schema ensured in seeding.
-2025-11-29 14:17:15,850 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-29 14:17:17,896 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
-2025-11-29 14:17:17,902 - src.logg - INFO - 
+2025-11-29 19:13:11,619 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-29 19:13:11,622 - src.logg - INFO - schema ensured in seeding.
+2025-11-29 19:13:11,806 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-29 19:13:43,937 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2025-11-29 19:13:43,940 - src.logg - INFO - 
 App and DB connected.
-2025-11-29 14:17:17,941 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-29 14:17:17,948 - src.logg - INFO - schema ensured in seeding.
-2025-11-29 14:17:17,961 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-29 14:17:42,164 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
-2025-11-29 14:17:42,166 - src.logg - INFO - 
+2025-11-29 19:13:43,958 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-29 19:13:43,961 - src.logg - INFO - schema ensured in seeding.
+2025-11-29 19:13:43,969 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-29 19:13:47,443 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2025-11-29 19:13:47,448 - src.logg - INFO - 
 App and DB connected.
-2025-11-29 14:17:42,178 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-29 14:17:42,180 - src.logg - INFO - schema ensured in seeding.
-2025-11-29 14:17:42,187 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-29 14:17:45,809 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
-2025-11-29 14:17:45,812 - src.logg - INFO - 
+2025-11-29 19:13:47,486 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-29 19:13:47,490 - src.logg - INFO - schema ensured in seeding.
+2025-11-29 19:13:47,502 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-29 19:14:00,306 - src.logg - INFO - Gemini Tool request --> search_doctor_by_specialization({'specialization': 'Urologist'})
+2025-11-29 19:14:00,309 - src.logg - INFO - Tool Result: [{'id': 7, 'name': 'Dr. Ramesh Gupta', 'specialization': 'Neurologist', 'fees': 1100, 'phone': '+91-9860006666', 'email': 'ramesh.gupta@example.com'}, {'id': 15, 'name': 'Dr. Deepak Sinha', 'specialization': 'Urologist', 'fees': 1200, 'phone': '+91-9940055555', 'email': 'deepak.sinha@example.com'}]
+2025-11-29 19:14:17,909 - src.logg - INFO - Gemini Tool request --> get_available_slots({'doctor_id': 7.0})
+2025-11-29 19:14:17,913 - src.logg - INFO - Tool Result: [{'id': 85, 'date': '2025-11-28', 'time': '10:00'}, {'id': 86, 'date': '2025-11-28', 'time': '16:00'}, {'id': 87, 'date': '2025-11-29', 'time': '10:00'}, {'id': 88, 'date': '2025-11-29', 'time': '16:00'}, {'id': 89, 'date': '2025-11-30', 'time': '10:00'}, {'id': 90, 'date': '2025-11-30', 'time': '16:00'}, {'id': 91, 'date': '2025-12-01', 'time': '10:00'}, {'id': 92, 'date': '2025-12-01', 'time': '16:00'}, {'id': 93, 'date': '2025-12-02', 'time': '10:00'}, {'id': 94, 'date': '2025-12-02', 'time': '16:00'}, {'id': 95, 'date': '2025-12-03', 'time': '10:00'}, {'id': 96, 'date': '2025-12-03', 'time': '16:00'}, {'id': 97, 'date': '2025-12-04', 'time': '10:00'}, {'id': 98, 'date': '2025-12-04', 'time': '16:00'}]
+2025-11-29 19:14:35,530 - src.logg - INFO - Gemini Tool request --> book_appointment_by_patient({'slot_id': 98.0})
+2025-11-29 19:14:35,532 - src.logg - ERROR - Booking Failed: table appointments has no column named time
+2025-11-29 19:14:35,532 - src.logg - INFO - Tool Result: Database Error: table appointments has no column named time
+2025-11-29 19:16:21,040 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2025-11-29 19:16:21,043 - src.logg - INFO - 
 App and DB connected.
-2025-11-29 14:17:45,824 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-29 14:17:45,825 - src.logg - INFO - schema ensured in seeding.
-2025-11-29 14:17:45,835 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-29 14:18:29,061 - src.logg - INFO - Gemini Tool request --> generate_slots_by_doctor({'date': '30-11-2025', 'n_slots': 10.0, 'time': '15:00'})
-2025-11-29 14:18:29,075 - src.logg - INFO - Tool Result: Success
-2025-11-29 14:19:15,564 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
-2025-11-29 14:19:15,570 - src.logg - INFO - 
+2025-11-29 19:16:21,054 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-29 19:16:21,057 - src.logg - INFO - schema ensured in seeding.
+2025-11-29 19:16:21,237 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-29 19:17:05,349 - src.logg - INFO - Gemini Tool request --> search_doctor_by_specialization({'specialization': 'Orthopedist'})
+2025-11-29 19:17:05,353 - src.logg - INFO - Tool Result: []
+2025-11-29 19:17:16,351 - src.logg - INFO - Gemini Tool request --> search_doctor_by_specialization({'specialization': 'Urologist'})
+2025-11-29 19:17:16,356 - src.logg - INFO - Tool Result: [{'id': 7, 'name': 'Dr. Ramesh Gupta', 'specialization': 'Neurologist', 'fees': 1100, 'phone': '+91-9860006666', 'email': 'ramesh.gupta@example.com'}, {'id': 15, 'name': 'Dr. Deepak Sinha', 'specialization': 'Urologist', 'fees': 1200, 'phone': '+91-9940055555', 'email': 'deepak.sinha@example.com'}]
+2025-11-29 19:17:39,023 - src.logg - INFO - Gemini Tool request --> get_available_slots({'doctor_id': 15.0})
+2025-11-29 19:17:39,026 - src.logg - INFO - Tool Result: [{'id': 197, 'date': '2025-11-28', 'time': '10:00'}, {'id': 198, 'date': '2025-11-28', 'time': '16:00'}, {'id': 199, 'date': '2025-11-29', 'time': '10:00'}, {'id': 200, 'date': '2025-11-29', 'time': '16:00'}, {'id': 201, 'date': '2025-11-30', 'time': '10:00'}, {'id': 202, 'date': '2025-11-30', 'time': '16:00'}, {'id': 203, 'date': '2025-12-01', 'time': '10:00'}, {'id': 204, 'date': '2025-12-01', 'time': '16:00'}, {'id': 205, 'date': '2025-12-02', 'time': '10:00'}, {'id': 206, 'date': '2025-12-02', 'time': '16:00'}, {'id': 207, 'date': '2025-12-03', 'time': '10:00'}, {'id': 208, 'date': '2025-12-03', 'time': '16:00'}, {'id': 209, 'date': '2025-12-04', 'time': '10:00'}, {'id': 210, 'date': '2025-12-04', 'time': '16:00'}]
+2025-11-29 19:18:08,311 - src.logg - INFO - Gemini Tool request --> book_appointment_by_patient({'slot_id': 210.0})
+2025-11-29 19:18:08,316 - src.logg - ERROR - Booking Failed: 6 values for 5 columns
+2025-11-29 19:18:08,317 - src.logg - INFO - Tool Result: Database Error: 6 values for 5 columns
+2025-11-29 19:18:57,755 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2025-11-29 19:18:57,757 - src.logg - INFO - 
 App and DB connected.
-2025-11-29 14:19:15,613 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-29 14:19:15,618 - src.logg - INFO - schema ensured in seeding.
-2025-11-29 14:19:15,634 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
-2025-11-29 14:19:34,401 - src.logg - INFO - Gemini Tool request --> generate_slots_by_doctor({'date': '01-12-2025', 'n_slots': 5.0, 'time': '12:00'})
-2025-11-29 14:19:34,413 - src.logg - INFO - Tool Result: Success
-2025-11-29 14:20:52,858 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
-2025-11-29 14:20:52,861 - src.logg - INFO - 
-App and DB connected.
-2025-11-29 14:20:52,876 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
-2025-11-29 14:20:52,879 - src.logg - INFO - schema ensured in seeding.
-2025-11-29 14:20:53,061 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-29 19:18:57,769 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-11-29 19:18:57,771 - src.logg - INFO - schema ensured in seeding.
+2025-11-29 19:18:57,780 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-11-29 19:19:11,180 - src.logg - INFO - Gemini Tool request --> search_doctor_by_specialization({'specialization': 'Urologist'})
+2025-11-29 19:19:11,186 - src.logg - INFO - Tool Result: [{'id': 7, 'name': 'Dr. Ramesh Gupta', 'specialization': 'Neurologist', 'fees': 1100, 'phone': '+91-9860006666', 'email': 'ramesh.gupta@example.com'}, {'id': 15, 'name': 'Dr. Deepak Sinha', 'specialization': 'Urologist', 'fees': 1200, 'phone': '+91-9940055555', 'email': 'deepak.sinha@example.com'}]
+2025-11-29 19:19:24,389 - src.logg - INFO - Gemini Tool request --> get_available_slots({'doctor_id': 7.0})
+2025-11-29 19:19:24,393 - src.logg - INFO - Tool Result: [{'id': 85, 'date': '2025-11-28', 'time': '10:00'}, {'id': 86, 'date': '2025-11-28', 'time': '16:00'}, {'id': 87, 'date': '2025-11-29', 'time': '10:00'}, {'id': 88, 'date': '2025-11-29', 'time': '16:00'}, {'id': 89, 'date': '2025-11-30', 'time': '10:00'}, {'id': 90, 'date': '2025-11-30', 'time': '16:00'}, {'id': 91, 'date': '2025-12-01', 'time': '10:00'}, {'id': 92, 'date': '2025-12-01', 'time': '16:00'}, {'id': 93, 'date': '2025-12-02', 'time': '10:00'}, {'id': 94, 'date': '2025-12-02', 'time': '16:00'}, {'id': 95, 'date': '2025-12-03', 'time': '10:00'}, {'id': 96, 'date': '2025-12-03', 'time': '16:00'}, {'id': 97, 'date': '2025-12-04', 'time': '10:00'}, {'id': 98, 'date': '2025-12-04', 'time': '16:00'}]
+2025-11-29 19:19:47,947 - src.logg - INFO - Gemini Tool request --> book_appointment_by_patient({'slot_id': 98.0})
+2025-11-29 19:19:48,151 - src.logg - INFO - Tool Result: Success: Appointment booked.
+2025-11-29 19:20:04,937 - src.logg - INFO - Gemini Tool request --> search_appointments_by_patient({})
+2025-11-29 19:20:04,946 - src.logg - INFO - Tool Result: [{'id': 4, 'status': 'booked', 'date': '2025-12-04', 'time': '16:00', 'doctor': 'Dr. Ramesh Gupta'}]
+2025-11-29 19:20:30,639 - src.logg - INFO - Gemini Tool request --> cancel_appointment_by_patient({'appointment_id': 4.0})
+2025-11-29 19:20:30,652 - src.logg - INFO - Tool Result: Success

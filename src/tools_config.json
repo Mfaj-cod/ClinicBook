@@ -4,7 +4,13 @@
     "description": "Finds doctors by specialization. IMPORTANT: Convert input to the SINGULAR PRACTITIONER TITLE (e.g., 'Cardiologist' instead of 'Cardiology').",
     "parameters": {
       "type": "object",
-      "properties": {}
+      "properties": {
+        "specialization": {
+          "type": "string",
+          "description": "The specialization to search for (e.g., Cardiologist, Dermatologist)"
+        }
+      },
+      "required": ["specialization"]
     }
   },
   {
@@ -94,5 +100,30 @@
         },
         "required": ["date", "time", "n_slots"]
     }
-  }
+  },
+  {
+  "name": "book_appointment_by_patient",
+  "description": "Book a specific appointment slot. Requires the slot ID.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "slot_id": { "type": "integer", "description": "The ID of the available slot to book" }
+    },
+    "required": ["slot_id"]
+   }
+  },
+  {
+  "name": "get_available_slots",
+  "description": "Returns a list of AVAILABLE (unbooked) slots for a specific doctor. Use this when a user wants to book an appointment.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "doctor_id": {
+        "type": "integer",
+        "description": "The ID of the doctor to fetch slots for."
+      }
+    },
+    "required": ["doctor_id"]
+   }
+ }
 ]

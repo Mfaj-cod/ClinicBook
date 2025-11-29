@@ -127,9 +127,73 @@ def get_chat_history_for_gemini(user_id, user_type, limit=10):
 
 def search_doctor_by_specialization(specialization: str):
     return run_query(
-        "SELECT name, specialization, fees, phone, email FROM doctors WHERE specialization LIKE ?",
+        # Added 'id' to the SELECT list
+        "SELECT id, name, specialization, fees, phone, email FROM doctors WHERE specialization LIKE ?",
         (f"%{specialization}%",)
     )
+
+def get_available_slots(doctor_id):
+    """Fetches unbooked slots for a specific doctor."""
+    return run_query(
+        """
+        SELECT id, date, time 
+        FROM slots 
+        WHERE doctor_id = ? AND booked_count < capacity 
+        ORDER BY date ASC, time ASC
+        """,
+        (doctor_id,)
+    )
+
+
+def book_appointment_by_patient(slot_id):
+    user_id = session.get('patient_id')
+    if not user_id:
+        return "Error: Login required."
+
+    conn = get_db_connection()
+    
+    # 1. Fetch Slot & Doctor Details
+    slot = conn.execute("""
+        SELECT s.id, s.date, s.time, s.doctor_id, d.name as doc_name 
+        FROM slots s 
+        JOIN doctors d ON s.doctor_id = d.id 
+        WHERE s.id = ?
+    """, (slot_id,)).fetchone()
+    
+    patient = conn.execute("SELECT email FROM patients WHERE id = ?", (user_id,)).fetchone()
+    
+    if not slot:
+        conn.close()
+        return "Error: Slot not found."
+    if not patient:
+        conn.close()
+        return "Error: Patient profile not found."
+
+    # 2. Perform Booking (Database Write)
+    try:
+        cur = conn.cursor()
+        
+        # --- FIX IS HERE: Added 'date' and 'time' to the INSERT ---
+        cur.execute(
+            """
+            INSERT INTO appointments (patient_id, doctor_id, slot_id, date, status) 
+            VALUES (?, ?, ?, ?, 'booked')
+            """,
+            (user_id, slot['doctor_id'], slot_id, slot['date'])
+        )
+        
+        # Increment 'booked_count'
+        cur.execute("UPDATE slots SET booked_count = booked_count + 1 WHERE id = ?", (slot_id,))
+        
+        conn.commit()
+    except Exception as e:
+        conn.close()
+        logger.error(f"Booking Failed: {e}")
+        return f"Database Error: {e}"
+
+    conn.close()
+
+    return "Success: Appointment booked."
 
 def search_doctor_by_name(name: str):
     return run_query(
@@ -159,9 +223,7 @@ def search_appointments_by_patient():
     
     email = user_row['email']
 
-    # Run the query using the retrieved email
-    # NOTE: We include 'id' in the SELECT so the user can see it to cancel later
-    return run_query(
+    appointments = run_query(
         """
         SELECT a.id, a.status, s.date, s.time, d.name AS doctor
         FROM appointments a
@@ -173,6 +235,13 @@ def search_appointments_by_patient():
         """,
         (f"%{email}%",)
     )
+
+
+    if not appointments:
+        return "You have no booked appointments at the moment."
+
+    return appointments
+
 
 def get_doctor_schedule():
     # Retrieves appointments for the logged-in DOCTOR.
