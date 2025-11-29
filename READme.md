@@ -15,7 +15,7 @@ A comprehensive web-based platform that transforms appointment booking into an i
   - **Static Knowledge**: Instantly answers policy questions (Refunds, Insurance, Hours) from a local Knowledge Base (`clinic_policies.txt`) without unnecessary database calls.
 - **🧠 Context-Aware Identity**: Automatically detects User Role (Doctor/Patient) and Current Date to handle relative queries like *"Show me tomorrow's schedule"*.
 
-![Agentic Workflow Diagram](assets\Agent.jpg)
+![Agentic Workflow Diagram](/assets/Agent.jpg)
 
 ### 👩‍⚕️ Doctor Portal
 - **Voice-Powered Management**: Dictate commands like *"Create slots for next Monday at 10 AM"* to bulk-generate schedule capacity.
