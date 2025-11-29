@@ -1,55 +1,45 @@
-# 🏥 Clinic Appointment Booking System
+# 🏥 ClinicBook - AI-Powered Healthcare Platform
 
-A comprehensive web-based platform that streamlines the appointment booking process between patients and healthcare providers. This system combines a robust Flask backend with an **Agentic AI Assistant** to offer a seamless, conversational experience for managing healthcare needs.
+A comprehensive web-based platform that streamlines the appointment booking process between patients and healthcare providers. ClinicBook transforms standard booking into an intelligent, conversational experience using a **Context-Aware Agentic AI**.
 
 ---
 
 ## ✨ Key Features
 
 ### 🤖 Agentic AI Health Assistant (Powered by Gemini)
-*Unlike standard chatbots, this assistant acts as an agent with direct database access.*
+*Unlike standard chatbots, this assistant acts as an intelligent agent with direct database access.*
 
-- **Zero-Touch Context**: Automatically identifies the logged-in user (Patient or Doctor) via session data—no need to ask for emails or IDs.
-- **Smart Appointment Management**: 
-- **Fetching**: "Show my appointments" retrieves real-time data from the database.
-- **Cancelling Appointments**: "Cancel the booked one" works intuitively. The system uses an **"Invisible Ink" strategy** to handle database IDs, allowing users to refer to items naturally without seeing technical ID numbers.
-- **Completing Appointments**: "Complete the booked one" works intuitively. The system uses an **"Invisible Ink" strategy** to handle database IDs, allowing doctors to complete the appointments naturally without seeing technical ID numbers.
-- **Intelligent Routing**: Converts symptoms (e.g., *"I have chest pain"*) into specific specialist queries (searches for *Cardiologists*) using Function Calling.
-- **Clean UI Formatting**: The AI automatically cleans markdown and formats database results into readable, bulleted lists for the frontend.
-- **Context-Aware Memory**: Remembers the last 10 interactions, allowing for follow-up questions like *"Where is that clinic located?"* after searching for a doctor.
+- **Context-Aware Identity**: Automatically detects if the user is a **Doctor** or **Patient** and adjusts its behavior and available tools accordingly.
+- **Temporal Intelligence**: Understands natural language dates and times (e.g., *"Generate slots for tomorrow at 4 PM"* or *"Cancel the appointment next Friday"*) by referencing the live system date.
+- **Smart Data Handling ("Invisible Ink")**: Uses internal database IDs to perform precise actions (like cancellations) without exposing technical details to the user, keeping the chat clean and conversational.
+- **Role-Based Workflows**:
+  - **For Patients**: Finds specialists, checks availability, views history, and cancels appointments.
+  - **For Doctors**: Manages schedules, views upcoming patient lists, and creates new appointment slots using simple voice-like commands.
 
 ### 👩‍⚕️ Doctor Portal
-- **Profile Management**: Maintain professional details, specialization, and consultation fees.
-- **Slot Management**: Create and manage availability slots.
-- **Patient Dashboard**: View booked patients and upcoming schedule.
-- **Secure Access**: Session-based security ensures doctors only manage their own slots.
+- **AI Slot Generation**: Create bulk appointment slots instantly by simply typing *"Create 10 slots for tomorrow at 5 PM"*.
+- **Schedule Management**: Ask *"Who is visiting me today?"* to get a real-time list of patients.
+- **Workflow Automation**: Mark appointments as "Completed" directly through the chat interface.
+- **Secure Profile Control**: Manage fees, specialization, and clinic details securely.
 
 ### 🧑‍🤝‍🧑 Patient Portal
-- **Doctor Discovery**: Search by name, specialization, or city.
+- **Natural Language Search**: Find doctors by describing symptoms (e.g., *"I have a migraine"* -> searches for *Neurologists*).
 - **One-Click Booking**: Streamlined booking process for available slots.
-- **Personal Dashboard**: View history, check status, and cancel upcoming visits.
-- **Visual Status**: Clear indicators for 'Booked' vs 'Cancelled' appointments.
-
-### ⚙️ System Features
-- **Secure Authentication**: Flask-Login implementation for session management.
-- **Robust Database**: SQLite with transactional integrity (Commit/Rollback protections).
-- **Responsive Design**: Mobile-friendly interface built with Bootstrap 5.
-- **Real-time Updates**: changes made via Chatbot are immediately reflected in the dashboard.
+- **Visual Dashboard**: Track appointment status (Booked, Cancelled, Completed) in real-time.
 
 ---
 
 ## 🛠️ Technology Stack
 
 - **Backend**: Flask (Python 3.x)
-- **AI Engine**: Google Gemini 1.5 Flash via `google-generativeai`
-- **AI Techniques**: 
-  - **Function Calling** (Tool Use)
-  - **Prompt Engineering** (System Instructions)
-  - **Context Caching** (Chat History via DB)
+- **AI Engine**: Google Gemini 1.5 Flash
+- **AI Architecture**: 
+  - **Function Calling**: Modular tool definitions stored in `tools_config.json`.
+  - **System Prompting**: Robust rule sets for safety, formatting, and role management.
+  - **Context Injection**: Dynamically injects User Role and System Date into every prompt.
 - **Database**: SQLite (Native Python support)
 - **Frontend**: HTML5, CSS3, Bootstrap 5, Jinja2
 - **Authentication**: Flask-Login & Bcrypt
-- **Deployment**: Ready for Render / Heroku
 
 ---
 
