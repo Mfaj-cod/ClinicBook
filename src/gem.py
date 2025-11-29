@@ -5,7 +5,7 @@ import json
 from flask import current_app, jsonify, session
 from dotenv import load_dotenv
 from google.generativeai.protos import Part, FunctionResponse
-
+from datetime import datetime
 from src.logg import logger
 from src.prompt import sys_prompt
 
@@ -313,10 +313,13 @@ def gemini_chat(request):
 
         chat = gemini_model.start_chat(history=db_history)
 
-        # Tell the AI who is logged in.
+        today_str = datetime.now().strftime("%A, %d-%m-%Y")
+
         context_header = f"CURRENT USER ROLE: {user_type.upper()}"
         if user_id != 0:
             context_header += f" (ID: {user_id})"
+        
+        context_header += f"\nCURRENT SYSTEM DATE: {today_str}" 
         
         full_prompt = f"{sys_prompt}\n\n{context_header}\nUser Query: {user_msg}"
         
