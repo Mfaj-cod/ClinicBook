@@ -42,7 +42,6 @@ A comprehensive web-based platform that transforms appointment booking into an i
   - **Framework**: Bootstrap 5 & Jinja2
   - **Voice**: Web Speech API (Native JavaScript)
 - **Database**: SQLite (Transactional)
-- **Services**: Flask-Mail (SMTP Notifications)
 
 ---
 ## 🎯 AI Capabilities Breakdown
@@ -59,7 +58,7 @@ The system uses a **Router Architecture** to decide how to handle a user query:
 
 3. **Action Command** (e.g., *"Book the 10 AM slot"*)
    - **Source:** `book_appointment_by_patient` Tool
-   - **Action:** DB Write → Email Trigger → Confirmation
+   - **Action:** DB Write → Confirmation
 
 ---
 
@@ -68,7 +67,6 @@ The system uses a **Router Architecture** to decide how to handle a user query:
 ### Prerequisites
 - Python 3.8+
 - Google Cloud API Key (Gemini)
-- Gmail Account (for sending notifications)
 
 ### Installation Steps
 
