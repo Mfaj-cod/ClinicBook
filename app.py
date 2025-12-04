@@ -585,7 +585,7 @@ def create_app():
             flash('You are not authorized to complete this appointment.', 'danger')
             return redirect(url_for('doctors_dashboard'))
 
-        # ✅ Update status to completed
+        # Update status to completed
         db.execute('UPDATE appointments SET status=? WHERE id=?', ('completed', appointment_id))
         db.commit()
 

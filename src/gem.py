@@ -20,7 +20,7 @@ GEMINI_MODEL_NAME = os.getenv("GEMINI_MODEL_NAME")
 
 
 def load_tools_config():
-    # Loads tool definitions from the JSON file.
+    # Loading tool definitions from the JSON file.
     try:
         base_path = os.path.dirname(os.path.abspath(__file__))
         config_path = os.path.join(base_path, "tools_config.json")
@@ -33,9 +33,8 @@ def load_tools_config():
 
 
 def load_policy_document():
-    """Loads the static policy text file for RAG."""
     try:
-        base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) # Go up one level to root
+        base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         policy_path = os.path.join(base_path, "data", "clinic_policies.txt")
         
         with open(policy_path, "r") as f:
@@ -51,7 +50,6 @@ if GEMINI_API_KEY and genai:
     try:
         genai.configure(api_key=GEMINI_API_KEY)
         
-        # Loading tools from file
         tool_functions = load_tools_config()
         
         gemini_model = genai.GenerativeModel(
@@ -137,7 +135,6 @@ def get_chat_history_for_gemini(user_id, user_type, limit=10):
 
 
 # Tool Functions
-
 def search_doctor_by_specialization(specialization: str):
     return run_query(
         # Added 'id' to the SELECT list
@@ -165,7 +162,7 @@ def book_appointment_by_patient(slot_id):
 
     conn = get_db_connection()
     
-    # 1. Fetch Slot & Doctor Details
+    # Fetching Slot & Doctor Details
     slot = conn.execute("""
         SELECT s.id, s.date, s.time, s.doctor_id, d.name as doc_name 
         FROM slots s 
@@ -173,20 +170,16 @@ def book_appointment_by_patient(slot_id):
         WHERE s.id = ?
     """, (slot_id,)).fetchone()
     
-    patient = conn.execute("SELECT email FROM patients WHERE id = ?", (user_id,)).fetchone()
+    # patient = conn.execute("SELECT email FROM patients WHERE id = ?", (user_id,)).fetchone()
     
     if not slot:
         conn.close()
         return "Error: Slot not found."
-    if not patient:
-        conn.close()
-        return "Error: Patient profile not found."
 
-    # 2. Perform Booking (Database Write)
+    # Performing Booking (Database Write)
     try:
         cur = conn.cursor()
         
-        # --- FIX IS HERE: Added 'date' and 'time' to the INSERT ---
         cur.execute(
             """
             INSERT INTO appointments (patient_id, doctor_id, slot_id, date, status) 
@@ -226,7 +219,7 @@ def search_appointments_by_patient():
     if not user_id:
         return "Error: You must be logged in as a patient to view appointments."
 
-    # Fetch the email from the database using the ID
+    # Fetching the email from the database using the ID
     conn = get_db_connection()
     user_row = conn.execute("SELECT email FROM patients WHERE id = ?", (user_id,)).fetchone()
     conn.close()
@@ -264,7 +257,7 @@ def get_doctor_schedule():
         return "Error: You must be logged in as a doctor to view your schedule."
 
     # Query appointments linked to this doctor_id
-    # We join with 'patients' to show the doctor WHO is visiting
+    # join with 'patients' to show the doctor WHO is visiting
     return run_query(
         """
         SELECT a.id, p.name AS patient_name, s.date, s.time, a.status
@@ -284,7 +277,7 @@ def cancel_appointment_by_patient(appointment_id):
         return "Error: You must be logged in as a patient to cancel appointments."
 
     # Use write_query to ensure COMMIT happens.
-    # We verify 'patient_id' in the WHERE clause for security (prevent deleting others' data)
+    # verify 'patient_id' in the WHERE clause for security (prevent deleting others' data)
     return write_query(
         """
         UPDATE appointments
@@ -300,8 +293,8 @@ def complete_appointment_by_doctor(appointment_id):
     if not user_id:
         return "Error: You must be logged in as a doctor to complete appointments."
 
-    # Use write_query to ensure COMMIT happens.
-    # We verify 'complete_id' in the WHERE clause for security (prevent deleting others' data)
+    # write_query to ensure COMMIT happens.
+    # verify 'complete_id' in the WHERE clause for security (prevent deleting others' data)
     return write_query(
         """
         UPDATE appointments
@@ -327,7 +320,6 @@ def generate_slots_by_doctor(date, time, n_slots):
 
 
 # TEXT PROCESSING HELPERS
-
 def get_response_text(resp):
     """Safely extracts the raw text from the Gemini response object."""
     try:
@@ -349,26 +341,26 @@ def clean_text_for_display(text):
     if not text:
         return "I couldn't generate a response."
 
-    # 1. Remove the "Invisible Ink" IDs (e.g., [ID: 5])
+    # Remove the "Invisible Ink" IDs (e.g., [ID: 5])
     # This regex finds [ID: number] and replaces it with an empty string
     text = re.sub(r'\s*\[ID: \d+\]', '', text)
 
-    # 2. Remove bolding markers (**)
+    # Remove bolding markers (**)
     text = text.replace("**", "")
     
-    # 3. Convert list bullets (*) to a clean newline + unicode bullet
+    # Convert list bullets (*) to a clean newline + unicode bullet
     text = text.replace("* ", "\n• ")
     
-    # 4. Remove generic header Markdown (#)
+    # Remove generic header Markdown (#)
     text = text.replace("##", "").replace("###", "")
     
     return text.strip()
 
 
 # main function
-
 def gemini_chat(request):
     """Handles a chat request with memory and tools."""
+
     if gemini_model is None:
         return jsonify({"error": "Gemini model unavailable"}), 500
 
@@ -376,7 +368,7 @@ def gemini_chat(request):
     if not user_msg:
         return jsonify({"reply": "Say something…"}), 200
 
-    # 1. Identify User
+    # Identify User
     if 'patient_id' in session:
         user_id = session['patient_id']
         user_type = 'patient'
@@ -388,7 +380,7 @@ def gemini_chat(request):
         user_type = 'guest'
 
     try:
-        # 2. Load History
+        # Load History
         db_history = []
         if user_id != 0:
             db_history = get_chat_history_for_gemini(user_id, user_type, limit=10)
@@ -405,7 +397,7 @@ def gemini_chat(request):
         
         full_prompt = f"""{sys_prompt}
 
-        ### 📚 KNOWLEDGE BASE (Clinic Policies)
+        ### KNOWLEDGE BASE (Clinic Policies)
         Use the following information to answer questions about refunds, hours, or insurance.
         If the answer is found here, you do NOT need to call a tool.
         {policy_text}
@@ -418,10 +410,9 @@ def gemini_chat(request):
             generation_config={"candidate_count": 1, "temperature": 0.5}
         )
 
-        # 4. Tool Loop (Handle Function Calls)
-        # We loop as long as the model wants to call a function.
+        # loop as long as the model wants to call a function.
         while True:
-            # Check if the response contains a function call
+            # Checking if the response contains a function call
             function_call = None
             try:
                 # Iterate through all parts to find a function call
@@ -432,11 +423,11 @@ def gemini_chat(request):
             except (AttributeError, IndexError):
                 pass
 
-            # If no function call found, we are done. Break the loop to show text.
+            # If no function call found, Break the loop to show text.
             if not function_call:
                 break
 
-            # Execute the tool
+            # Executing the tool
             fname = function_call.name
             args = dict(function_call.args)
             logger.info(f"Gemini Tool request --> {fname}({args})")
@@ -459,7 +450,7 @@ def gemini_chat(request):
                 )
             )
 
-        # 5. Extract Final Text (Robust Method)
+        # Extract Final Text (Robust Method)
         final_text = ""
         try:
             if response.candidates:
@@ -474,7 +465,7 @@ def gemini_chat(request):
         if not final_text.strip():
             final_text = "I have processed your request. Is there anything else you need?"
 
-        # 6. Clean & Save
+        # Clean & Save
         display_reply = clean_text_for_display(final_text)
 
         if user_id != 0:

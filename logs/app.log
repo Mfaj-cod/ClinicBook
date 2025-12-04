@@ -216,3 +216,45 @@ App and DB connected.
 2025-11-29 22:19:20,640 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
 2025-11-29 22:19:20,642 - src.logg - INFO - schema ensured in seeding.
 2025-11-29 22:19:20,650 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-12-03 18:18:18,329 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2025-12-03 18:18:18,331 - src.logg - INFO - 
+App and DB connected.
+2025-12-03 18:18:18,343 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-12-03 18:18:18,344 - src.logg - INFO - schema ensured in seeding.
+2025-12-03 18:18:18,350 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-12-03 18:18:20,164 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2025-12-03 18:18:20,165 - src.logg - INFO - 
+App and DB connected.
+2025-12-03 18:18:20,175 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-12-03 18:18:20,176 - src.logg - INFO - schema ensured in seeding.
+2025-12-03 18:18:20,182 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-12-03 18:53:02,659 - src.logg - INFO - Gemini Tool request --> search_doctor_by_specialization({'specialization': 'Urologist'})
+2025-12-03 18:53:02,677 - src.logg - INFO - Tool Result: [{'id': 7, 'name': 'Dr. Ramesh Gupta', 'specialization': 'Neurologist', 'fees': 1100, 'phone': '+91-9860006666', 'email': 'ramesh.gupta@example.com'}, {'id': 15, 'name': 'Dr. Deepak Sinha', 'specialization': 'Urologist', 'fees': 1200, 'phone': '+91-9940055555', 'email': 'deepak.sinha@example.com'}]
+2025-12-03 18:53:28,754 - src.logg - INFO - Gemini Tool request --> search_doctor_by_name({'name': 'Ramesh Gupta'})
+2025-12-03 18:53:28,758 - src.logg - INFO - Tool Result: [{'name': 'Dr. Ramesh Gupta', 'specialization': 'Neurologist', 'fees': 1100, 'phone': '+91-9860006666', 'email': 'ramesh.gupta@example.com'}]
+2025-12-03 18:53:53,883 - src.logg - INFO - App running..................
+2025-12-03 18:53:56,233 - src.logg - INFO - App running..................
+2025-12-03 18:54:58,117 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2025-12-03 18:54:58,120 - src.logg - INFO - 
+App and DB connected.
+2025-12-03 18:54:58,148 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-12-03 18:54:58,152 - src.logg - INFO - schema ensured in seeding.
+2025-12-03 18:54:58,163 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-12-03 18:55:04,981 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2025-12-03 18:55:04,990 - src.logg - INFO - 
+App and DB connected.
+2025-12-03 18:55:05,043 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-12-03 18:55:05,049 - src.logg - INFO - schema ensured in seeding.
+2025-12-03 18:55:05,067 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-12-03 18:55:23,187 - src.logg - INFO - Gemini Tool request --> search_appointments_by_patient({})
+2025-12-03 18:55:23,204 - src.logg - INFO - Tool Result: You have no booked appointments at the moment.
+2025-12-03 18:55:39,994 - src.logg - INFO - Gemini Tool request --> search_doctor_by_specialization({'specialization': 'Urologist'})
+2025-12-03 18:55:40,003 - src.logg - INFO - Tool Result: [{'id': 7, 'name': 'Dr. Ramesh Gupta', 'specialization': 'Neurologist', 'fees': 1100, 'phone': '+91-9860006666', 'email': 'ramesh.gupta@example.com'}, {'id': 15, 'name': 'Dr. Deepak Sinha', 'specialization': 'Urologist', 'fees': 1200, 'phone': '+91-9940055555', 'email': 'deepak.sinha@example.com'}]
+2025-12-03 18:55:54,686 - src.logg - INFO - Gemini Tool request --> get_available_slots({'doctor_id': 15.0})
+2025-12-03 18:55:54,696 - src.logg - INFO - Tool Result: [{'id': 197, 'date': '2025-11-28', 'time': '10:00'}, {'id': 198, 'date': '2025-11-28', 'time': '16:00'}, {'id': 199, 'date': '2025-11-29', 'time': '10:00'}, {'id': 200, 'date': '2025-11-29', 'time': '16:00'}, {'id': 201, 'date': '2025-11-30', 'time': '10:00'}, {'id': 202, 'date': '2025-11-30', 'time': '16:00'}, {'id': 203, 'date': '2025-12-01', 'time': '10:00'}, {'id': 204, 'date': '2025-12-01', 'time': '16:00'}, {'id': 205, 'date': '2025-12-02', 'time': '10:00'}, {'id': 206, 'date': '2025-12-02', 'time': '16:00'}, {'id': 207, 'date': '2025-12-03', 'time': '10:00'}, {'id': 208, 'date': '2025-12-03', 'time': '16:00'}, {'id': 209, 'date': '2025-12-04', 'time': '10:00'}, {'id': 210, 'date': '2025-12-04', 'time': '16:00'}]
+2025-12-03 18:56:11,975 - src.logg - INFO - Gemini Tool request --> book_appointment_by_patient({'slot_id': 197.0})
+2025-12-03 18:56:12,008 - src.logg - INFO - Tool Result: Success: Appointment booked.
+2025-12-03 18:56:39,660 - src.logg - INFO - Gemini Tool request --> search_appointments_by_patient({})
+2025-12-03 18:56:39,684 - src.logg - INFO - Tool Result: [{'id': 5, 'status': 'booked', 'date': '2025-11-28', 'time': '10:00', 'doctor': 'Dr. Deepak Sinha'}]
+2025-12-04 20:05:23,467 - src.logg - INFO - App running..................
+2025-12-04 20:05:25,667 - src.logg - INFO - App running..................

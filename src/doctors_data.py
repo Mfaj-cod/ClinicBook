@@ -1,4 +1,3 @@
-# data.py - add doctor entries here, then run `python seed.py`
 doctors_data = [
     {
         "name": "Dr. Ajay Kumar",
