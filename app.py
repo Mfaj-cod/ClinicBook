@@ -644,13 +644,10 @@ def create_app():
         db.commit()
         flash("Slot deleted.", "info")
         return redirect(url_for("doctor_slots"))
-    
-
         
     @app.route("/chat_with_gemini", methods=["POST"])
     def chat_with_gemini_route():
         return gemini_chat(request)
-
 
     # Logout
     @app.route('/logout')
@@ -662,7 +659,6 @@ def create_app():
 
     return app
     
-
 
 if __name__ == '__main__':
     app = create_app()
