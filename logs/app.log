@@ -258,3 +258,27 @@ App and DB connected.
 2025-12-03 18:56:39,684 - src.logg - INFO - Tool Result: [{'id': 5, 'status': 'booked', 'date': '2025-11-28', 'time': '10:00', 'doctor': 'Dr. Deepak Sinha'}]
 2025-12-04 20:05:23,467 - src.logg - INFO - App running..................
 2025-12-04 20:05:25,667 - src.logg - INFO - App running..................
+2025-12-08 00:13:26,924 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2025-12-08 00:13:26,936 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-12-08 00:13:26,936 - src.logg - INFO - Database setup completed successfully.
+2025-12-08 00:13:26,939 - src.logg - INFO - schema ensured in seeding.
+2025-12-08 00:13:26,948 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-12-08 00:13:26,948 - src.logg - INFO - 
+App and DB connected.
+2025-12-08 00:13:26,962 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-12-08 00:13:26,965 - src.logg - INFO - schema ensured in seeding.
+2025-12-08 00:13:26,973 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-12-08 00:13:29,544 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2025-12-08 00:13:29,549 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-12-08 00:13:29,549 - src.logg - INFO - Database setup completed successfully.
+2025-12-08 00:13:29,551 - src.logg - INFO - schema ensured in seeding.
+2025-12-08 00:13:29,703 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-12-08 00:13:29,703 - src.logg - INFO - 
+App and DB connected.
+2025-12-08 00:13:29,716 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2025-12-08 00:13:29,718 - src.logg - INFO - schema ensured in seeding.
+2025-12-08 00:13:29,726 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2025-12-08 00:14:05,379 - src.logg - INFO - Gemini Tool request --> search_appointments_by_patient({})
+2025-12-08 00:14:05,386 - src.logg - INFO - Tool Result: [{'id': 5, 'status': 'booked', 'date': '2025-11-28', 'time': '10:00', 'doctor': 'Dr. Deepak Sinha'}]
+2025-12-08 00:14:22,237 - src.logg - INFO - Gemini Tool request --> cancel_appointment_by_patient({'appointment_id': 5.0})
+2025-12-08 00:14:22,249 - src.logg - INFO - Tool Result: Success

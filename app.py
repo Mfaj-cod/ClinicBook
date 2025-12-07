@@ -6,23 +6,30 @@ from sqlite3 import IntegrityError
 import re
 from flask_cors import CORS
 
-from src.init_db import setup
+# 1. Import the setup function from your existing script
+from src.init_db import setup 
 from src.seed import seed
 from src.logg import logger
 from src.gem import gemini_chat
 
-
-BASE = os.path.dirname(__file__)
-DB = os.path.join(BASE, 'data', 'clinicBook.db')
+BASE = os.path.dirname(os.path.abspath(__file__))
+DB_PATH = os.path.join(BASE, 'data', 'clinicBook.db') 
 
 def create_app():
     app = Flask(__name__)
-    CORS(app) # Enable CORS for all routes
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
-    app.config['DATABASE'] = DB
+    app.config['DATABASE'] = DB_PATH
+
+    try:
+        setup() 
+        logger.info("Database setup completed successfully.")
+        seed() 
+    except Exception as e:
+        logger.error(f"Error setting up database: {e}")
+
     logger.info("\nApp and DB connected.")
 
-    # Database connection
+    
     def get_db():
         if 'db' not in g:
             g.db = sqlite3.connect(app.config['DATABASE'])
