@@ -4,7 +4,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
 from sqlite3 import IntegrityError
 import re
-from flask_cors import CORS
 
 # 1. Import the setup function from your existing script
 from src.init_db import setup 
