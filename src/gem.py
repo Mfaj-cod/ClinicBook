@@ -35,7 +35,7 @@ def load_tools_config():
 def load_policy_document():
     try:
         base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        policy_path = os.path.join(base_path, "data", "clinic_policies.txt")
+        policy_path = os.path.join(base_path, "clinic_policies.txt")
         
         with open(policy_path, "r") as f:
             return f.read()

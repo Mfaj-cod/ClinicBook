@@ -5,7 +5,6 @@ from functools import wraps
 from sqlite3 import IntegrityError
 import re
 
-# 1. Import the setup function from your existing script
 from src.init_db import setup 
 from src.seed import seed
 from src.logg import logger
