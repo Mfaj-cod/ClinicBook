@@ -146,15 +146,15 @@ The system uses a **Router Architecture** to decide how to handle a user query:
 ---
 **🔮 Roadmap**
 
-- [x] Multimodal: Voice Input & Text Output
+- [x] Multimodal: Voice Input & Text Output.
 
-- [x] RAG Integration: Knowledge Base for FAQ
+- [x] RAG Integration: Knowledge Base for FAQ.
 
-- [x] Agentic Writes: Booking & Slot Generation
+- [x] Agentic Writes: Booking & Slot Generation.
 
-- [ ] Payment Integration
+- [ ] Payment Integration.
 
-- [ ] Analytics: Appointment analytics and reporting features
+- [ ] Analytics: Appointment analytics and reporting features.
 
 **📞 Support**
 For support, please open an issue in the GitHub repository or contact the development team.
