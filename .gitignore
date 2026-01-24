@@ -22,7 +22,3 @@ data/
 
 # VS Code settings
 .vscode/
-
-./logs
-/logs/
-.*logs/

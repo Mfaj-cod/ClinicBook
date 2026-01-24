@@ -1,0 +1,70 @@
+2026-01-24 15:26:46,490 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2026-01-24 15:26:46,590 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2026-01-24 15:26:46,591 - src.logg - INFO - Database setup completed successfully.
+2026-01-24 15:26:46,599 - src.logg - INFO - schema ensured in seeding.
+2026-01-24 15:26:46,603 - src.logg - INFO - Slots generated for demo doctors.
+2026-01-24 15:26:46,605 - src.logg - INFO - Slots generated for demo doctors.
+2026-01-24 15:26:46,605 - src.logg - INFO - Slots generated for demo doctors.
+2026-01-24 15:26:46,606 - src.logg - INFO - Slots generated for demo doctors.
+2026-01-24 15:26:46,607 - src.logg - INFO - Slots generated for demo doctors.
+2026-01-24 15:26:46,607 - src.logg - INFO - Slots generated for demo doctors.
+2026-01-24 15:26:46,609 - src.logg - INFO - Slots generated for demo doctors.
+2026-01-24 15:26:46,609 - src.logg - INFO - Slots generated for demo doctors.
+2026-01-24 15:26:46,610 - src.logg - INFO - Slots generated for demo doctors.
+2026-01-24 15:26:46,611 - src.logg - INFO - Slots generated for demo doctors.
+2026-01-24 15:26:46,612 - src.logg - INFO - Slots generated for demo doctors.
+2026-01-24 15:26:46,613 - src.logg - INFO - Slots generated for demo doctors.
+2026-01-24 15:26:46,614 - src.logg - INFO - Slots generated for demo doctors.
+2026-01-24 15:26:46,615 - src.logg - INFO - Slots generated for demo doctors.
+2026-01-24 15:26:46,616 - src.logg - INFO - Slots generated for demo doctors.
+2026-01-24 15:26:46,617 - src.logg - INFO - Slots generated for demo doctors.
+2026-01-24 15:26:46,618 - src.logg - INFO - Slots generated for demo doctors.
+2026-01-24 15:26:46,619 - src.logg - INFO - Slots generated for demo doctors.
+2026-01-24 15:26:46,620 - src.logg - INFO - Slots generated for demo doctors.
+2026-01-24 15:26:46,621 - src.logg - INFO - Slots generated for demo doctors.
+2026-01-24 15:26:46,621 - src.logg - INFO - Slots generated for demo doctors.
+2026-01-24 15:26:46,622 - src.logg - INFO - Slots generated for demo doctors.
+2026-01-24 15:26:46,629 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2026-01-24 15:26:46,629 - src.logg - INFO - 
+App and DB connected.
+2026-01-24 15:26:46,693 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2026-01-24 15:26:46,700 - src.logg - INFO - schema ensured in seeding.
+2026-01-24 15:26:46,716 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2026-01-24 15:27:31,385 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2026-01-24 15:27:31,399 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2026-01-24 15:27:31,399 - src.logg - INFO - Database setup completed successfully.
+2026-01-24 15:27:31,403 - src.logg - INFO - schema ensured in seeding.
+2026-01-24 15:27:31,420 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2026-01-24 15:27:31,420 - src.logg - INFO - 
+App and DB connected.
+2026-01-24 15:27:31,462 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2026-01-24 15:27:31,466 - src.logg - INFO - schema ensured in seeding.
+2026-01-24 15:27:31,478 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2026-01-24 15:28:30,934 - src.logg - INFO - New user registered.
+2026-01-24 15:29:16,903 - src.logg - WARNING - Could not load policy document: [Errno 2] No such file or directory: 'C:\\Users\\fajal\\OneDrive\\Desktop\\ClinicBook\\clinic_policies.txt'
+2026-01-24 15:29:44,599 - src.logg - WARNING - Could not load policy document: [Errno 2] No such file or directory: 'C:\\Users\\fajal\\OneDrive\\Desktop\\ClinicBook\\clinic_policies.txt'
+2026-01-24 15:29:46,020 - src.logg - INFO - Gemini Tool request --> search_doctor_by_specialization({'specialization': 'Urologist'})
+2026-01-24 15:29:46,026 - src.logg - INFO - Tool Result: [{'id': 7, 'name': 'Dr. Ramesh Gupta', 'specialization': 'Neurologist', 'fees': 1100, 'phone': '+91-9860006666', 'email': 'ramesh.gupta@example.com'}, {'id': 15, 'name': 'Dr. Deepak Sinha', 'specialization': 'Urologist', 'fees': 1200, 'phone': '+91-9940055555', 'email': 'deepak.sinha@example.com'}]
+2026-01-24 15:30:04,644 - src.logg - WARNING - Could not load policy document: [Errno 2] No such file or directory: 'C:\\Users\\fajal\\OneDrive\\Desktop\\ClinicBook\\clinic_policies.txt'
+2026-01-24 15:30:06,434 - src.logg - INFO - Gemini Tool request --> get_available_slots({'doctor_id': 15.0})
+2026-01-24 15:30:06,444 - src.logg - INFO - Tool Result: [{'id': 197, 'date': '2026-01-24', 'time': '10:00'}, {'id': 198, 'date': '2026-01-24', 'time': '16:00'}, {'id': 199, 'date': '2026-01-25', 'time': '10:00'}, {'id': 200, 'date': '2026-01-25', 'time': '16:00'}, {'id': 201, 'date': '2026-01-26', 'time': '10:00'}, {'id': 202, 'date': '2026-01-26', 'time': '16:00'}, {'id': 203, 'date': '2026-01-27', 'time': '10:00'}, {'id': 204, 'date': '2026-01-27', 'time': '16:00'}, {'id': 205, 'date': '2026-01-28', 'time': '10:00'}, {'id': 206, 'date': '2026-01-28', 'time': '16:00'}, {'id': 207, 'date': '2026-01-29', 'time': '10:00'}, {'id': 208, 'date': '2026-01-29', 'time': '16:00'}, {'id': 209, 'date': '2026-01-30', 'time': '10:00'}, {'id': 210, 'date': '2026-01-30', 'time': '16:00'}]
+2026-01-24 15:30:20,792 - src.logg - WARNING - Could not load policy document: [Errno 2] No such file or directory: 'C:\\Users\\fajal\\OneDrive\\Desktop\\ClinicBook\\clinic_policies.txt'
+2026-01-24 15:30:22,949 - src.logg - INFO - Gemini Tool request --> book_appointment_by_patient({'slot_id': 197.0})
+2026-01-24 15:30:22,978 - src.logg - INFO - Tool Result: Success: Appointment booked.
+2026-01-24 15:30:33,679 - src.logg - WARNING - Could not load policy document: [Errno 2] No such file or directory: 'C:\\Users\\fajal\\OneDrive\\Desktop\\ClinicBook\\clinic_policies.txt'
+2026-01-24 15:30:35,875 - src.logg - INFO - Gemini Tool request --> search_appointments_by_patient({})
+2026-01-24 15:30:35,885 - src.logg - INFO - Tool Result: [{'id': 1, 'status': 'booked', 'date': '2026-01-24', 'time': '10:00', 'doctor': 'Dr. Deepak Sinha'}]
+2026-01-24 15:32:02,739 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2026-01-24 15:32:02,744 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2026-01-24 15:32:02,744 - src.logg - INFO - Database setup completed successfully.
+2026-01-24 15:32:02,746 - src.logg - INFO - schema ensured in seeding.
+2026-01-24 15:32:02,756 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2026-01-24 15:32:02,756 - src.logg - INFO - 
+App and DB connected.
+2026-01-24 15:32:02,781 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2026-01-24 15:32:02,785 - src.logg - INFO - schema ensured in seeding.
+2026-01-24 15:32:02,815 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2026-01-24 15:32:16,082 - src.logg - WARNING - Could not load policy document: [Errno 2] No such file or directory: 'C:\\Users\\fajal\\OneDrive\\Desktop\\ClinicBook\\clinic_policies.txt'
+2026-01-24 15:35:19,655 - src.logg - WARNING - Could not load policy document: [Errno 2] No such file or directory: 'C:\\Users\\fajal\\OneDrive\\Desktop\\ClinicBook\\clinic_policies.txt'
+2026-01-24 15:36:53,843 - src.logg - INFO - App running..................
+2026-01-24 15:36:56,232 - src.logg - INFO - App running..................
