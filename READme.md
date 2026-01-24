@@ -1,163 +1,219 @@
-# 🏥 ClinicBook - Multimodal AI Healthcare Platform
+# 🏥 ClinicBook - Agentic AI-Powered Healthcare Platform (Production-Grade)
 
-A comprehensive web-based platform that transforms appointment booking into an intelligent, conversational experience. **ClinicBook** features a **Context-Aware Agentic AI** capable of reading, writing, listening (Voice), and reasoning to manage healthcare needs seamlessly.
+A **production-ready, multimodal, AI-powered healthcare platform** that transforms appointment booking into an intelligent, conversational workflow.
+
+**ClinicBook** features a **Context-Aware Agentic AI** capable of **reasoning, speaking, listening, reading, writing, and executing actions** across a real clinic management system.
+
+🚀 **Live Deployment:** https://clinicagentbook.onrender.com  
+🐳 **Docker Image:** https://hub.docker.com/r/honeydoc/clinicbook-repo  
+⚙️ **CI/CD:** GitHub Actions → Docker Hub → Render
 
 ---
 
 ## ✨ Key Features
 
 ### 🤖 Agentic AI Health Assistant (Powered by Gemini)
-*A Hybrid AI system combining Agentic Tool Use with Retrieval-Augmented Generation (RAG).*
+*A hybrid system combining Agentic Tool Use + Retrieval-Augmented Generation (RAG).*
 
-- **🗣️ Voice Interface**: Built-in **Speech-to-Text** allows doctors and patients to speak commands naturally (e.g., *"Book an appointment"* or *"Generate 5 slots"*).
-- **📚 Hybrid RAG System**: 
-  - **Dynamic Data**: Queries the SQLite database for live schedules and doctor availability.
-  - **Static Knowledge**: Instantly answers policy questions (Refunds, Insurance, Hours) from a local Knowledge Base (`clinic_policies.txt`) without unnecessary database calls.
-- **🧠 Context-Aware Identity**: Automatically detects User Role (Doctor/Patient) and Current Date to handle relative queries like *"Show me tomorrow's schedule"*.
+- **🗣️ Voice Interface**: Built-in **Speech-to-Text** lets users speak commands like:
+  > "Book an appointment", "Create slots for next Monday", "Who is visiting me tomorrow?"
+
+- **📚 Hybrid RAG System**:
+  - **Dynamic Data**: Reads live data from SQLite (doctors, slots, appointments).
+  - **Static Knowledge**: Answers clinic policy questions from `clinic_policies.txt` without DB calls.
+
+- **🧠 Context-Aware Reasoning**:
+  - Automatically detects **User Role** (Doctor/Patient)
+  - Understands **Relative Dates** like *today, tomorrow, next Monday*
+
+- **🛠️ Tool-Calling Agent**:
+  - Executes DB tools for:
+    - Booking appointments
+    - Creating slots
+    - Marking appointments completed
+    - Searching doctors
 
 ![Agentic Workflow Diagram](/assets/Agent.jpg)
 
+---
+
 ### 👩‍⚕️ Doctor Portal
-- **Voice-Powered Management**: Dictate commands like *"Create slots for next Monday at 10 AM"* to bulk-generate schedule capacity.
-- **Smart Dashboard**: Ask *"Who is visiting me today?"* to get a filtered, real-time patient list.
-- **Workflow Automation**: Mark appointments as "Completed" directly through chat.
-- **Secure Access**: Session-based isolation ensures doctors only manage their own data.
+
+- 🎙️ **Voice-Controlled Slot Management**
+- 📊 **Smart Dashboard**
+- 🤖 **Ask Natural Questions**:
+  > "Who is visiting me today?"
+
+- ⚙️ **Agentic Automation**:
+  - Create slots
+  - Close appointments
+  - Manage schedules through chat
+
+- 🔐 **Secure Session Isolation**
+
+---
 
 ### 🧑‍🤝‍🧑 Patient Portal
-- **Symptom-to-Specialist**: AI intelligently maps symptoms (e.g., *"chest pain"*) to the correct specialist (e.g., *Cardiologist*).
-- **One-Click Booking**: Streamlined booking flow with email confirmation.
-- **Transparency**: Clear visibility of appointment status, fees, and clinic policies via the AI assistant.
 
+- 🩺 **Symptom-to-Specialist Mapping**
+- 📅 **One-Click Booking**
+- 🤖 **Ask AI**:
+  > "Which doctor should I visit for chest pain?"
+
+- 📄 **Transparent Appointment Status & Policies**
+
+---
+
+## 🏗️ Production Architecture
+```bash
+GitHub Push
+↓
+GitHub Actions (CI)
+↓
+Docker Build & Push
+↓
+Docker Hub
+↓
+Render Auto Deploy (CD)
+↓
+Live Production Service
+```
 ---
 
 ## 🛠️ Technology Stack
 
-- **Backend**: Flask (Python 3.x)
+- **Backend**: Flask (Python)
 - **AI Engine**: Google Gemini 2.5 Flash
-- **AI Architecture**: 
-  - **Agentic Tools**: Function Calling for DB Writes/Reads.
-  - **Lightweight RAG**: Context injection for policy documents.
-  - **System Prompting**: Role-based behavior control.
-- **Frontend**: 
-  - **Framework**: Bootstrap 5 & Jinja2
-  - **Voice**: Web Speech API (Native JavaScript)
-- **Database**: SQLite (Transactional)
-
----
-## 🎯 AI Capabilities Breakdown
-
-The system uses a **Router Architecture** to decide how to handle a user query:
-
-1. **Knowledge Query** (e.g., *"Do you accept insurance?"*)
-   - **Source:** `clinic_policies.txt`
-   - **Action:** RAG Response (No DB Call)
-
-2. **Data Query** (e.g., *"Find a Urologist"*)
-   - **Source:** `search_doctor_by_specialization` Tool
-   - **Action:** DB Read → Returns List with `[Hidden IDs]`
-
-3. **Action Command** (e.g., *"Book the 10 AM slot"*)
-   - **Source:** `book_appointment_by_patient` Tool
-   - **Action:** DB Write → Confirmation
+- **AI Architecture**:
+  - Agentic Tool Calling
+  - Lightweight RAG (Policy Injection)
+  - Role-Based System Prompting
+- **Frontend**:
+  - Bootstrap 5 + Jinja2
+  - Web Speech API (Voice)
+- **Database**: SQLite
+- **DevOps**:
+  - Docker
+  - GitHub Actions CI/CD
+  - Render Image Deployment
 
 ---
 
-## 🚀 Quick Start
+## 🎯 AI Query Router Logic
+
+The agent uses a **Router Architecture**:
+
+1. **Knowledge Query**
+   > "Do you accept insurance?"
+   - Source: `clinic_policies.txt`
+   - Action: RAG Response
+
+2. **Data Query**
+   > "Find a cardiologist"
+   - Tool: `search_doctor_by_specialization`
+   - Action: DB Read
+
+3. **Action Command**
+   > "Book the 10 AM slot"
+   - Tool: `book_appointment_by_patient`
+   - Action: DB Write
+
+---
+
+## 🚀 Run Locally
 
 ### Prerequisites
+
 - Python 3.8+
-- Google Cloud API Key (Gemini)
+- Google Gemini API Key
 
-### Installation Steps
+### Installation
 
-1. **Clone the repository**
-   ```bash
-   git clone [https://github.com/Mfaj-cod/ClinicBook.git](https://github.com/Mfaj-cod/ClinicBook.git)
-   cd ClinicBook
+```bash
+git clone https://github.com/Mfaj-cod/ClinicBook.git
+cd ClinicBook
+python -m venv clinic
+clinic\Scripts\activate   # Windows
+source clinic/bin/activate # Mac/Linux
+pip install -r requirements.txt
 
-### Installation Steps
+Configure Environment
 
-1. **Clone the repository**
-   ```bash
-   git clone [https://github.com/Mfaj-cod/ClinicBook.git](https://github.com/Mfaj-cod/ClinicBook.git)
-   cd ClinicBook
-2. **Create and activate virtual environment**
-   ```bash
-   python -m venv clinic
-   # On Windows
-   clinic\Scripts\activate
-   # On macOS/Linux
-   source clinic/bin/activate
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-4. **Configure Environment Variables**
-   ***Create a .env file in the root directory and add your API credentials:***
-   ```bash
-   GEMINI_API_KEY=your_actual_api_key_here
-   GEMINI_MODEL_NAME=gemini_model_name_here
-   SECRET_KEY=your_flask_secret_key
-5. **Run the application**
-   ```bash
-   python app.py
+Create .env:
 
----
-**📁 Project Structure**
+GEMINI_API_KEY=your_api_key
+GEMINI_MODEL_NAME=gemini-2.5-flash
+SECRET_KEY=your_secret_key
 
-   ```bash
-   ClinicBook/
-   ├── app.py              # Main Flask application            
-   ├── src/
-   |___|__ __init__.py
-   |   |___init_db.py      # Database initialization script
-   |   |___seed.py         # Database seeding with sample data
-   |   |___gem.py          # Gemini AI Chatbot logic
-   |   |___logg.py
-   |   |___doctors_data.py # Sample doctors data  
-   |   |___prompt.py
-   |   |_tools_config.json # Stores tool definitions 
-   |
-   ├── data/
-   │   |___clinicBook.db   # SQLite database files
-   |   |_clinic_policies.txt
-   |
-   ├── templates/          # Jinja2 HTML templates
-   ├── static/             # Static assets (CSS, JS, icons)
-   ├── requirements.txt    # Python dependencies
-   └── README.md           # Project documentation
-   ```
----
+RUN: python app.py
+```
 
-***Note on AI Features:*** To enable the chatbot, ensure the GEMINI_API_KEY is set in your .env file. If the key is missing, the app will run, but the chat feature will return an error or be disabled.
+### 🐳 Run with Docker
 
----
-**🎯 Use Cases**
-**For Healthcare Providers**
-- Small Clinics: Perfect for independent practitioners and small medical practices
-- Specialists: Manage appointments across different specializations
-- Multi-location Practices: Handle appointments for multiple clinic locations
-- AI Assistance: Get instant answers about your upcoming appointments without browsing menus
+docker pull honeydoc/clinicbook-repo:latest
+docker run -p 5000:5000 honeydoc/clinicbook-repo
 
-**For Patients**
-- Convenient Booking: Schedule appointments from anywhere, anytime
-- Doctor Selection: Choose from a variety of healthcare providers
-- AI Assistance: Get instant answers about doctor availability without browsing menus
+### 📁 Project Structure
+```bash
+ClinicBook/
+├── app.py
+├── Dockerfile
+├── requirements.txt
+├── src/
+│   ├── init_db.py
+│   ├── seed.py
+│   ├── gem.py
+│   ├── prompt.py
+│   ├── tools_config.json
+│   └── doctors_data.py
+├── data/
+│   ├── clinicBook.db
+│   └── clinic_policies.txt
+├── templates/
+├── static/
+└── README.md
+```
 
----
-**🔮 Roadmap**
+### 🎯 Use Cases
 
-- [x] Multimodal: Voice Input & Text Output.
+For Clinics:
 
-- [x] RAG Integration: Knowledge Base for FAQ.
+   AI receptionist
 
-- [x] Agentic Writes: Booking & Slot Generation.
+   Voice-controlled scheduling
 
-- [ ] Payment Integration.
+   Zero-dashboard navigation
 
-- [ ] Analytics: Appointment analytics and reporting features.
+   Automated workflows
 
-**📞 Support**
-For support, please open an issue in the GitHub repository or contact the development team.
+For Patients:
 
----
-Built with ❤️ for better healthcare management
+   Natural language booking
+
+   Smart doctor discovery
+
+   Instant answers
+
+## 🔮 Roadmap
+
+ Agentic AI with tool calling ✔️
+
+ Voice input ✔️
+
+ RAG knowledge base ✔️
+
+ CI/CD deployment ✔️
+
+ Payment gateway
+
+ Analytics dashboard
+
+ Multi-clinic support
+
+### 📞 Support
+
+Open an issue in GitHub for support.
+
+### ❤️ Built With Purpose
+
+This project demonstrates real-world Agentic AI, DevOps, MLOps, and production system design.
