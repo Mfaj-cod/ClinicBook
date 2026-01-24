@@ -380,6 +380,11 @@
 {% endif %}
 
 <script>
+    document.getElementById("chat-input").addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        sendMessage();
+      }
+    });
     function toggleChat() {
       const win = document.getElementById("chatbot-window");
       win.style.display = win.style.display === "flex" ? "none" : "flex";
@@ -483,19 +488,22 @@
             // sendMessage(); 
             
             recognition.stop();
-            micBtn.innerHTML = "🎤"; // Reset icon
-        };
+            micBtn.classList.remove('bi-mic-fill');
+            micBtn.classList.add('bi-mic');
+          };
 
-        recognition.onerror = function(e) {
+          recognition.onerror = function(e) {
             console.error(e);
-            micBtn.innerHTML = "🎤"; // Reset icon on error
+            micBtn.classList.remove('bi-mic-fill');
+            micBtn.classList.add('bi-mic');
             alert("Voice recognition error. Please check your microphone permissions.");
             recognition.stop();
-        };
-        
-        recognition.onend = function() {
-             micBtn.innerHTML = "🎤";
-        };
+          };
+          
+          recognition.onend = function() {
+             micBtn.classList.remove('bi-mic-fill');
+             micBtn.classList.add('bi-mic');
+          };
 
     } else {
         alert("Sorry, your browser does not support voice recognition. Please use Chrome.");
