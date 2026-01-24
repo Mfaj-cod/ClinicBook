@@ -68,3 +68,40 @@ App and DB connected.
 2026-01-24 15:35:19,655 - src.logg - WARNING - Could not load policy document: [Errno 2] No such file or directory: 'C:\\Users\\fajal\\OneDrive\\Desktop\\ClinicBook\\clinic_policies.txt'
 2026-01-24 15:36:53,843 - src.logg - INFO - App running..................
 2026-01-24 15:36:56,232 - src.logg - INFO - App running..................
+2026-01-24 15:37:13,732 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2026-01-24 15:37:13,745 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2026-01-24 15:37:13,746 - src.logg - INFO - Database setup completed successfully.
+2026-01-24 15:37:13,748 - src.logg - INFO - schema ensured in seeding.
+2026-01-24 15:37:13,758 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2026-01-24 15:37:13,758 - src.logg - INFO - 
+App and DB connected.
+2026-01-24 15:37:13,787 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2026-01-24 15:37:13,791 - src.logg - INFO - schema ensured in seeding.
+2026-01-24 15:37:13,801 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2026-01-24 15:37:30,517 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2026-01-24 15:37:30,524 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2026-01-24 15:37:30,525 - src.logg - INFO - Database setup completed successfully.
+2026-01-24 15:37:30,527 - src.logg - INFO - schema ensured in seeding.
+2026-01-24 15:37:30,535 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2026-01-24 15:37:30,535 - src.logg - INFO - 
+App and DB connected.
+2026-01-24 15:37:30,562 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2026-01-24 15:37:30,566 - src.logg - INFO - schema ensured in seeding.
+2026-01-24 15:37:30,577 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2026-01-24 15:38:26,865 - src.logg - INFO - [Gemini] Model loaded with tools from JSON.
+2026-01-24 15:38:26,875 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2026-01-24 15:38:26,876 - src.logg - INFO - Database setup completed successfully.
+2026-01-24 15:38:26,882 - src.logg - INFO - schema ensured in seeding.
+2026-01-24 15:38:27,150 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2026-01-24 15:38:27,150 - src.logg - INFO - 
+App and DB connected.
+2026-01-24 15:38:27,186 - src.logg - INFO - DB schema ready at ./data\clinicBook.db
+2026-01-24 15:38:27,192 - src.logg - INFO - schema ensured in seeding.
+2026-01-24 15:38:27,206 - src.logg - INFO - Seeding complete. DB at ./data\clinicBook.db
+2026-01-24 16:22:05,869 - src.logg - WARNING - Could not load policy document: [Errno 2] No such file or directory: 'C:\\Users\\fajal\\OneDrive\\Desktop\\ClinicBook\\clinic_policies.txt'
+2026-01-24 16:22:10,250 - src.logg - INFO - Gemini Tool request --> search_appointments_by_patient({})
+2026-01-24 16:22:10,257 - src.logg - INFO - Tool Result: [{'id': 1, 'status': 'booked', 'date': '2026-01-24', 'time': '10:00', 'doctor': 'Dr. Deepak Sinha'}]
+2026-01-24 16:22:12,604 - src.logg - INFO - Gemini Tool request --> cancel_appointment_by_patient({'appointment_id': 1.0})
+2026-01-24 16:22:12,790 - src.logg - INFO - Tool Result: Success
+2026-01-24 16:24:25,260 - src.logg - INFO - App running..................
+2026-01-24 16:24:27,904 - src.logg - INFO - App running..................
