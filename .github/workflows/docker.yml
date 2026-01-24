@@ -1,17 +1,18 @@
 name: Build and Push Docker Image
+
 # Trigger workflow on push to main branch
 on:
   push:
     branches:
       - main
 
-#   Trigger workflow on changes to Dockerfile or application code
+# Trigger workflow on changes to Dockerfile or application code
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
     steps:
-        # Checkout the repository
+    # Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v4
     # Login to Docker Hub
@@ -29,7 +30,7 @@ jobs:
           push: true
           tags: honeydoc/clinicbook-repo:latest
 
-      # Trigger Render deployment   
+    # Trigger Render deployment   
       - name: Trigger Render Deploy
         run: |
           curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
