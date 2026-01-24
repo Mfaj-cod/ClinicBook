@@ -149,9 +149,12 @@ RUN: python app.py
 ```
 
 ### 🐳 Run with Docker
-
+```bash
 docker pull honeydoc/clinicbook-repo:latest
 docker run -p 5000:5000 honeydoc/clinicbook-repo
+```
+
+---
 
 ### 📁 Project Structure
 ```bash
@@ -176,23 +179,17 @@ ClinicBook/
 
 ### 🎯 Use Cases
 
-For Clinics:
+- **For Clinics**:
+    - AI receptionist
+    - Voice-controlled scheduling
+    - Zero-dashboard navigation
+    - Automated workflows
 
-   AI receptionist
-
-   Voice-controlled scheduling
-
-   Zero-dashboard navigation
-
-   Automated workflows
-
-For Patients:
-
-   Natural language booking
-
-   Smart doctor discovery
-
-   Instant answers
+- **For Patients**:
+    - Natural language booking
+    - Smart doctor discovery
+    - Instant answers
+ 
 
 ## 🔮 Roadmap
 
