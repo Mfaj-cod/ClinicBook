@@ -1,32 +1,32 @@
-# 🏥 ClinicBook - Agentic AI-Powered Healthcare Platform (Production-Grade)
+# ClinicBook - Agentic AI-Powered Healthcare Platform (Production-Grade)
 
 A **production-ready, multimodal, AI-powered healthcare platform** that transforms appointment booking into an intelligent, conversational workflow.
 
 **ClinicBook** features a **Context-Aware Agentic AI** capable of **reasoning, speaking, listening, reading, writing, and executing actions** across a real clinic management system.
 
-🚀 **Live Deployment:** https://clinicagentbook.onrender.com  
-🐳 **Docker Image:** https://hub.docker.com/r/honeydoc/clinicbook-repo  
-⚙️ **CI/CD:** GitHub Actions → Docker Hub → Render
+**Live Deployment:** https://clinicagentbook.onrender.com  
+**Docker Image:** https://hub.docker.com/r/honeydoc/clinicbook-repo  
+**CI/CD:** GitHub Actions → Docker Hub → Render
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-### 🤖 Agentic AI Health Assistant (Powered by Gemini)
+### Agentic AI Health Assistant (Powered by Gemini)
 *A hybrid system combining Agentic Tool Use + Retrieval-Augmented Generation (RAG).*
 
-- **🗣️ Voice Interface**: Built-in **Speech-to-Text** lets users speak commands like:
+- ** Voice Interface**: Built-in **Speech-to-Text** lets users speak commands like:
   > "Book an appointment", "Create slots for next Monday", "Who is visiting me tomorrow?"
 
-- **📚 Hybrid RAG System**:
+- ** Hybrid RAG System**:
   - **Dynamic Data**: Reads live data from SQLite (doctors, slots, appointments).
   - **Static Knowledge**: Answers clinic policy questions from `clinic_policies.txt` without DB calls.
 
-- **🧠 Context-Aware Reasoning**:
+- ** Context-Aware Reasoning**:
   - Automatically detects **User Role** (Doctor/Patient)
   - Understands **Relative Dates** like *today, tomorrow, next Monday*
 
-- **🛠️ Tool-Calling Agent**:
+- ** Tool-Calling Agent**:
   - Executes DB tools for:
     - Booking appointments
     - Creating slots
@@ -37,34 +37,34 @@ A **production-ready, multimodal, AI-powered healthcare platform** that transfor
 
 ---
 
-### 👩‍⚕️ Doctor Portal
+### Doctor Portal
 
-- 🎙️ **Voice-Controlled Slot Management**
-- 📊 **Smart Dashboard**
-- 🤖 **Ask Natural Questions**:
+- **Voice-Controlled Slot Management**
+- **Smart Dashboard**
+- **Ask Natural Questions**:
   > "Who is visiting me today?"
 
-- ⚙️ **Agentic Automation**:
+- **Agentic Automation**:
   - Create slots
   - Close appointments
   - Manage schedules through chat
 
-- 🔐 **Secure Session Isolation**
+- **Secure Session Isolation**
 
 ---
 
-### 🧑‍🤝‍🧑 Patient Portal
+### Patient Portal
 
-- 🩺 **Symptom-to-Specialist Mapping**
-- 📅 **One-Click Booking**
-- 🤖 **Ask AI**:
+- **Symptom-to-Specialist Mapping**
+- **One-Click Booking**
+- **Ask AI**:
   > "Which doctor should I visit for chest pain?"
 
-- 📄 **Transparent Appointment Status & Policies**
+- **Transparent Appointment Status & Policies**
 
 ---
 
-## 🏗️ Production Architecture
+## Production Architecture
 ```bash
 GitHub Push
 ↓
@@ -80,7 +80,7 @@ Live Production Service
 ```
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 - **Backend**: Flask (Python)
 - **AI Engine**: Google Gemini 2.5 Flash
@@ -99,7 +99,7 @@ Live Production Service
 
 ---
 
-## 🎯 AI Query Router Logic
+## AI Query Router Logic
 
 The agent uses a **Router Architecture**:
 
@@ -120,7 +120,7 @@ The agent uses a **Router Architecture**:
 
 ---
 
-## 🚀 Run Locally
+## Run Locally
 
 ### Prerequisites
 
@@ -148,7 +148,7 @@ SECRET_KEY=your_secret_key
 RUN: python app.py
 ```
 
-### 🐳 Run with Docker
+### Run with Docker
 ```bash
 docker pull honeydoc/clinicbook-repo:latest
 docker run -p 5000:5000 honeydoc/clinicbook-repo
@@ -156,7 +156,7 @@ docker run -p 5000:5000 honeydoc/clinicbook-repo
 
 ---
 
-### 📁 Project Structure
+### Project Structure
 ```bash
 ClinicBook/
 ├── app.py
@@ -177,7 +177,7 @@ ClinicBook/
 └── README.md
 ```
 
-### 🎯 Use Cases
+### Use Cases
 
 - **For Clinics**:
     - AI receptionist
@@ -191,7 +191,7 @@ ClinicBook/
     - Instant answers
  
 
-## 🔮 Roadmap
+## Roadmap
 
  Agentic AI with tool calling ✔️
 
@@ -211,6 +211,6 @@ ClinicBook/
 
 Open an issue in GitHub for support.
 
-### ❤️ Built With Purpose
+### Built With Purpose
 
 This project demonstrates real-world Agentic AI, DevOps, MLOps, and production system design.

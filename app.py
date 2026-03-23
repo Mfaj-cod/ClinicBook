@@ -62,6 +62,7 @@ def create_app():
             db.execute("UPDATE clinics SET average_rating=? WHERE id=?", (avg or 0, clinic_id))
         db.commit()
 
+
     # Injecting current user for templates
     @app.context_processor
     def inject_user():
@@ -73,6 +74,7 @@ def create_app():
                 (session['patient_id'],)
             ).fetchone()
         return dict(current_user=user)
+
 
     # home: show clinics with ratings
     @app.route('/')
@@ -93,6 +95,7 @@ def create_app():
         ]
 
         return render_template('home.html', clinics=clinics, features=features)
+
 
     @app.route('/doctors', methods=['GET'])
     def doctors():
