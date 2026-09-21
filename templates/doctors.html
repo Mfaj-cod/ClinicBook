@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container-fluid py-5" style="background: linear-gradient(135deg, #0d3a6f 0%, #084298 100%); border-radius: 2rem;">
+<div class="container-fluid py-5 hero-panel">
   <div class="container">
     <!-- Hero Section -->
     <div class="text-center mb-5">
-      <div class="d-inline-flex align-items-center justify-content-center rounded-circle bg-gradient-primary p-4 mb-3" 
-           style="background: white; width: 80px; height: 80px;">
-        <i class="bi bi-person-badge text-darkblue" style="font-size: 2.5rem;"></i>
+      <div class="d-inline-flex align-items-center justify-content-center rounded-circle glass-ring-icon p-4 mb-3"
+           style="width: 80px; height: 80px;">
+        <i class="bi bi-person-badge text-white" style="font-size: 2.5rem;"></i>
       </div>
       <h1 class="display-5 fw-bold mb-3" style="color: white; letter-spacing: -0.5px;">
         Find Your Perfect Doctor
@@ -54,8 +54,7 @@
                 </select>
               </div>
               <div class="col-12 col-md-1 d-grid">
-                <button type="submit" class="btn btn-primary btn-lg shadow-sm" 
-                        style="border-radius: 12px; background: linear-gradient(135deg, #667eea 0%, #0d3a6f 100%); border: none;">
+                <button type="submit" class="btn btn-primary btn-lg shadow-sm">
                   <i class="bi bi-search"></i>
                 </button>
               </div>
@@ -75,7 +74,7 @@
             <!-- Doctor Header -->
             <div class="d-flex align-items-center mb-3">
               <div class="rounded-circle bg-gradient-primary d-flex align-items-center justify-content-center me-3"
-                   style="width: 60px; height: 60px; background: linear-gradient(135deg, #667eea 0%, #0d3a6f 100%);">
+                   style="width: 60px; height: 60px;">
                 <i class="bi bi-person-circle text-white" style="font-size: 2.2rem;"></i>
               </div>
               <div class="flex-grow-1">
@@ -128,8 +127,7 @@
             <!-- Action Button -->
             <div class="mt-auto">
               <a href="{{ url_for('doctor_detail', doc_id=doctor.id) }}"
-                 class="btn btn-primary w-100 py-3 fw-semibold shadow-sm"
-                 style="border-radius: 12px; background: linear-gradient(135deg, #667eea 0%, #0d3a6f 100%); border: none; transition: all 0.3s ease;">
+                 class="btn btn-primary w-100 py-3 fw-semibold shadow-sm">
                 <i class="bi bi-calendar-plus me-2"></i>Book Appointment
               </a>
             </div>
@@ -159,24 +157,4 @@
   </div>
 </div>
 
-<style>
-.doctor-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1) !important;
-}
-
-.bg-gradient-primary {
-  background: linear-gradient(135deg, #0d3a6f 0%, #0b5ed7 100%);
-}
-
-.form-control:focus, .form-select:focus {
-  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-  border-color: #0d6efd;
-}
-
-.btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 25px rgba(13, 110, 253, 0.3) !important;
-}
-</style>
 {% endblock %}
